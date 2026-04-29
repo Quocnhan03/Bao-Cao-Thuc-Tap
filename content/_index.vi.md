@@ -1,5 +1,5 @@
 ---
-title: "Thông tin sinh viên"
+title: "    "
 date: 2026-04-27
 weight: 1
 chapter: false
@@ -20,11 +20,12 @@ chapter: false
 * **Thời gian thực tập:** Từ ngày 17/04/2026 đến ngày 10/07/2026
 
 **Ảnh sinh viên**![alt text](image.png)
+
 ### Nội dung
 
-1. [Giới thiệu](1-introduce/)
-2. [Các bước chuẩn bị](2-prerequiste/)
-3. [Kết nối đến máy chủ EC2](3-accessibilitytoinstances/)
-4. [Quản lý nhật ký phiên làm việc (session logs)](4-s3log/)
-5. [Chuyển tiếp cổng (Port Forwarding)](5-Portfwd/)
-6. [Dọn dẹp tài nguyên](6-cleanup/)
+1. [Nhật ký công việc](/1-worklog/)
+2. [Đề xuất dự án](/2-proposal/)
+3. [Triển khai hệ thống IoT](/3-checklist/)
+4. [Quản lý Session Logs](/4-logging/)
+5. [Kết nối từ xa an toàn](/5-portfwd/)
+6. [Dọn dẹp tài nguyên](/6-cleanup/)

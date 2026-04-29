@@ -1,5 +1,5 @@
 ---
-title: "Student Information"
+title: "Home"
 date: 2026-04-27
 weight: 1
 chapter: false
@@ -20,10 +20,13 @@ chapter: false
 * **Internship Period:** From April 17, 2026 to July 10, 2026
 
 **Student Portrait**![alt text](image.png)
-### Content
- 1. [Introduction ](1-introduce/)
- 2. [Preparation](2-prerequiste/)
- 3. [Connect to EC2 instance](3-accessibilitytoinstances/)
- 4. [Manage session logs](4-s3log/)
- 5. [Port Forwarding](5-Portfwd/)
- 6. [Clean up resources](6-cleanup/)
+
+
+### Contents
+
+1. [Work Log](/1-worklog/)  
+2. [Project Proposal](/2-proposal/)  
+3. [IoT System Deployment](/3-checklist/)  
+4. [Session Logs Management](/4-logging/)  
+5. [Secure Remote Access](/5-portfwd/)  
+6. [Resource Cleanup](/6-cleanup/)
