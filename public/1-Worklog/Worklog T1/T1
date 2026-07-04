@@ -1,0 +1,39 @@
+---
+title: "Week 1: AWS Fundamentals & Environment Setup"
+date: 2026-04-27
+weight: 1
+pre : " <b> 1.1 </b> "
+---
+
+# WORKLOG - WEEK 1
+
+**Period:** 20/04/2026 - 26/04/2026  
+**Major:** Computer Networking  
+**Team:** First Cloud Journey
+
+---
+
+## 1. Weekly Objectives
+* Connect and engage with First Cloud Journey team members.
+* Gain a solid understanding of basic AWS services, Management Console, and CLI.
+
+## 2. Tasks & Schedule
+| Day | Task | Start Date | Completion | Source |
+| :--- | :--- | :--- | :--- | :--- |
+| Mon | Team introduction & Review regulations | 20/04/2026 | 20/04/2026 | Internal |
+| Tue | AWS Fundamentals: Compute, Storage, Networking, Database | 21/04/2026 | 21/04/2026 | [AWS Study Group](https://cloudjourney.awsstudygroup.com/) |
+| Wed | AWS Free Tier setup, Console & CLI configuration | 22/04/2026 | 22/04/2026 | [AWS Study Group](https://cloudjourney.awsstudygroup.com/) |
+| Thu | EC2 Fundamentals (Instance types, AMI, EBS, SSH, Elastic IP) | 23/04/2026 | 23/04/2026 | [AWS Study Group](https://cloudjourney.awsstudygroup.com/) |
+| Fri | Hands-on: EC2 creation, SSH connection, EBS mounting | 24/04/2026 | 24/04/2026 | [AWS Study Group](https://cloudjourney.awsstudygroup.com/) |
+| Sat-Sun | Advanced: Security Groups, Web Server (Apache/Nginx) deployment, S3 testing | 25/04/2026 | 26/04/2026 | [AWS Study Group](https://cloudjourney.awsstudygroup.com/) |
+
+## 3. Key Achievements
+* **AWS Fundamentals:** Mastered core service categories including Compute (EC2), Storage (S3, EBS), Networking (VPC), and Database (RDS, DynamoDB).
+* **Environment Setup:** Successfully created and secured an AWS Free Tier account.
+* **AWS Management Console:** Proficient in searching, navigating, and managing resources via the web interface.
+* **AWS CLI:** Fully configured the environment (Access Keys, Secret Keys, Default Region) and mastered CLI commands for resource management (EC2 status, Key Pairs, Region listing).
+* **EC2 Instance Management:** Successfully launched Amazon Linux instances, configured Security Groups, and established SSH access using Key Pairs.
+* **Web Hosting:** Deployed and tested an Apache/Nginx web server accessible via Public IP.
+* **Storage Handling:** Successfully attached EBS volumes to EC2 instances and performed S3 bucket creation and file uploads.
+
+> **Note:** Developed the ability to flexibly combine AWS Management Console and CLI for efficient resource management.

@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>User Interface and Security :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1783187234" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1783187234" rel="stylesheet">
+    <link href="/css/hybrid.css?1783187234" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1783187234" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1783187234" rel="stylesheet">
+    <link href="/css/auto-complete.css?1783187234" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1783187234" rel="stylesheet">
+    <link href="/css/theme.css?1783187234" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1783187234" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1783187234" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1783187234"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-checklist/3.4-ui-security/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1783187234"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1783187234"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1783187234"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/" title="Worklog" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/">
+           <b> 1. </b> Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-proposal/" title="Project Proposal" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-proposal/">
+           <b> 2. </b> Project Proposal
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/" title="Parking IoT system architecture" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/3-checklist/">
+           <b> 3. </b> Parking IoT system architecture
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.1-infrastructure/" title="AWS Core Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> AWS Core Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.2-edge/" title="ESP32 Edge Devices" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.2-edge/">
+           <b> 3.2. </b> ESP32 Edge Devices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.3-data-pipeline/" title="IoT Data Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> IoT Data Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.4-ui-security/" title="User Interface and Security" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> User Interface and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.5-monitoring/" title="Monitoring and Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Monitoring and Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.6-system-testing-and-optimization/" title="System Testing and Optimization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> System Testing and Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-logging/" title="Session Logs Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-logging/">
+           <b> 4. </b> Session Logs Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-portfwd/" title="Monitoring, Logs and Security" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-portfwd/">
+           <b> 5. </b> Monitoring, Logs and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-cleanup/" title="Resource Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-cleanup/">
+           <b> 6. </b> Resource Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/3-checklist/3.4-ui-security/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/3-checklist/3.4-ui-security/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/3-checklist/'>Parking IoT system architecture</a> > User Interface and Security
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#341-webapp-interface-overview">3.4.1. Web/App Interface Overview</a></li>
+    <li><a href="#342-deploying-the-interface-with-amazon-s3-static-website">3.4.2. Deploying the Interface with Amazon S3 Static Website</a></li>
+    <li><a href="#343-website-distribution-with-amazon-cloudfront">3.4.3. Website Distribution with Amazon CloudFront</a></li>
+    <li><a href="#344-domain-management-with-amazon-route-53">3.4.4. Domain Management with Amazon Route 53</a></li>
+    <li><a href="#345-website-protection-with-aws-waf">3.4.5. Website Protection with AWS WAF</a></li>
+    <li><a href="#346-user-authentication-with-amazon-cognito">3.4.6. User Authentication with Amazon Cognito</a></li>
+    <li><a href="#347-user-authorization">3.4.7. User Authorization</a></li>
+    <li><a href="#348-api-security-with-api-gateway-authorizer">3.4.8. API Security with API Gateway Authorizer</a></li>
+    <li><a href="#349-access-control-with-iam">3.4.9. Access Control with IAM</a></li>
+    <li><a href="#3410-secure-image-upload-with-presigned-url">3.4.10. Secure Image Upload with Presigned URL</a></li>
+    <li><a href="#3411-iot-device-connection-security">3.4.11. IoT Device Connection Security</a></li>
+    <li><a href="#3412-overall-security-flow">3.4.12. Overall Security Flow</a></li>
+    <li><a href="#3413-conclusion">3.4.13. Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              User Interface and Security
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="34-user-interface-and-security">3.4. User Interface and Security</h1>
+<p>This section describes how the user interface and security mechanisms are implemented for the <strong>Smart Parking IoT System</strong>. The Web/App interface allows users to monitor parking slot status, view vehicle entry and exit history, check license plate information, and access system data.</p>
+<p>In addition, the system uses security services such as <strong>Amazon Cognito, AWS WAF, IAM, API Gateway Authorizer, and CloudFront HTTPS</strong> to ensure that users are authenticated, data is protected, and AWS services are granted only the required permissions.</p>
+<hr>
+<h2 id="341-webapp-interface-overview">3.4.1. Web/App Interface Overview</h2>
+<p>The Web/App interface is the main place where users interact with the Parking IoT system. Through this interface, users can view real-time parking data, check the status of each parking slot, and monitor vehicle entry and exit history.</p>
+<p>Main features of the interface include:</p>
+<ul>
+<li>User login.</li>
+<li>View total parking slots.</li>
+<li>View available and occupied parking slots.</li>
+<li>View the status of each parking slot.</li>
+<li>View vehicle entry and exit history.</li>
+<li>View vehicle images stored in Amazon S3.</li>
+<li>View recognized license plate information.</li>
+<li>Search vehicles by license plate number.</li>
+<li>View parking activity statistics.</li>
+<li>Send questions to the AI Service if Amazon Bedrock is integrated.</li>
+</ul>
+<p>The interface can be developed using HTML/CSS/JavaScript or frameworks such as React and Next.js. After being built, the static files are stored in Amazon S3 and delivered to users through Amazon CloudFront.</p>
+<hr>
+<h2 id="342-deploying-the-interface-with-amazon-s3-static-website">3.4.2. Deploying the Interface with Amazon S3 Static Website</h2>
+<p>Amazon S3 is used to store the static files of the Web/App interface, including:</p>
+<ul>
+<li>HTML files.</li>
+<li>CSS files.</li>
+<li>JavaScript files.</li>
+<li>Images, icons, and other UI assets.</li>
+</ul>
+<p>Interface deployment flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App Source Code → Build Project → Upload Static Files to Amazon S3 → CloudFront Delivers Content to Users
+</span></span></code></pre></div><p>Example build output structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>web-app-build/
+</span></span><span style="display:flex;"><span>├── index.html
+</span></span><span style="display:flex;"><span>├── assets/
+</span></span><span style="display:flex;"><span>│   ├── style.css
+</span></span><span style="display:flex;"><span>│   ├── app.js
+</span></span><span style="display:flex;"><span>│   └── logo.png
+</span></span><span style="display:flex;"><span>└── dashboard/
+</span></span><span style="display:flex;"><span>    └── index.html
+</span></span></code></pre></div><p>Amazon S3 provides a simple and low-cost way to host the web interface, which is suitable for a serverless architecture.</p>
+<hr>
+<h2 id="343-website-distribution-with-amazon-cloudfront">3.4.3. Website Distribution with Amazon CloudFront</h2>
+<p>Amazon CloudFront is used to deliver the Web/App interface to users with faster access speed. CloudFront acts as an intermediary between users and Amazon S3.</p>
+<p>Website access flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Route 53 → CloudFront → Amazon S3 Static Website
+</span></span></code></pre></div><p>Roles of CloudFront:</p>
+<ul>
+<li>Improve website access speed.</li>
+<li>Reduce latency for users.</li>
+<li>Support HTTPS for secure connections.</li>
+<li>Reduce direct load on Amazon S3.</li>
+<li>Integrate with AWS WAF to protect the website.</li>
+</ul>
+<p>When users access the website, CloudFront retrieves content from S3 and caches it at edge locations. This helps the website respond faster, especially when many users access it at the same time.</p>
+<hr>
+<h2 id="344-domain-management-with-amazon-route-53">3.4.4. Domain Management with Amazon Route 53</h2>
+<p>Amazon Route 53 is used to manage the system domain name. Instead of accessing a long CloudFront URL, users can access the system through a friendly domain name.</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>parking.example.com → CloudFront Distribution
+</span></span></code></pre></div><p>Roles of Route 53:</p>
+<ul>
+<li>Manage DNS for the system.</li>
+<li>Route users to CloudFront.</li>
+<li>Provide a user-friendly website address.</li>
+<li>Support domain configuration for demo or production environments.</li>
+</ul>
+<p>Access flow with Route 53:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User enters domain name → Route 53 → CloudFront → S3 Static Website
+</span></span></code></pre></div><hr>
+<h2 id="345-website-protection-with-aws-waf">3.4.5. Website Protection with AWS WAF</h2>
+<p>AWS WAF is placed in front of CloudFront to protect the website from abnormal or malicious requests. WAF improves system security when the website is public on the Internet.</p>
+<p>Website protection flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Route 53 → CloudFront + AWS WAF → Amazon S3 Static Website
+</span></span></code></pre></div><p>AWS WAF can help:</p>
+<ul>
+<li>Block suspicious IP addresses.</li>
+<li>Block requests with abnormal formats.</li>
+<li>Limit the number of requests from one source.</li>
+<li>Protect the website from common web attacks.</li>
+<li>Create rules to filter invalid requests.</li>
+</ul>
+<p>In the Parking IoT system, WAF protects the user interface layer before requests are forwarded to the Web/App or API.</p>
+<hr>
+<h2 id="346-user-authentication-with-amazon-cognito">3.4.6. User Authentication with Amazon Cognito</h2>
+<p>Amazon Cognito is used to authenticate users before allowing them to access parking management features. Users must log in with an assigned account.</p>
+<p>Authentication flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Web/App → Amazon Cognito → Receive Token → API Gateway → Lambda Backend
+</span></span></code></pre></div><p>Processing steps:</p>
+<ol>
+<li>The user opens the Web/App.</li>
+<li>The user enters a username and password.</li>
+<li>The Web/App sends login information to Amazon Cognito.</li>
+<li>Cognito verifies the user information.</li>
+<li>If login is successful, Cognito returns a token.</li>
+<li>The Web/App sends the token with requests to API Gateway.</li>
+<li>API Gateway validates the token using Cognito Authorizer.</li>
+<li>If the token is valid, the request is forwarded to Lambda Backend.</li>
+</ol>
+<p>Amazon Cognito helps the system manage login securely and integrates easily with API Gateway.</p>
+<hr>
+<h2 id="347-user-authorization">3.4.7. User Authorization</h2>
+<p>The system can divide users into different roles to control access permissions. Each role is allowed to use different functions in the Web/App.</p>
+<p>Example role-based access control:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Role</th>
+<th style="text-align:left">Access Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">User</td>
+<td style="text-align:left">View parking status and available slots</td>
+</tr>
+<tr>
+<td style="text-align:left">Manager</td>
+<td style="text-align:left">View vehicle history, statistics, and license plate data</td>
+</tr>
+<tr>
+<td style="text-align:left">Admin</td>
+<td style="text-align:left">Manage users, configure the system, and access all data</td>
+</tr>
+</tbody>
+</table>
+<p>Authorization helps prevent users from accessing functions that are not suitable for their role. For example, a normal user can only view parking status, while an Admin can manage accounts and system settings.</p>
+<hr>
+<h2 id="348-api-security-with-api-gateway-authorizer">3.4.8. API Security with API Gateway Authorizer</h2>
+<p>API Gateway is the communication gateway between the Web/App and Lambda Backend. To protect APIs, the system uses Cognito Authorizer to verify user tokens before allowing API access.</p>
+<p>API security flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App → API Gateway → Cognito Authorizer → Lambda Backend → DynamoDB
+</span></span></code></pre></div><p>How it works:</p>
+<ol>
+<li>The Web/App sends a request to API Gateway.</li>
+<li>The request includes a token from Amazon Cognito.</li>
+<li>API Gateway validates the token using Cognito Authorizer.</li>
+<li>If the token is valid, the request is forwarded to Lambda.</li>
+<li>If the token is invalid, API Gateway rejects the request.</li>
+</ol>
+<p>APIs that should be protected:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API Endpoint</th>
+<th style="text-align:left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>/parking/slots</code></td>
+<td style="text-align:left">Get parking slot status</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/vehicle/logs</code></td>
+<td style="text-align:left">View vehicle entry and exit history</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/vehicle/search</code></td>
+<td style="text-align:left">Search vehicles by license plate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/ai/query</code></td>
+<td style="text-align:left">Send questions to the AI Service</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/admin/users</code></td>
+<td style="text-align:left">Manage users</td>
+</tr>
+</tbody>
+</table>
+<p>This approach helps prevent unauthorized access to parking data.</p>
+<hr>
+<h2 id="349-access-control-with-iam">3.4.9. Access Control with IAM</h2>
+<p>IAM is used to control permissions between AWS services. Each service is granted only the required permissions based on the <strong>Least Privilege</strong> principle.</p>
+<p>Example IAM permissions:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Required Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda Backend</td>
+<td style="text-align:left">Read and write DynamoDB data</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Image Processing</td>
+<td style="text-align:left">Read images from S3, call Rekognition, and write to DynamoDB</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Presigned URL</td>
+<td style="text-align:left">Create Presigned URLs for S3</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Sensor Processing</td>
+<td style="text-align:left">Write sensor data to DynamoDB</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda AI Service</td>
+<td style="text-align:left">Read DynamoDB and call Amazon Bedrock</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Invoke Lambda</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Rule</td>
+<td style="text-align:left">Trigger Lambda Sensor Processing</td>
+</tr>
+</tbody>
+</table>
+<p>Important principles:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Do not grant overly broad permissions.
+</span></span><span style="display:flex;"><span>Each Lambda function should only have permissions required for its task.
+</span></span><span style="display:flex;"><span>ESP32 devices should not store AWS Access Keys or Secret Keys directly.
+</span></span></code></pre></div><p>IAM helps reduce security risks if a component fails or is accessed without authorization.</p>
+<hr>
+<h2 id="3410-secure-image-upload-with-presigned-url">3.4.10. Secure Image Upload with Presigned URL</h2>
+<p>ESP32 Camera is not given direct AWS permissions to upload images to S3. Instead, the system uses Presigned URLs.</p>
+<p>Secure image upload flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera → API Gateway → Lambda creates Presigned URL → ESP32 Camera uploads image to S3
+</span></span></code></pre></div><p>Benefits of Presigned URLs:</p>
+<ul>
+<li>No need to store AWS Access Keys on ESP32 Camera.</li>
+<li>The URL is valid only for a short period of time.</li>
+<li>The upload is limited to a specific file or bucket.</li>
+<li>Reduces risk if the device is accessed without authorization.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>The Presigned URL is valid for 5 minutes.
+</span></span><span style="display:flex;"><span>ESP32 Camera can only upload images to the entrance/ or exit/ folder.
+</span></span></code></pre></div><p>This method is suitable for IoT systems because edge devices usually have limited resources and should not store sensitive credentials.</p>
+<hr>
+<h2 id="3411-iot-device-connection-security">3.4.11. IoT Device Connection Security</h2>
+<p>For ESP32 sensors, data is sent to AWS IoT Core through MQTT. To secure the connection, each device should have its own certificate and IoT Policy.</p>
+<p>Security components include:</p>
+<ul>
+<li>IoT Thing representing the device.</li>
+<li>Device Certificate.</li>
+<li>Private Key.</li>
+<li>IoT Policy.</li>
+<li>Separate MQTT topic for each device.</li>
+</ul>
+<p>Example topic:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>parking/slot/A01/status
+</span></span></code></pre></div><p>Example permission principle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Sensor A01 can only publish to topic parking/slot/A01/status.
+</span></span><span style="display:flex;"><span>ESP32 Sensor B03 can only publish to topic parking/slot/B03/status.
+</span></span></code></pre></div><p>Limiting MQTT topics reduces the risk of devices sending incorrect data or being accessed without authorization.</p>
+<hr>
+<h2 id="3412-overall-security-flow">3.4.12. Overall Security Flow</h2>
+<p>User access flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Route 53 → CloudFront → AWS WAF → S3 Static Website → Cognito → API Gateway → Lambda → DynamoDB
+</span></span></code></pre></div><p>Image upload flow from ESP32 Camera:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera → API Gateway → Lambda Presigned URL → Amazon S3 → Lambda Image Processing
+</span></span></code></pre></div><p>Sensor data flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Sensor → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB
+</span></span></code></pre></div><p>Main security layers:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Security Layer</th>
+<th style="text-align:left">AWS Services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Website protection</td>
+<td style="text-align:left">CloudFront, AWS WAF, HTTPS</td>
+</tr>
+<tr>
+<td style="text-align:left">User authentication</td>
+<td style="text-align:left">Amazon Cognito</td>
+</tr>
+<tr>
+<td style="text-align:left">API protection</td>
+<td style="text-align:left">API Gateway Authorizer</td>
+</tr>
+<tr>
+<td style="text-align:left">Service permission control</td>
+<td style="text-align:left">IAM</td>
+</tr>
+<tr>
+<td style="text-align:left">Secure image upload</td>
+<td style="text-align:left">Presigned URL</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT device security</td>
+<td style="text-align:left">IoT Certificate and IoT Policy</td>
+</tr>
+<tr>
+<td style="text-align:left">Security log monitoring</td>
+<td style="text-align:left">CloudWatch Logs</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3413-conclusion">3.4.13. Conclusion</h2>
+<p>The user interface and security layer allows the Parking IoT system to serve users in a clear, secure, and manageable way. The Web/App interface is hosted on Amazon S3 and distributed through CloudFront, allowing users to access the system quickly and reliably.</p>
+<p>Services such as Amazon Cognito, AWS WAF, IAM, API Gateway Authorizer, and Presigned URLs help protect the system from unauthorized access, secure parking data, and control permissions between components. With this design, the system can operate securely, scale easily, and fit well with the AWS Serverless architecture.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-checklist/3.3-data-pipeline/" title="IoT Data Pipeline"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/3-checklist/3.5-monitoring/" title="Monitoring and Management" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1783187234"></script>
+    <script src="/js/jquery.sticky.js?1783187234"></script>
+    <script src="/js/featherlight.min.js?1783187234"></script>
+    <script src="/js/highlight.pack.js?1783187234"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1783187234"></script>
+    <script src="/js/learn.js?1783187234"></script>
+    <script src="/js/hugo-learn.js?1783187234"></script>
+
+    <link href="/mermaid/mermaid.css?1783187234" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1783187234"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

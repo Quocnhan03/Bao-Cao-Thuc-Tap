@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>System Testing and Optimization :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1783187234" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1783187234" rel="stylesheet">
+    <link href="/css/hybrid.css?1783187234" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1783187234" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1783187234" rel="stylesheet">
+    <link href="/css/auto-complete.css?1783187234" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1783187234" rel="stylesheet">
+    <link href="/css/theme.css?1783187234" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1783187234" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1783187234" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1783187234"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-checklist/3.6-system-testing-and-optimization/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1783187234"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1783187234"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1783187234"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/" title="Worklog" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/">
+           <b> 1. </b> Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-proposal/" title="Project Proposal" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-proposal/">
+           <b> 2. </b> Project Proposal
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/" title="Parking IoT system architecture" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/3-checklist/">
+           <b> 3. </b> Parking IoT system architecture
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.1-infrastructure/" title="AWS Core Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> AWS Core Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.2-edge/" title="ESP32 Edge Devices" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.2-edge/">
+           <b> 3.2. </b> ESP32 Edge Devices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.3-data-pipeline/" title="IoT Data Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> IoT Data Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.4-ui-security/" title="User Interface and Security" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> User Interface and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.5-monitoring/" title="Monitoring and Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Monitoring and Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.6-system-testing-and-optimization/" title="System Testing and Optimization" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> System Testing and Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-logging/" title="Session Logs Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-logging/">
+           <b> 4. </b> Session Logs Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-portfwd/" title="Monitoring, Logs and Security" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-portfwd/">
+           <b> 5. </b> Monitoring, Logs and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-cleanup/" title="Resource Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-cleanup/">
+           <b> 6. </b> Resource Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/3-checklist/3.6-system-testing-and-optimization/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/3-checklist/3.6-system-testing-and-optimization/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/3-checklist/'>Parking IoT system architecture</a> > System Testing and Optimization
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#361-testing-objectives">3.6.1. Testing Objectives</a></li>
+    <li><a href="#362-testing-esp32-camera">3.6.2. Testing ESP32 Camera</a></li>
+    <li><a href="#363-testing-esp32-sensors">3.6.3. Testing ESP32 Sensors</a></li>
+    <li><a href="#364-testing-image-processing-and-license-plate-recognition">3.6.4. Testing Image Processing and License Plate Recognition</a></li>
+    <li><a href="#365-testing-api-gateway-and-lambda-backend">3.6.5. Testing API Gateway and Lambda Backend</a></li>
+    <li><a href="#366-testing-the-webapp-interface">3.6.6. Testing the Web/App Interface</a></li>
+    <li><a href="#367-security-testing">3.6.7. Security Testing</a></li>
+    <li><a href="#368-testing-monitoring-and-logs">3.6.8. Testing Monitoring and Logs</a></li>
+    <li><a href="#369-system-performance-optimization">3.6.9. System Performance Optimization</a></li>
+    <li><a href="#3610-aws-cost-optimization">3.6.10. AWS Cost Optimization</a></li>
+    <li><a href="#3611-summary-of-testing-results">3.6.11. Summary of Testing Results</a></li>
+    <li><a href="#3612-conclusion">3.6.12. Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              System Testing and Optimization
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="36-system-testing-and-optimization">3.6. System Testing and Optimization</h1>
+<p>This section presents the testing and optimization process for the <strong>Smart Parking IoT System</strong> after deploying the main components such as ESP32 devices, AWS IoT Core, Amazon S3, AWS Lambda, Amazon Rekognition, DynamoDB, API Gateway, Cognito, CloudFront, and CloudWatch.</p>
+<p>The purpose of testing is to ensure that the system works according to the design, data is transmitted and processed correctly, the Web/App interface displays accurate information, and the system can operate stably, securely, and cost-effectively.</p>
+<hr>
+<h2 id="361-testing-objectives">3.6.1. Testing Objectives</h2>
+<p>The system testing process is used to verify whether the main functions of the Parking IoT system work correctly.</p>
+<p>The testing objectives include:</p>
+<ul>
+<li>Check whether ESP32 Camera can capture and upload images to Amazon S3 successfully.</li>
+<li>Check whether ESP32 sensors can send parking slot status data to AWS IoT Core.</li>
+<li>Check whether AWS IoT Core can trigger Lambda to process sensor data.</li>
+<li>Check whether S3 ObjectCreated Event can trigger Lambda to process images.</li>
+<li>Check whether Amazon Rekognition can analyze images and return recognition results.</li>
+<li>Check whether DynamoDB stores data correctly.</li>
+<li>Check whether API Gateway and Lambda Backend return data to the Web/App.</li>
+<li>Check whether Cognito authenticates users correctly.</li>
+<li>Check whether CloudWatch records logs and supports error detection.</li>
+<li>Check whether AWS usage costs remain within the expected budget.</li>
+</ul>
+<hr>
+<h2 id="362-testing-esp32-camera">3.6.2. Testing ESP32 Camera</h2>
+<p>ESP32 Camera is used to capture images of vehicles entering and exiting the parking lot. Therefore, it is necessary to test its ability to capture images, request a Presigned URL, and upload images to Amazon S3.</p>
+<p>Testing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera → API Gateway → Lambda Presigned URL → Amazon S3
+</span></span></code></pre></div><p>Testing steps:</p>
+<ol>
+<li>Power on the ESP32 Camera and connect it to WiFi.</li>
+<li>Check whether the device connects to the network successfully.</li>
+<li>Let a vehicle or object pass through the camera area.</li>
+<li>Check whether ESP32 Camera can capture an image.</li>
+<li>Check whether ESP32 Camera can call API Gateway to request a Presigned URL.</li>
+<li>Check whether Lambda creates the Presigned URL successfully.</li>
+<li>Check whether the image is uploaded to Amazon S3.</li>
+<li>Check whether the image is stored in the correct <code>entrance/</code> or <code>exit/</code> folder.</li>
+</ol>
+<p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">WiFi connection</td>
+<td style="text-align:left">ESP32 Camera connects successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">Image capture</td>
+<td style="text-align:left">Image is captured clearly</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway request</td>
+<td style="text-align:left">Request is sent successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">Presigned URL generation</td>
+<td style="text-align:left">Lambda returns a valid URL</td>
+</tr>
+<tr>
+<td style="text-align:left">S3 upload</td>
+<td style="text-align:left">Image appears in the S3 Bucket</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="363-testing-esp32-sensors">3.6.3. Testing ESP32 Sensors</h2>
+<p>ESP32 sensors are used to determine the status of each parking slot. The device sends data to AWS IoT Core using MQTT.</p>
+<p>Testing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Sensor → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB
+</span></span></code></pre></div><p>Testing steps:</p>
+<ol>
+<li>Power on the ESP32 sensor device.</li>
+<li>Check whether the device connects to WiFi.</li>
+<li>Check whether the device connects to AWS IoT Core.</li>
+<li>Place an object or vehicle in the sensor area.</li>
+<li>Check whether the sensor detects the status as <code>occupied</code>.</li>
+<li>Remove the object or vehicle from the sensor area.</li>
+<li>Check whether the sensor detects the status as <code>available</code>.</li>
+<li>Check whether data is published to the correct MQTT topic.</li>
+<li>Check whether IoT Rule triggers Lambda.</li>
+<li>Check whether DynamoDB updates the latest parking slot status.</li>
+</ol>
+<p>Example MQTT topic:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>parking/slot/A01/status
+</span></span></code></pre></div><p>Example valid payload:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;device_id&#34;</span>: <span style="color:#e6db74">&#34;esp32_sensor_01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;A01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;occupied&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:30:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">WiFi connection</td>
+<td style="text-align:left">ESP32 connects successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">AWS IoT Core connection</td>
+<td style="text-align:left">Device publishes MQTT data successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">Sensor data</td>
+<td style="text-align:left">Status is correctly detected as <code>available</code> or <code>occupied</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Rule</td>
+<td style="text-align:left">Lambda is triggered</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB</td>
+<td style="text-align:left">Data is updated correctly</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="364-testing-image-processing-and-license-plate-recognition">3.6.4. Testing Image Processing and License Plate Recognition</h2>
+<p>After ESP32 Camera uploads an image to Amazon S3, the system needs to test whether Lambda is triggered and whether Amazon Rekognition processes the image correctly.</p>
+<p>Testing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Amazon S3 → S3 ObjectCreated → Lambda Image Processing → Amazon Rekognition → DynamoDB
+</span></span></code></pre></div><p>Testing steps:</p>
+<ol>
+<li>Upload a vehicle image to S3 using ESP32 Camera or upload it manually for testing.</li>
+<li>Check whether the S3 ObjectCreated Event is triggered.</li>
+<li>Check whether Lambda Image Processing runs successfully.</li>
+<li>Check whether Lambda can read the image from S3.</li>
+<li>Check whether Lambda calls Amazon Rekognition.</li>
+<li>Check whether the recognition result is returned.</li>
+<li>Check whether the data is written to the VehicleLogs table in DynamoDB.</li>
+</ol>
+<p>Example processed data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;log_id&#34;</span>: <span style="color:#e6db74">&#34;LOG001&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;plate_number&#34;</span>: <span style="color:#e6db74">&#34;51A-12345&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;confidence&#34;</span>: <span style="color:#ae81ff">92.5</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;direction&#34;</span>: <span style="color:#e6db74">&#34;in&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;image_url&#34;</span>: <span style="color:#e6db74">&#34;s3://parking-image-bucket/entrance/car_001.jpg&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:30:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Image upload</td>
+<td style="text-align:left">Image is stored in S3</td>
+</tr>
+<tr>
+<td style="text-align:left">S3 Event</td>
+<td style="text-align:left">Lambda is triggered</td>
+</tr>
+<tr>
+<td style="text-align:left">Rekognition</td>
+<td style="text-align:left">Image is analyzed</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB</td>
+<td style="text-align:left">Result is stored in VehicleLogs</td>
+</tr>
+<tr>
+<td style="text-align:left">CloudWatch</td>
+<td style="text-align:left">Successful processing log is recorded</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="365-testing-api-gateway-and-lambda-backend">3.6.5. Testing API Gateway and Lambda Backend</h2>
+<p>API Gateway and Lambda Backend act as the middle layer between the Web/App and data stored in DynamoDB. The APIs must be tested to ensure they work correctly.</p>
+<p>Testing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App → API Gateway → Lambda Backend → DynamoDB
+</span></span></code></pre></div><p>APIs to test:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API Endpoint</th>
+<th style="text-align:left">Testing Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GET /parking/slots</code></td>
+<td style="text-align:left">Get the list of parking slots</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GET /vehicle/logs</code></td>
+<td style="text-align:left">Get vehicle entry and exit history</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>POST /upload-url</code></td>
+<td style="text-align:left">Create a Presigned URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GET /vehicle/search</code></td>
+<td style="text-align:left">Search vehicles by license plate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>POST /ai/query</code></td>
+<td style="text-align:left">Send a question to the AI Service</td>
+</tr>
+</tbody>
+</table>
+<p>Testing steps:</p>
+<ol>
+<li>Send requests to each API endpoint.</li>
+<li>Check whether API Gateway receives the request.</li>
+<li>Check whether Lambda Backend is invoked.</li>
+<li>Check whether Lambda queries DynamoDB correctly.</li>
+<li>Check whether the response is returned in the correct JSON format.</li>
+<li>Check whether there are any 4xx or 5xx errors.</li>
+</ol>
+<p>Example API response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;total_slots&#34;</span>: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;available&#34;</span>: <span style="color:#ae81ff">18</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;occupied&#34;</span>: <span style="color:#ae81ff">32</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">API receives request</td>
+<td style="text-align:left">Request is sent successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Backend</td>
+<td style="text-align:left">Lambda processes the request correctly</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB Query</td>
+<td style="text-align:left">Data is queried accurately</td>
+</tr>
+<tr>
+<td style="text-align:left">Response</td>
+<td style="text-align:left">JSON response is returned correctly</td>
+</tr>
+<tr>
+<td style="text-align:left">Error Handling</td>
+<td style="text-align:left">Error logs are recorded if the request is invalid</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="366-testing-the-webapp-interface">3.6.6. Testing the Web/App Interface</h2>
+<p>The Web/App interface is where users view parking data. Therefore, it is necessary to check whether the interface displays backend data correctly.</p>
+<p>Functions to test:</p>
+<ul>
+<li>User login.</li>
+<li>Display total parking slots.</li>
+<li>Display available and occupied slots.</li>
+<li>Display the status of each parking slot.</li>
+<li>Display vehicle entry and exit history.</li>
+<li>Display vehicle images from S3.</li>
+<li>Search vehicles by license plate.</li>
+<li>Display error messages when API issues occur.</li>
+</ul>
+<p>Interface testing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → CloudFront → S3 Static Website → API Gateway → Lambda → DynamoDB
+</span></span></code></pre></div><p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Function</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Login</td>
+<td style="text-align:left">User logs in successfully</td>
+</tr>
+<tr>
+<td style="text-align:left">Dashboard</td>
+<td style="text-align:left">Correctly displays available and occupied slots</td>
+</tr>
+<tr>
+<td style="text-align:left">Parking Slots</td>
+<td style="text-align:left">Parking slot status is updated</td>
+</tr>
+<tr>
+<td style="text-align:left">Vehicle Logs</td>
+<td style="text-align:left">Vehicle entry and exit history is displayed</td>
+</tr>
+<tr>
+<td style="text-align:left">Search</td>
+<td style="text-align:left">License plate search returns correct results</td>
+</tr>
+<tr>
+<td style="text-align:left">Error Message</td>
+<td style="text-align:left">Interface displays clear error messages</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="367-security-testing">3.6.7. Security Testing</h2>
+<p>Security testing ensures that the system does not allow unauthorized access and that AWS services are granted only the required permissions.</p>
+<p>Items to test:</p>
+<ul>
+<li>Users who are not logged in cannot call protected APIs.</li>
+<li>Expired Cognito tokens are rejected by API Gateway.</li>
+<li>Normal users cannot access Admin functions.</li>
+<li>ESP32 Camera does not have direct AWS permissions.</li>
+<li>Presigned URLs are valid only for a short period of time.</li>
+<li>ESP32 sensors can only publish to authorized MQTT topics.</li>
+<li>Lambda functions only have permissions required for their tasks.</li>
+</ul>
+<p>Example test without token:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App → API Gateway → No Cognito Token → Request is rejected
+</span></span></code></pre></div><p>Expected results:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Call API without token</td>
+<td style="text-align:left">Request is rejected</td>
+</tr>
+<tr>
+<td style="text-align:left">Invalid or expired token</td>
+<td style="text-align:left">Request is rejected</td>
+</tr>
+<tr>
+<td style="text-align:left">User accesses Admin API</td>
+<td style="text-align:left">Rejected if the user has no permission</td>
+</tr>
+<tr>
+<td style="text-align:left">Expired Presigned URL</td>
+<td style="text-align:left">Upload is not allowed</td>
+</tr>
+<tr>
+<td style="text-align:left">Wrong MQTT topic</td>
+<td style="text-align:left">Device is not allowed to publish</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="368-testing-monitoring-and-logs">3.6.8. Testing Monitoring and Logs</h2>
+<p>CloudWatch is used to check logs of different system components. Log testing ensures that when an error occurs, administrators can quickly identify the cause.</p>
+<p>Logs to check:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Logs to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda Backend</td>
+<td style="text-align:left">Web/App requests and data query errors</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Image Processing</td>
+<td style="text-align:left">Image reading errors and Rekognition errors</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Sensor Processing</td>
+<td style="text-align:left">MQTT payload and DynamoDB write errors</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Requests, responses, and 4xx/5xx errors</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Core</td>
+<td style="text-align:left">MQTT data from ESP32 devices</td>
+</tr>
+<tr>
+<td style="text-align:left">CloudFront/WAF</td>
+<td style="text-align:left">Blocked or abnormal requests</td>
+</tr>
+</tbody>
+</table>
+<p>Testing steps:</p>
+<ol>
+<li>Create a valid request and check successful logs.</li>
+<li>Create an invalid request and check error logs.</li>
+<li>Send an MQTT payload with missing fields and check Lambda logs.</li>
+<li>Upload an invalid image format and check Lambda Image Processing logs.</li>
+<li>Check CloudWatch Log Groups for each Lambda function.</li>
+</ol>
+<p>Expected result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>CloudWatch records both successful logs and error logs.
+</span></span><span style="display:flex;"><span>Administrators can trace errors by service and processing step.
+</span></span></code></pre></div><hr>
+<h2 id="369-system-performance-optimization">3.6.9. System Performance Optimization</h2>
+<p>After functional testing, the system should be optimized to run faster, more reliably, and support a larger number of users or devices.</p>
+<p>Optimization methods include:</p>
+<ul>
+<li>Optimize Lambda execution time.</li>
+<li>Reduce image size before uploading to S3.</li>
+<li>Use Presigned URLs to reduce Lambda workload.</li>
+<li>Design suitable DynamoDB Partition Keys.</li>
+<li>Reduce unnecessary API calls from the Web/App.</li>
+<li>Use CloudFront cache to speed up website access.</li>
+<li>Configure appropriate Lambda timeout values.</li>
+<li>Reduce unnecessary logs to lower CloudWatch costs.</li>
+</ul>
+<p>Example image optimization:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera reduces image size before uploading to S3.
+</span></span><span style="display:flex;"><span>This helps improve upload speed and reduce storage costs.
+</span></span></code></pre></div><p>Example API optimization:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>The Web/App should call the parking status API at a suitable interval,
+</span></span><span style="display:flex;"><span>instead of calling the API too frequently in a short period of time.
+</span></span></code></pre></div><hr>
+<h2 id="3610-aws-cost-optimization">3.6.10. AWS Cost Optimization</h2>
+<p>Because the system uses multiple AWS services, cost optimization is necessary, especially in a learning or demo environment.</p>
+<p>Cost optimization methods include:</p>
+<ul>
+<li>Delete old images in S3 if they are no longer needed.</li>
+<li>Configure S3 Lifecycle Rules to move or delete old data.</li>
+<li>Limit the number of Amazon Rekognition calls.</li>
+<li>Limit the number of Amazon Bedrock calls if AI Service is used.</li>
+<li>Monitor costs using AWS Budgets.</li>
+<li>Enable only necessary logs in CloudWatch.</li>
+<li>Delete unused resources after the demo.</li>
+<li>Use DynamoDB On-Demand mode for small testing environments.</li>
+</ul>
+<p>Example budget configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Monthly Budget: 10 USD
+</span></span><span style="display:flex;"><span>Alert at 50%, 80%, and 100%
+</span></span><span style="display:flex;"><span>Send alert to administrator email
+</span></span></code></pre></div><p>Expected result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>The system operates within the expected cost range.
+</span></span><span style="display:flex;"><span>Administrators receive alerts when costs increase unexpectedly.
+</span></span></code></pre></div><hr>
+<h2 id="3611-summary-of-testing-results">3.6.11. Summary of Testing Results</h2>
+<p>After testing each component, the results can be summarized in the following table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Test Item</th>
+<th style="text-align:left">Expected Result</th>
+<th style="text-align:left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ESP32 Camera</td>
+<td style="text-align:left">Captures and uploads images to S3</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">ESP32 Sensor</td>
+<td style="text-align:left">Sends status data to AWS IoT Core</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">S3 Event</td>
+<td style="text-align:left">Triggers image processing Lambda</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">Rekognition</td>
+<td style="text-align:left">Analyzes images and returns results</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB</td>
+<td style="text-align:left">Stores data correctly</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Returns data to Web/App</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">Cognito</td>
+<td style="text-align:left">Authenticates users</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">CloudWatch</td>
+<td style="text-align:left">Records system logs</td>
+<td style="text-align:left">Passed</td>
+</tr>
+<tr>
+<td style="text-align:left">AWS Budgets</td>
+<td style="text-align:left">Monitors AWS costs</td>
+<td style="text-align:left">Passed</td>
+</tr>
+</tbody>
+</table>
+<p>This table can be updated based on the actual results during deployment and demonstration.</p>
+<hr>
+<h2 id="3612-conclusion">3.6.12. Conclusion</h2>
+<p>The system testing and optimization section ensures that the Parking IoT system works according to the design, data is transmitted correctly from ESP32 devices to AWS, Lambda functions perform their assigned tasks, and the Web/App interface displays complete information.</p>
+<p>Through the testing process, the team can detect errors in different flows such as image upload, sensor data transmission, image processing, API queries, or user authentication. In addition, performance and cost optimization help the system operate stably, efficiently, and economically in real-world conditions.</p>
+<p>After completing testing, the Parking IoT system can support key functions such as real-time parking slot monitoring, vehicle entry and exit history storage, license plate recognition, Web/App data visualization, and system administration through CloudWatch and AWS Budgets.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-checklist/3.5-monitoring/" title="Monitoring and Management"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/4-logging/" title="Session Logs Management" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1783187234"></script>
+    <script src="/js/jquery.sticky.js?1783187234"></script>
+    <script src="/js/featherlight.min.js?1783187234"></script>
+    <script src="/js/highlight.pack.js?1783187234"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1783187234"></script>
+    <script src="/js/learn.js?1783187234"></script>
+    <script src="/js/hugo-learn.js?1783187234"></script>
+
+    <link href="/mermaid/mermaid.css?1783187234" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1783187234"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

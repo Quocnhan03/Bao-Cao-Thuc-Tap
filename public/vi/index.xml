@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>     on AWS System Manager</title>
+    <link>/vi/</link>
+    <description>Recent content in      on AWS System Manager</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 27 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="/vi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tuần 1: Nền tảng AWS &amp; Thiết lập môi trường</title>
+      <link>/vi/1-worklog/worklog-t1/t1/</link>
+      <pubDate>Mon, 27 Apr 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t1/t1/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 1 Thời gian: 20/04/2026 - 26/04/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Kết nối và làm quen với các thành viên trong nhóm First Cloud Journey. Hiểu rõ các dịch vụ AWS cơ bản, cách sử dụng AWS Management Console và AWS CLI. 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Làm quen nhóm &amp;amp; Đọc nội quy thực tập 20/04/2026 20/04/2026 Nội bộ Thứ 3 Tìm hiểu AWS (Compute, Storage, Networking, Database) 21/04/2026 21/04/2026 AWS Study Group Thứ 4 Tạo AWS Free Tier, cấu hình Console &amp;amp; CLI 22/04/2026 22/04/2026 AWS Study Group Thứ 5 EC2 cơ bản (Instance types, AMI, EBS, SSH, Elastic IP) 23/04/2026 23/04/2026 AWS Study Group Thứ 6 Thực hành: Tạo EC2, kết nối SSH, gắn EBS volume 24/04/2026 24/04/2026 AWS Study Group T7-CN Nâng cao: Security Group, triển khai Web Server (Apache/Nginx), thử nghiệm S3 25/04/2026 26/04/2026 AWS Study Group 3.</description>
+    </item>
+    
+  </channel>
+</rss>

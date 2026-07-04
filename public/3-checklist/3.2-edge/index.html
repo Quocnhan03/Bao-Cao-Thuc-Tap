@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>ESP32 Edge Devices :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1783187234" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1783187234" rel="stylesheet">
+    <link href="/css/hybrid.css?1783187234" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1783187234" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1783187234" rel="stylesheet">
+    <link href="/css/auto-complete.css?1783187234" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1783187234" rel="stylesheet">
+    <link href="/css/theme.css?1783187234" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1783187234" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1783187234" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1783187234"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-checklist/3.2-edge/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1783187234"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1783187234"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1783187234"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/" title="Worklog" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/">
+           <b> 1. </b> Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-proposal/" title="Project Proposal" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-proposal/">
+           <b> 2. </b> Project Proposal
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/" title="Parking IoT system architecture" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/3-checklist/">
+           <b> 3. </b> Parking IoT system architecture
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.1-infrastructure/" title="AWS Core Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> AWS Core Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.2-edge/" title="ESP32 Edge Devices" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/3-checklist/3.2-edge/">
+           <b> 3.2. </b> ESP32 Edge Devices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.3-data-pipeline/" title="IoT Data Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> IoT Data Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.4-ui-security/" title="User Interface and Security" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> User Interface and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.5-monitoring/" title="Monitoring and Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Monitoring and Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-checklist/3.6-system-testing-and-optimization/" title="System Testing and Optimization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> System Testing and Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-logging/" title="Session Logs Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-logging/">
+           <b> 4. </b> Session Logs Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-portfwd/" title="Monitoring, Logs and Security" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-portfwd/">
+           <b> 5. </b> Monitoring, Logs and Security
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-cleanup/" title="Resource Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-cleanup/">
+           <b> 6. </b> Resource Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/3-checklist/3.2-edge/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/3-checklist/3.2-edge/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/3-checklist/'>Parking IoT system architecture</a> > ESP32 Edge Devices
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#321-role-of-edge-devices-in-the-system">3.2.1. Role of Edge Devices in the System</a></li>
+    <li><a href="#322-esp32-camera">3.2.2. ESP32 Camera</a>
+      <ul>
+        <li><a href="#main-functions-of-esp32-camera">Main Functions of ESP32 Camera</a></li>
+        <li><a href="#esp32-camera-workflow">ESP32 Camera Workflow</a></li>
+        <li><a href="#detailed-processing-steps">Detailed Processing Steps</a></li>
+        <li><a href="#example-image-data">Example Image Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#323-esp32-sensor-device">3.2.3. ESP32 Sensor Device</a>
+      <ul>
+        <li><a href="#main-functions-of-esp32-sensor-device">Main Functions of ESP32 Sensor Device</a></li>
+        <li><a href="#parking-slot-status">Parking Slot Status</a></li>
+        <li><a href="#esp32-sensor-workflow">ESP32 Sensor Workflow</a></li>
+        <li><a href="#detailed-processing-steps-1">Detailed Processing Steps</a></li>
+        <li><a href="#example-mqtt-topic">Example MQTT Topic</a></li>
+        <li><a href="#example-payload-sent-from-esp32-sensor">Example Payload Sent from ESP32 Sensor</a></li>
+      </ul>
+    </li>
+    <li><a href="#324-connecting-esp32-devices-to-the-internet">3.2.4. Connecting ESP32 Devices to the Internet</a></li>
+    <li><a href="#325-connecting-esp32-camera-to-amazon-s3">3.2.5. Connecting ESP32 Camera to Amazon S3</a></li>
+    <li><a href="#326-connecting-esp32-sensors-to-aws-iot-core">3.2.6. Connecting ESP32 Sensors to AWS IoT Core</a></li>
+    <li><a href="#327-edge-device-security">3.2.7. Edge Device Security</a></li>
+    <li><a href="#328-error-handling-at-edge-devices">3.2.8. Error Handling at Edge Devices</a></li>
+    <li><a href="#329-edge-device-testing">3.2.9. Edge Device Testing</a>
+      <ul>
+        <li><a href="#esp32-camera-testing">ESP32 Camera Testing</a></li>
+        <li><a href="#esp32-sensor-testing">ESP32 Sensor Testing</a></li>
+      </ul>
+    </li>
+    <li><a href="#3210-conclusion">3.2.10. Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              ESP32 Edge Devices
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="32-esp32-edge-devices">3.2. ESP32 Edge Devices</h1>
+<p>This section presents the role of edge devices in the <strong>Smart Parking IoT System</strong>. Edge devices are installed directly at the parking area to collect real-world data, including vehicle images and parking slot status.</p>
+<p>In this system, two main types of ESP32 devices are used:</p>
+<ul>
+<li><strong>ESP32 Camera:</strong> used to capture vehicle images at the entry and exit gates.</li>
+<li><strong>ESP32 Sensor Device:</strong> used to detect the status of each parking slot.</li>
+</ul>
+<p>Data collected from ESP32 devices is sent to AWS for processing, storage, monitoring, and visualization through the Web/App interface.</p>
+<hr>
+<h2 id="321-role-of-edge-devices-in-the-system">3.2.1. Role of Edge Devices in the System</h2>
+<p>Edge devices act as the first data collection layer of the Parking IoT system. These devices are installed in the parking lot to collect real-time information.</p>
+<p>The main tasks of edge devices include:</p>
+<ul>
+<li>Capturing vehicle images when cars enter or exit the parking lot.</li>
+<li>Detecting the status of each parking slot.</li>
+<li>Sending sensor data to AWS IoT Core.</li>
+<li>Uploading vehicle images to Amazon S3 using Presigned URLs.</li>
+<li>Supporting the automation of parking lot monitoring.</li>
+</ul>
+<p>With edge devices, the system can reduce manual operations and update parking data more quickly and accurately.</p>
+<hr>
+<h2 id="322-esp32-camera">3.2.2. ESP32 Camera</h2>
+<p>ESP32 Camera is used to capture vehicle images at the entry and exit gates of the parking lot. When a vehicle passes through the gate, the camera captures an image and uploads it to Amazon S3 for image processing and license plate recognition.</p>
+<h3 id="main-functions-of-esp32-camera">Main Functions of ESP32 Camera</h3>
+<ul>
+<li>Capture vehicle images when a vehicle is detected.</li>
+<li>Send a request to API Gateway to obtain a Presigned URL.</li>
+<li>Upload images directly to Amazon S3.</li>
+<li>Send image information with the recorded timestamp.</li>
+<li>Support license plate recognition using Amazon Rekognition.</li>
+</ul>
+<h3 id="esp32-camera-workflow">ESP32 Camera Workflow</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera → API Gateway → Lambda creates Presigned URL → Amazon S3
+</span></span></code></pre></div><p>After the image is uploaded to S3, the system continues with the following processing flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Amazon S3 → S3 Event ObjectCreated → Image Processing Lambda → Amazon Rekognition → DynamoDB
+</span></span></code></pre></div><h3 id="detailed-processing-steps">Detailed Processing Steps</h3>
+<ol>
+<li>ESP32 Camera is installed at the entry or exit gate of the parking lot.</li>
+<li>When a vehicle passes through, the device captures an image.</li>
+<li>ESP32 Camera sends a request to API Gateway to obtain a Presigned URL.</li>
+<li>API Gateway invokes Lambda Backend to generate the Presigned URL.</li>
+<li>Lambda returns the Presigned URL to ESP32 Camera.</li>
+<li>ESP32 Camera uploads the JPEG image directly to Amazon S3.</li>
+<li>After the image is successfully uploaded, S3 triggers the image processing Lambda function.</li>
+<li>Lambda calls Amazon Rekognition to analyze the image.</li>
+<li>The recognition result is stored in DynamoDB.</li>
+</ol>
+<h3 id="example-image-data">Example Image Data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;image_id&#34;</span>: <span style="color:#e6db74">&#34;car_001.jpg&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;device_id&#34;</span>: <span style="color:#e6db74">&#34;esp32_cam_01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;gate&#34;</span>: <span style="color:#e6db74">&#34;entrance&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;direction&#34;</span>: <span style="color:#e6db74">&#34;in&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:30:00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;s3_url&#34;</span>: <span style="color:#e6db74">&#34;s3://parking-image-bucket/car_001.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">image_id</td>
+<td style="text-align:left">Image name or image ID</td>
+</tr>
+<tr>
+<td style="text-align:left">device_id</td>
+<td style="text-align:left">ESP32 Camera device ID</td>
+</tr>
+<tr>
+<td style="text-align:left">gate</td>
+<td style="text-align:left">Camera location, such as entrance or exit</td>
+</tr>
+<tr>
+<td style="text-align:left">direction</td>
+<td style="text-align:left">Vehicle direction: <code>in</code> or <code>out</code></td>
+</tr>
+<tr>
+<td style="text-align:left">timestamp</td>
+<td style="text-align:left">Time when the image was captured</td>
+</tr>
+<tr>
+<td style="text-align:left">s3_url</td>
+<td style="text-align:left">Image path in Amazon S3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="323-esp32-sensor-device">3.2.3. ESP32 Sensor Device</h2>
+<p>ESP32 sensor devices are used to detect the status of each parking slot. Depending on the actual design, the system can use ultrasonic sensors, infrared sensors, or magnetic sensors to determine whether a parking slot is occupied or available.</p>
+<h3 id="main-functions-of-esp32-sensor-device">Main Functions of ESP32 Sensor Device</h3>
+<ul>
+<li>Read sensor data from each parking slot.</li>
+<li>Determine whether a parking slot is available or occupied.</li>
+<li>Send data to AWS IoT Core using the MQTT protocol.</li>
+<li>Update parking slot status in DynamoDB through Lambda.</li>
+<li>Support real-time parking status display on the Web/App interface.</li>
+</ul>
+<h3 id="parking-slot-status">Parking Slot Status</h3>
+<p>The system mainly uses two parking slot statuses:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Status</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">available</td>
+<td style="text-align:left">The parking slot is empty</td>
+</tr>
+<tr>
+<td style="text-align:left">occupied</td>
+<td style="text-align:left">The parking slot is occupied by a vehicle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="esp32-sensor-workflow">ESP32 Sensor Workflow</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Sensor → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB
+</span></span></code></pre></div><h3 id="detailed-processing-steps-1">Detailed Processing Steps</h3>
+<ol>
+<li>ESP32 reads data from the sensor installed at a parking slot.</li>
+<li>The device determines the slot status as <code>available</code> or <code>occupied</code>.</li>
+<li>ESP32 sends the data to AWS IoT Core using MQTT.</li>
+<li>AWS IoT Core receives the data from the device.</li>
+<li>IoT Rule checks the MQTT topic and forwards the data to Lambda.</li>
+<li>Lambda Sensor Processing validates and normalizes the data.</li>
+<li>The processed data is stored in DynamoDB.</li>
+<li>The Web/App queries DynamoDB to display the latest parking slot status.</li>
+</ol>
+<h3 id="example-mqtt-topic">Example MQTT Topic</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>parking/slot/A01/status
+</span></span></code></pre></div><h3 id="example-payload-sent-from-esp32-sensor">Example Payload Sent from ESP32 Sensor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;device_id&#34;</span>: <span style="color:#e6db74">&#34;esp32_sensor_01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;A01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;occupied&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:30:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">device_id</td>
+<td style="text-align:left">ESP32 sensor device ID</td>
+</tr>
+<tr>
+<td style="text-align:left">slot_id</td>
+<td style="text-align:left">Parking slot ID</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">Parking slot status</td>
+</tr>
+<tr>
+<td style="text-align:left">timestamp</td>
+<td style="text-align:left">Time when the data was recorded</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="324-connecting-esp32-devices-to-the-internet">3.2.4. Connecting ESP32 Devices to the Internet</h2>
+<p>ESP32 devices need a WiFi connection to send data to AWS. Each device is configured with network information and AWS connection information.</p>
+<p>The required configuration includes:</p>
+<ul>
+<li>WiFi SSID.</li>
+<li>WiFi password.</li>
+<li>API Gateway endpoint for ESP32 Camera.</li>
+<li>AWS IoT Core endpoint for ESP32 sensors.</li>
+<li>Security certificates and private keys for MQTT connection.</li>
+<li>Device ID to identify each ESP32 device in the system.</li>
+</ul>
+<p>Example device configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>WiFi SSID: Parking_WiFi
+</span></span><span style="display:flex;"><span>Device ID: esp32_sensor_01
+</span></span><span style="display:flex;"><span>MQTT Topic: parking/slot/A01/status
+</span></span><span style="display:flex;"><span>AWS IoT Endpoint: xxxxxxxxxxxxxx-ats.iot.ap-southeast-1.amazonaws.com
+</span></span></code></pre></div><p>Device identification helps the system manage devices more easily, troubleshoot errors, and scale when adding more sensors or cameras.</p>
+<hr>
+<h2 id="325-connecting-esp32-camera-to-amazon-s3">3.2.5. Connecting ESP32 Camera to Amazon S3</h2>
+<p>ESP32 Camera does not upload images directly through Lambda because image files can be large. Instead, it uses a Presigned URL to upload images directly to Amazon S3.</p>
+<p>The image upload process is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Camera → API Gateway → Lambda Presigned URL → ESP32 Camera → Amazon S3
+</span></span></code></pre></div><p>The steps include:</p>
+<ol>
+<li>ESP32 Camera captures a vehicle image.</li>
+<li>ESP32 Camera sends a request to API Gateway.</li>
+<li>Lambda creates a Presigned URL for image upload.</li>
+<li>ESP32 Camera receives the Presigned URL.</li>
+<li>ESP32 Camera uploads the JPEG image to Amazon S3.</li>
+<li>S3 triggers Lambda after the image is uploaded successfully.</li>
+</ol>
+<p>This approach provides several benefits:</p>
+<ul>
+<li>Reduces workload on Lambda.</li>
+<li>Improves image upload performance.</li>
+<li>Uses Amazon S3 for reliable object storage.</li>
+<li>Makes it easy to trigger image processing using S3 events.</li>
+</ul>
+<hr>
+<h2 id="326-connecting-esp32-sensors-to-aws-iot-core">3.2.6. Connecting ESP32 Sensors to AWS IoT Core</h2>
+<p>ESP32 sensor devices send data to AWS IoT Core using the MQTT protocol. MQTT is suitable for IoT systems because it is lightweight, efficient, and works well with resource-limited devices.</p>
+<p>The data transmission flow is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 Sensor → MQTT → AWS IoT Core → IoT Rule → Lambda → DynamoDB
+</span></span></code></pre></div><p>The implementation steps include:</p>
+<ol>
+<li>Create an IoT Thing to represent the ESP32 device in AWS IoT Core.</li>
+<li>Create security certificates for the device.</li>
+<li>Attach an IoT Policy to the certificate.</li>
+<li>Configure the MQTT endpoint on the ESP32 device.</li>
+<li>ESP32 publishes data to the defined MQTT topic.</li>
+<li>IoT Rule forwards the data to Lambda for processing.</li>
+<li>Lambda writes the processed data to DynamoDB.</li>
+</ol>
+<p>Example periodic sensor data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;device_id&#34;</span>: <span style="color:#e6db74">&#34;esp32_sensor_02&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;B03&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;available&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:35:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="327-edge-device-security">3.2.7. Edge Device Security</h2>
+<p>Edge device security is important because ESP32 devices connect directly to the Internet and send data to AWS.</p>
+<p>Security measures include:</p>
+<ul>
+<li>Do not store sensitive information publicly in the source code.</li>
+<li>Use certificates when connecting ESP32 devices to AWS IoT Core.</li>
+<li>Assign a unique device ID to each device.</li>
+<li>Configure IoT Policy so each device can publish only to its own topic.</li>
+<li>Validate ESP32 Camera requests through API Gateway.</li>
+<li>Use Presigned URLs with short expiration times.</li>
+<li>Do not provide direct AWS credentials to ESP32 devices.</li>
+</ul>
+<p>Example security principle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Each ESP32 device can only publish data to its own MQTT topic.
+</span></span><span style="display:flex;"><span>ESP32 Camera can only upload images using a short-lived Presigned URL.
+</span></span></code></pre></div><p>Limiting permissions reduces risks when a device fails or is accessed without authorization.</p>
+<hr>
+<h2 id="328-error-handling-at-edge-devices">3.2.8. Error Handling at Edge Devices</h2>
+<p>During operation, ESP32 devices may encounter issues such as WiFi disconnection, failed data transmission, or failed image upload. Therefore, basic error handling should be implemented on the device side.</p>
+<p>Common errors and handling methods:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Error</th>
+<th style="text-align:left">Handling Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">WiFi disconnection</td>
+<td style="text-align:left">Automatically reconnect after a short delay</td>
+</tr>
+<tr>
+<td style="text-align:left">MQTT publishing failure</td>
+<td style="text-align:left">Retry sending data when the connection is restored</td>
+</tr>
+<tr>
+<td style="text-align:left">Image upload failure</td>
+<td style="text-align:left">Request a new Presigned URL and upload again</td>
+</tr>
+<tr>
+<td style="text-align:left">Incorrect sensor reading</td>
+<td style="text-align:left">Filter data or check multiple times before sending</td>
+</tr>
+<tr>
+<td style="text-align:left">Blurry camera image</td>
+<td style="text-align:left">Adjust camera angle and lighting conditions</td>
+</tr>
+</tbody>
+</table>
+<p>The device can temporarily store data in local memory if the network connection is lost and resend the data when the Internet connection is restored.</p>
+<hr>
+<h2 id="329-edge-device-testing">3.2.9. Edge Device Testing</h2>
+<p>Before fully integrating with AWS, each ESP32 device should be tested to ensure correct operation.</p>
+<h3 id="esp32-camera-testing">ESP32 Camera Testing</h3>
+<ul>
+<li>Check whether the camera can capture images.</li>
+<li>Check whether the image clearly shows the license plate.</li>
+<li>Check whether ESP32 can call API Gateway.</li>
+<li>Check whether the Presigned URL is generated successfully.</li>
+<li>Check whether the image is uploaded to S3 successfully.</li>
+<li>Check whether S3 triggers the image processing Lambda function.</li>
+</ul>
+<h3 id="esp32-sensor-testing">ESP32 Sensor Testing</h3>
+<ul>
+<li>Check whether the sensor reads the correct status.</li>
+<li>Check whether ESP32 connects to WiFi successfully.</li>
+<li>Check whether ESP32 connects to AWS IoT Core.</li>
+<li>Check whether data is sent to the correct MQTT topic.</li>
+<li>Check whether IoT Rule triggers Lambda correctly.</li>
+<li>Check whether DynamoDB stores the latest parking status.</li>
+</ul>
+<hr>
+<h2 id="3210-conclusion">3.2.10. Conclusion</h2>
+<p>The ESP32 edge device layer is an important data collection layer of the Parking IoT system. ESP32 Camera is responsible for capturing vehicle entry and exit images, while ESP32 sensor devices record the status of each parking slot.</p>
+<p>Data from edge devices is sent to AWS through two main flows: vehicle images are uploaded to Amazon S3 using Presigned URLs, while sensor data is sent to AWS IoT Core using MQTT. After that, AWS Lambda processes the data and stores the results in DynamoDB.</p>
+<p>Deploying edge devices allows the Parking IoT system to monitor the parking lot in real time, reduce manual operations, and provide a data foundation for advanced features such as license plate recognition, parking statistics, and AI-assisted management.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-checklist/3.1-infrastructure/" title="AWS Core Infrastructure"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/3-checklist/3.3-data-pipeline/" title="IoT Data Pipeline" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.min.js?1783187234"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1783187234"></script>
+    <script src="/js/jquery.sticky.js?1783187234"></script>
+    <script src="/js/featherlight.min.js?1783187234"></script>
+    <script src="/js/highlight.pack.js?1783187234"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1783187234"></script>
+    <script src="/js/learn.js?1783187234"></script>
+    <script src="/js/hugo-learn.js?1783187234"></script>
+
+    <link href="/mermaid/mermaid.css?1783187234" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1783187234"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
