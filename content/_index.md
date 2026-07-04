@@ -24,9 +24,9 @@ chapter: false
 
 ### Contents
 
-1. [Work Log](/1-worklog/)  
-2. [Project Proposal](/2-proposal/)  
-3. [IoT System Deployment](/3-checklist/)  
-4. [Session Logs Management](/4-logging/)  
-5. [Secure Remote Access](/5-portfwd/)  
+1. [Worklog](/1-worklog/)
+2. [Project Proposal](/2-proposal/)
+3. [Parking IoT System Architecture](/3-checklist/)
+4. [Session Logs Management](/4-logging/)
+5. [Monitoring, Logs and Security](/5-portfwd/)
 6. [Resource Cleanup](/6-cleanup/)
