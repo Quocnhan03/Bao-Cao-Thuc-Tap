@@ -12,12 +12,12 @@ pre : " <b> 1. </b> "
 
 ---
 
-### Week 1: Introduction to AWS and Foundational Services
-* **Objective:** Gain a comprehensive overview of the AWS Console and manage IAM user/group access.
+### Week 1: IAM, VPC/VPN & EC2 Web Applications Hands-on
+* **Objective:** Complete Lab 02 (IAM), Lab 03 (VPC & Site-to-Site VPN), and Lab 04 (EC2, Web Applications, and Cost Governance).
 * **Tasks completed:**
-    * Configured AWS CLI in the local development environment.
-    * Set up the project structure for the internship report using Hugo.
-    * Studied Identity and Access Management (IAM) permissions and policy structures.
+    * **Lab 02 (IAM):** Configured IAM Groups, Users, Policies, and Roles; performed secure Role Switching for OperatorUser and cleaned up resources.
+    * **Lab 03 (VPC/VPN):** Built VPC infrastructure (Subnets, Route Tables, IGW, NAT Gateway), tested connectivity via Session Manager and CloudWatch, and set up Site-to-Site VPN using Strongswan with Transit Gateway.
+    * **Lab 04 (EC2 & Apps):** Launched EC2 Windows/Linux instances, managed custom AMIs and snapshots, deployed the User Management web application (LAMP, Node.js), and implemented AWS cost governance & security policy restrictions via IAM.
 
 ### Week 2: System Administration with AWS Systems Manager (SSM)
 * **Objective:** Optimize secure instance access.
@@ -26,17 +26,26 @@ pre : " <b> 1. </b> "
     * Configured IAM Roles for EC2 to grant necessary permissions to the SSM Agent.
     * Established centralized log management using Amazon CloudWatch.
 
-### Week 3: Networking and Security (Planned)
-* **Objective:** Build virtual network infrastructure.
+### Week 3: Monitoring, Templating and Identity Management
+* **Objective:** Learn and practice system monitoring, infrastructure automation, and permissions management.
 * **Tasks completed:**
-    * Provisioned Virtual Private Cloud (VPC) and configured subnets (Public/Private).
-    * Set up Internet Gateways and NAT Gateways to facilitate internal traffic.
+    * **Lab 08 (CloudWatch):** Configured Dashboards, Metrics, Logs, and Alarms to monitor EC2 instances.
+    * **Lab 10 (CloudFormation & AD):** Deployed infrastructure as code with CloudFormation, configured AWS Managed Microsoft AD and Route 53 Resolver.
+    * **Lab 11 (AWS CLI):** Managed AWS resources including EC2, S3, and IAM using the AWS Command Line Interface.
 
-### Week 4: Storage Management (Planned)
-* **Objective:** Manage object storage using Amazon S3.
+### Week 4: Organizations, Storage, and Backup
+* **Objective:** Secure and expand multi-account infrastructure, and ensure safe data management.
 * **Tasks completed:**
-    * Created and configured S3 Buckets and implemented Access Control Lists (ACLs).
-    * Established security policies to protect sensitive data stored on S3.
+    * **Lab 12 (Organizations & Identity Center):** Built a multi-account structure using AWS Organizations and enabled SSO with IAM Identity Center.
+    * **Lab 13 (AWS Backup):** Configured Backup Plans and Vaults to automate EC2 and EBS backups.
+    * **Lab 24 (Storage Gateway):** Set up a hybrid storage connection to sync on-premises data to S3.
+
+### Week 5: Web Security, Resource Management & Least Privilege
+* **Objective:** Deploy WAF, Resource Groups, and restrictive IAM Policies.
+* **Tasks completed:**
+    * **Lab 26 (AWS WAF):** Deployed Web ACL with Managed Rules to protect web applications, logging requests to S3.
+    * **Lab 27 (Tags & Resource Groups):** Tagged and filtered EC2 resources, managing them efficiently using Resource Groups.
+    * **Lab 30 (IAM):** Designed JSON Policies for least privilege access and assigned them to a restricted IAM User.
 
 ---
 

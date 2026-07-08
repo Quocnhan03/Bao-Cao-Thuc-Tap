@@ -7,15 +7,147 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 27 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="/vi/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Tuần 1: Nền tảng AWS &amp; Thiết lập môi trường</title>
+      <title>Tuần 1</title>
       <link>/vi/1-worklog/worklog-t1/t1/</link>
-      <pubDate>Mon, 27 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
       
       <guid>/vi/1-worklog/worklog-t1/t1/</guid>
       <description>NHẬT KÝ CÔNG VIỆC - TUẦN 1 Thời gian: 20/04/2026 - 26/04/2026
 Chuyên ngành: Mạng máy tính
 Nhóm: First Cloud Journey
-1. Mục tiêu tuần Kết nối và làm quen với các thành viên trong nhóm First Cloud Journey. Hiểu rõ các dịch vụ AWS cơ bản, cách sử dụng AWS Management Console và AWS CLI. 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Làm quen nhóm &amp;amp; Đọc nội quy thực tập 20/04/2026 20/04/2026 Nội bộ Thứ 3 Tìm hiểu AWS (Compute, Storage, Networking, Database) 21/04/2026 21/04/2026 AWS Study Group Thứ 4 Tạo AWS Free Tier, cấu hình Console &amp;amp; CLI 22/04/2026 22/04/2026 AWS Study Group Thứ 5 EC2 cơ bản (Instance types, AMI, EBS, SSH, Elastic IP) 23/04/2026 23/04/2026 AWS Study Group Thứ 6 Thực hành: Tạo EC2, kết nối SSH, gắn EBS volume 24/04/2026 24/04/2026 AWS Study Group T7-CN Nâng cao: Security Group, triển khai Web Server (Apache/Nginx), thử nghiệm S3 25/04/2026 26/04/2026 AWS Study Group 3.</description>
+1. Mục tiêu tuần Hoàn thành Lab 02: Quản lý phân quyền với IAM, Group, User, Policy, Role và Switch Role. Hoàn thành Lab 03: Thiết lập hạ tầng mạng VPC (Subnets, Route Table, Internet Gateway, NAT Gateway) và cấu hình Site-to-Site VPN (Strongswan, Transit Gateway). Hoàn thành Lab 04: Khởi tạo EC2 Windows/Linux, cấu hình AMI/Snapshot, triển khai Web App (LAMP, Node.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 2</title>
+      <link>/vi/1-worklog/worklog-t2/t2/</link>
+      <pubDate>Mon, 27 Apr 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t2/t2/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 2 Thời gian: 27/04/2026 - 03/05/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Nắm vững cách thiết lập hạ tầng mạng cơ bản và khởi tạo Cơ sở dữ liệu với Amazon RDS. Triển khai ứng dụng Web trên Amazon EC2 kết nối với Amazon RDS (Lab 05). Thực hành Tự động mở rộng (Auto Scaling) và Cân bằng tải (Application Load Balancer) để tối ưu hiệu suất hệ thống (Lab 06).</description>
+    </item>
+    
+    <item>
+      <title>Tuần 3</title>
+      <link>/vi/1-worklog/worklog-t3/t3/</link>
+      <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t3/t3/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 3 Thời gian: 04/05/2026 - 10/05/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Triển khai AWS CloudWatch để giám sát tài nguyên, quản lý logs và thiết lập cảnh báo tự động (Lab 8). Xây dựng Microsoft AD và cấu hình Route 53 DNS để kết nối an toàn qua RD Gateway (Lab 10). Thực hành sử dụng AWS CLI để quản lý các dịch vụ S3, SNS, IAM, VPC và khởi tạo EC2 (Lab 11).</description>
+    </item>
+    
+    <item>
+      <title>Tuần 4</title>
+      <link>/vi/1-worklog/worklog-t4/t4/</link>
+      <pubDate>Mon, 11 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t4/t4/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 4 Thời gian: 11/05/2026 - 17/05/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Quản lý đa tài khoản với AWS Organizations và cấu hình IAM Identity Center (Lab 12). Triển khai chiến lược sao lưu và phục hồi dữ liệu tự động với AWS Backup (Lab 13). Xây dựng giải pháp lưu trữ lai (Hybrid Storage) kết nối On-premise với Cloud thông qua AWS Storage Gateway (Lab 24).</description>
+    </item>
+    
+    <item>
+      <title>Tuần 5</title>
+      <link>/vi/1-worklog/worklog-t5/t5/</link>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t5/t5/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 5 Thời gian: 18/05/2026 - 24/05/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Cấu hình tường lửa ứng dụng web với AWS WAF để bảo vệ ứng dụng (Lab 26). Phân loại và quản lý tài nguyên tập trung sử dụng Tags và Resource Groups (Lab 27). Tăng cường bảo mật bằng cách tạo các chính sách IAM giới hạn quyền truy cập (Lab 30).</description>
+    </item>
+    
+    <item>
+      <title>Tuần 6</title>
+      <link>/vi/1-worklog/worklog-t6/t6/</link>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t6/t6/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 6 Thời gian: 25/05/2026 - 31/05/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 7</title>
+      <link>/vi/1-worklog/worklog-t7/t7/</link>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t7/t7/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 7 Thời gian: 01/06/2026 - 07/06/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 8</title>
+      <link>/vi/1-worklog/worklog-t8/t8/</link>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t8/t8/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 8 Thời gian: 08/06/2026 - 14/06/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 9</title>
+      <link>/vi/1-worklog/worklog-t9/t9/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t9/t9/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 9 Thời gian: 15/06/2026 - 21/06/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 10</title>
+      <link>/vi/1-worklog/worklog-t10/t10/</link>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t10/t10/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 10 Thời gian: 22/06/2026 - 28/06/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 11</title>
+      <link>/vi/1-worklog/worklog-t11/t11/</link>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t11/t11/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 11 Thời gian: 29/06/2026 - 05/07/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
+    </item>
+    
+    <item>
+      <title>Tuần 12</title>
+      <link>/vi/1-worklog/worklog-t12/t12/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/vi/1-worklog/worklog-t12/t12/</guid>
+      <description>NHẬT KÝ CÔNG VIỆC - TUẦN 12 Thời gian: 06/07/2026 - 15/07/2026
+Chuyên ngành: Mạng máy tính
+Nhóm: First Cloud Journey
+1. Mục tiêu tuần Đang cập nhật&amp;hellip; 2. Công việc &amp;amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Đang cập nhật&amp;hellip; Thứ 3 Đang cập nhật&amp;hellip; Thứ 4 Đang cập nhật&amp;hellip; Thứ 5 Đang cập nhật&amp;hellip; Thứ 6 Đang cập nhật&amp;hellip; Thứ 7 Đang cập nhật&amp;hellip; CN Đang cập nhật&amp;hellip; 3.</description>
     </item>
     
   </channel>

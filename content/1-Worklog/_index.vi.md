@@ -12,12 +12,12 @@ pre : " <b> 1. </b> "
 
 ---
 
-### Tuần 1: Làm quen với AWS và các dịch vụ cơ bản
-* **Nội dung:** Tìm hiểu tổng quan về AWS Console, quản lý tài khoản IAM.
+### Tuần 1: Thực hành IAM, VPC/VPN & EC2 Web Applications
+* **Nội dung:** Hoàn thành Lab 02 (IAM), Lab 03 (VPC & Site-to-Site VPN) và Lab 04 (EC2 & Web Applications & Cost Governance).
 * **Công việc đã làm:**
-    * Cấu hình AWS CLI trên môi trường cục bộ.
-    * Thiết lập cấu trúc dự án báo cáo bằng Hugo.
-    * Tìm hiểu về quyền hạn (Permissions) và chính sách (Policies) trong IAM.
+    * **Lab 02 (IAM):** Thiết lập IAM Group, User, Policy, Role, thực hành Switch Role an toàn cho OperatorUser và dọn dẹp tài nguyên.
+    * **Lab 03 (VPC/VPN):** Xây dựng VPC, Subnets, Route Table, IGW, NAT Gateway, kiểm thử với Session Manager, CloudWatch, và thiết lập VPN Connection dùng Strongswan với Transit Gateway.
+    * **Lab 04 (EC2 & Apps):** Khởi tạo EC2 Windows/Linux, cấu hình AMI/Snapshot, triển khai Web App quản lý người dùng (LAMP, Node.js), và thiết lập các chính sách quản lý chi phí & bảo mật nâng cao qua IAM.
 
 ### Tuần 2: Quản trị hệ thống với AWS Systems Manager (SSM)
 * **Nội dung:** Tối ưu hóa việc truy cập Instance an toàn.
@@ -26,17 +26,26 @@ pre : " <b> 1. </b> "
     * Cấu hình IAM Role cho EC2 để cấp quyền cho SSM Agent.
     * Thiết lập quản lý log tập trung với CloudWatch.
 
-### Tuần 3: Networking và Security (Dự kiến)
-* **Nội dung:** Xây dựng hạ tầng mạng ảo.
+### Tuần 3: Giám sát, Xây dựng Template và Quản trị Danh tính
+* **Nội dung:** Tìm hiểu và thực hành giám sát hệ thống, tự động hóa và quản trị phân quyền.
 * **Công việc đã làm:**
-    * Thiết lập VPC, cấu hình Subnets (Public/Private).
-    * Cấu hình Internet Gateway và NAT Gateway cho traffic nội bộ.
+    * **Lab 08 (CloudWatch):** Thiết lập Dashboards, Metrics, Logs và Alarms để giám sát EC2.
+    * **Lab 10 (CloudFormation & AD):** Khởi tạo hạ tầng tự động bằng CloudFormation, thiết lập AWS Managed Microsoft AD và Route 53 Resolver.
+    * **Lab 11 (AWS CLI):** Quản lý tài nguyên, thao tác EC2, S3 và IAM thông qua AWS CLI.
 
-### Tuần 4: Storage Management (Dự kiến)
-* **Nội dung:** Quản lý lưu trữ đối tượng với S3.
+### Tuần 4: Quản lý Tổ chức, Lưu trữ và Sao lưu (Backup)
+* **Nội dung:** Mở rộng và bảo mật hạ tầng đa tài khoản, quản lý dữ liệu an toàn.
 * **Công việc đã làm:**
-    * Khởi tạo S3 Buckets, cấu hình Access Control Lists (ACLs).
-    * Thiết lập chính sách bảo mật cho dữ liệu nhạy cảm trên S3.
+    * **Lab 12 (Organizations & Identity Center):** Xây dựng cấu trúc AWS Organizations, phân quyền SSO bằng IAM Identity Center.
+    * **Lab 13 (AWS Backup):** Khởi tạo Backup Plan, Backup Vault tự động hóa sao lưu EC2.
+    * **Lab 24 (Storage Gateway):** Thiết lập kết nối hybrid storage, đồng bộ dữ liệu lên S3.
+
+### Tuần 5: Bảo mật Web, Quản lý Tài nguyên & Phân quyền Tối thiểu
+* **Nội dung:** Triển khai WAF, Resource Groups và thiết lập IAM Restrictive Policy.
+* **Công việc đã làm:**
+    * **Lab 26 (AWS WAF):** Tạo Web ACL với các Managed Rules bảo vệ ứng dụng, lưu Access Logs trên S3.
+    * **Lab 27 (Tags & Resource Groups):** Gắn tag và lọc tài nguyên EC2, quản lý bằng Resource Groups.
+    * **Lab 30 (IAM):** Thiết kế JSON Policy giới hạn đặc quyền (Least Privilege) và gán cho User/Group.
 
 ---
 

@@ -29,7 +29,17 @@
                 />
   </url><url>
     <loc>/vi/1-worklog/worklog-t1/t1/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t1/t1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t1/t1/"
+                />
   </url><url>
     <loc>/vi/3-checklist/3.1-infrastructure/</loc>
     <xhtml:link
@@ -56,6 +66,19 @@
                 href="/vi/2-proposal/"
                 />
   </url><url>
+    <loc>/vi/1-worklog/worklog-t2/t2/</loc>
+    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t2/t2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t2/t2/"
+                />
+  </url><url>
     <loc>/vi/3-checklist/3.2-edge/</loc>
     <xhtml:link
                 rel="alternate"
@@ -66,6 +89,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/3-checklist/3.2-edge/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t3/t3/</loc>
+    <lastmod>2026-05-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t3/t3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t3/t3/"
                 />
   </url><url>
     <loc>/vi/3-checklist/3.3-data-pipeline/</loc>
@@ -92,6 +128,19 @@
                 href="/vi/3-checklist/"
                 />
   </url><url>
+    <loc>/vi/1-worklog/worklog-t4/t4/</loc>
+    <lastmod>2026-05-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t4/t4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t4/t4/"
+                />
+  </url><url>
     <loc>/vi/3-checklist/3.4-ui-security/</loc>
     <xhtml:link
                 rel="alternate"
@@ -114,6 +163,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/4-logging/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t5/t5/</loc>
+    <lastmod>2026-05-18T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t5/t5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t5/t5/"
                 />
   </url><url>
     <loc>/vi/3-checklist/3.5-monitoring/</loc>
@@ -140,6 +202,19 @@
                 href="/vi/5-portfwd/"
                 />
   </url><url>
+    <loc>/vi/1-worklog/worklog-t6/t6/</loc>
+    <lastmod>2026-05-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t6/t6/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t6/t6/"
+                />
+  </url><url>
     <loc>/vi/6-cleanup/</loc>
     <xhtml:link
                 rel="alternate"
@@ -162,6 +237,84 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/3-checklist/3.6-system-testing-and-optimization/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t7/t7/</loc>
+    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t7/t7/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t7/t7/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t8/t8/</loc>
+    <lastmod>2026-06-08T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t8/t8/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t8/t8/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t9/t9/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t9/t9/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t9/t9/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t10/t10/</loc>
+    <lastmod>2026-06-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t10/t10/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t10/t10/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t11/t11/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t11/t11/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t11/t11/"
+                />
+  </url><url>
+    <loc>/vi/1-worklog/worklog-t12/t12/</loc>
+    <lastmod>2026-07-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-worklog/worklog-t12/t12/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-worklog/worklog-t12/t12/"
                 />
   </url><url>
     <loc>/vi/categories/</loc>

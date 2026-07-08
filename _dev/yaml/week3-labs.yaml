@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Week 3 Labs Resources (Lab 8, 10, 11)
+
+Parameters:
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64'
+
+Resources:
+  # Lab 8: CloudWatch
+  Lab08Dashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: Lab08-Dashboard
+      DashboardBody: '{"widgets":[{"type":"text","x":0,"y":0,"width":3,"height":3,"properties":{"markdown":"Hello Lab 8"}}]}'
+  
+  Lab08Alarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: Lab08-CPU-Alarm
+      ComparisonOperator: GreaterThanThreshold
+      EvaluationPeriods: 1
+      MetricName: CPUUtilization
+      Namespace: AWS/EC2
+      Period: 300
+      Statistic: Average
+      Threshold: 80
+
+  # Lab 11: S3, SNS, EC2
+  Lab11Bucket:
+    Type: AWS::S3::Bucket
+  
+  Lab11Topic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: Lab11-Topic
+
+  Lab11EC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !Ref LatestAmiId
+      Tags:
+        - Key: Name
+          Value: Lab11-EC2
+
+  # Lab 10: VPC & AD
+  Lab10VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: Lab10-VPC
+
+  Lab10Subnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Lab10VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+
+  Lab10Subnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Lab10VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [1, !GetAZs '']
+
+  Lab10MicrosoftAD:
+    Type: AWS::DirectoryService::MicrosoftAD
+    Properties:
+      Name: corp.fcjworkshop.local
+      Password: 'SuperSecretPassword123!'
+      VpcSettings:
+        VpcId: !Ref Lab10VPC
+        SubnetIds:
+          - !Ref Lab10Subnet1
+          - !Ref Lab10Subnet2

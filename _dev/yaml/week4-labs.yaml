@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Week 4 Labs Resources (Lab 13, Lab 24)
+
+Parameters:
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64'
+
+Resources:
+  # Lab 13: AWS Backup
+  Lab13BackupVault:
+    Type: AWS::Backup::BackupVault
+    Properties:
+      BackupVaultName: Lab13-Backup-Vault
+
+  Lab13BackupPlan:
+    Type: AWS::Backup::BackupPlan
+    Properties:
+      BackupPlan:
+        BackupPlanName: Lab13-Daily-Backup
+        BackupPlanRule:
+          - RuleName: DailyBackups
+            TargetBackupVault: !Ref Lab13BackupVault
+            ScheduleExpression: "cron(0 12 * * ? *)"
+            Lifecycle:
+              DeleteAfterDays: 30
+
+  Lab13BackupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: backup.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup
+
+  # Lab 24: Storage Gateway (EC2)
+  Lab24GatewayVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.1.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: Lab24-VPC
+
+  Lab24GatewaySubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Lab24GatewayVPC
+      CidrBlock: 10.1.1.0/24
+      MapPublicIpOnLaunch: true
+
+  Lab24GatewayEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !Ref LatestAmiId
+      SubnetId: !Ref Lab24GatewaySubnet
+      Tags:
+        - Key: Name
+          Value: Lab24-StorageGateway-EC2

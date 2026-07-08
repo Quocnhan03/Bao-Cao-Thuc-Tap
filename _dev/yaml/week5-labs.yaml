@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Week 5 Labs Resources (Lab 26, 27, 30)
+
+Parameters:
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64'
+
+Resources:
+  # Lab 26: AWS WAF
+  Lab26WafWebACL:
+    Type: AWS::WAFv2::WebACL
+    Properties:
+      Name: Lab26-WebACL
+      Scope: REGIONAL
+      DefaultAction:
+        Allow: {}
+      VisibilityConfig:
+        SampledRequestsEnabled: true
+        CloudWatchMetricsEnabled: true
+        MetricName: Lab26-WebACL-Metric
+
+  # Lab 27: EC2 and Resource Group
+  Lab27VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.5.0.0/16
+      Tags:
+        - Key: Environment
+          Value: Lab27
+
+  Lab27Subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Lab27VPC
+      CidrBlock: 10.5.1.0/24
+      Tags:
+        - Key: Environment
+          Value: Lab27
+
+  Lab27EC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !Ref LatestAmiId
+      SubnetId: !Ref Lab27Subnet
+      Tags:
+        - Key: Environment
+          Value: Lab27
+
+  Lab27ResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name: Lab27-ResourceGroup
+      ResourceQuery:
+        Type: TAG_FILTERS_1_0
+        Query:
+          ResourceTypeFilters:
+            - "AWS::AllSupported"
+          TagFilters:
+            - Key: Environment
+              Values:
+                - Lab27
+
+  # Lab 30: IAM Policy and User
+  Lab30RestrictedPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: Lab30-RestrictedPolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - ec2:DescribeInstances
+              - ec2:StartInstances
+              - ec2:StopInstances
+            Resource: "*"
+
+  Lab30RestrictedUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: Lab30-RestrictedUser
+      ManagedPolicyArns:
+        - !Ref Lab30RestrictedPolicy
