@@ -1,4 +1,4 @@
----
+﻿---
 title: "Project Proposal"
 date: 2026-04-27
 weight: 2
@@ -61,7 +61,7 @@ The system helps reduce manual work, improve parking management accuracy, suppor
 
 The system follows an **AWS Serverless Architecture** to reduce infrastructure management, improve scalability, and integrate easily with AWS IoT, AI, storage, and database services.
 
-![Smart Parking IoT Architecture](image-1.png)
+![Smart Parking IoT Architecture](/images/2-proposal-architecture.png)
 
 ### 3.1 Key AWS Services
 
@@ -115,7 +115,7 @@ Users access the system through a web browser or mobile device. The website is h
 
 **Workflow:**
 
-User → Route 53 → CloudFront → AWS WAF → Amazon S3 Static Website → API Gateway → Lambda Backend → DynamoDB
+User â†’ Route 53 â†’ CloudFront â†’ AWS WAF â†’ Amazon S3 Static Website â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
 
 Explanation:
 
@@ -135,7 +135,7 @@ The system uses Amazon Cognito to authenticate users before allowing access to p
 
 **Workflow:**
 
-User → Amazon Cognito → API Gateway → Lambda Backend → DynamoDB
+User â†’ Amazon Cognito â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
 
 Explanation:
 
@@ -156,7 +156,7 @@ This approach reduces Lambda workload, improves upload efficiency, and follows A
 
 **Workflow:**
 
-ESP32 Camera → API Gateway → Lambda Backend → Presigned URL → Amazon S3 → S3 Trigger → Lambda Image Processing → Amazon Rekognition → DynamoDB
+ESP32 Camera â†’ API Gateway â†’ Lambda Backend â†’ Presigned URL â†’ Amazon S3 â†’ S3 Trigger â†’ Lambda Image Processing â†’ Amazon Rekognition â†’ DynamoDB
 
 Detailed steps:
 
@@ -191,7 +191,7 @@ ESP32 sensors are used to detect the status of each parking slot. The sensors ma
 
 **Workflow:**
 
-ESP32 Sensor → AWS IoT Core → Lambda Sensor Processing → DynamoDB
+ESP32 Sensor â†’ AWS IoT Core â†’ Lambda Sensor Processing â†’ DynamoDB
 
 Detailed steps:
 
@@ -227,7 +227,7 @@ The system integrates an AI layer to help users and administrators query parking
 
 **Workflow:**
 
-Web/App → API Gateway → Lambda AI Service → Amazon Bedrock → DynamoDB → Web/App
+Web/App â†’ API Gateway â†’ Lambda AI Service â†’ Amazon Bedrock â†’ DynamoDB â†’ Web/App
 
 Possible AI features include:
 
@@ -254,7 +254,7 @@ Amazon CloudWatch is used to collect logs and monitor the operation of the syste
 
 **Monitoring Flow:**
 
-API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch
+API Gateway / Lambda / IoT Core / Rekognition / DynamoDB â†’ CloudWatch
 
 CloudWatch helps to:
 
