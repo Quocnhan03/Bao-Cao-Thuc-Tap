@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Project Proposal"
 date: 2026-04-27
 weight: 2
@@ -115,7 +115,7 @@ Users access the system through a web browser or mobile device. The website is h
 
 **Workflow:**
 
-User â†’ Route 53 â†’ CloudFront â†’ AWS WAF â†’ Amazon S3 Static Website â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
+User → Route 53 → CloudFront → AWS WAF → Amazon S3 Static Website → API Gateway → Lambda Backend → DynamoDB
 
 Explanation:
 
@@ -135,7 +135,7 @@ The system uses Amazon Cognito to authenticate users before allowing access to p
 
 **Workflow:**
 
-User â†’ Amazon Cognito â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
+User → Amazon Cognito → API Gateway → Lambda Backend → DynamoDB
 
 Explanation:
 
@@ -156,7 +156,7 @@ This approach reduces Lambda workload, improves upload efficiency, and follows A
 
 **Workflow:**
 
-ESP32 Camera â†’ API Gateway â†’ Lambda Backend â†’ Presigned URL â†’ Amazon S3 â†’ S3 Trigger â†’ Lambda Image Processing â†’ Amazon Rekognition â†’ DynamoDB
+ESP32 Camera → API Gateway → Lambda Backend → Presigned URL → Amazon S3 → S3 Trigger → Lambda Image Processing → Amazon Rekognition → DynamoDB
 
 Detailed steps:
 
@@ -191,7 +191,7 @@ ESP32 sensors are used to detect the status of each parking slot. The sensors ma
 
 **Workflow:**
 
-ESP32 Sensor â†’ AWS IoT Core â†’ Lambda Sensor Processing â†’ DynamoDB
+ESP32 Sensor → AWS IoT Core → Lambda Sensor Processing → DynamoDB
 
 Detailed steps:
 
@@ -227,7 +227,7 @@ The system integrates an AI layer to help users and administrators query parking
 
 **Workflow:**
 
-Web/App â†’ API Gateway â†’ Lambda AI Service â†’ Amazon Bedrock â†’ DynamoDB â†’ Web/App
+Web/App → API Gateway → Lambda AI Service → Amazon Bedrock → DynamoDB → Web/App
 
 Possible AI features include:
 
@@ -254,7 +254,7 @@ Amazon CloudWatch is used to collect logs and monitor the operation of the syste
 
 **Monitoring Flow:**
 
-API Gateway / Lambda / IoT Core / Rekognition / DynamoDB â†’ CloudWatch
+API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch
 
 CloudWatch helps to:
 

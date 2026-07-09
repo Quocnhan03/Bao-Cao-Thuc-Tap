@@ -1,177 +1,177 @@
-﻿---
-title: "Äá» Xuáº¥t Dá»± Ãn"
+---
+title: "Đề Xuất Dự Án"
 date: 2026-04-27
 weight: 2
 pre : " <b> 2. </b> "
 ---
 
-# Äá»€ XUáº¤T Dá»° ÃN: Há»‡ thá»‘ng Parking IoT thÃ´ng minh
+# ĐỀ XUẤT DỰ ÁN: Hệ thống Parking IoT thông minh
 
-**Giáº£i phÃ¡p AWS Serverless cho giÃ¡m sÃ¡t bÃ£i Ä‘á»— xe, nháº­n diá»‡n biá»ƒn sá»‘ vÃ  há»— trá»£ AI**
+**Giải pháp AWS Serverless cho giám sát bãi đỗ xe, nhận diện biển số và hỗ trợ AI**
 
-## 1. TÃ³m táº¯t Ä‘iá»u hÃ nh
+## 1. Tóm tắt điều hành
 
-Dá»± Ã¡n nháº±m xÃ¢y dá»±ng há»‡ thá»‘ng **Parking IoT thÃ´ng minh** giÃºp tá»± Ä‘á»™ng hÃ³a quÃ¡ trÃ¬nh giÃ¡m sÃ¡t bÃ£i Ä‘á»— xe, nháº­n diá»‡n phÆ°Æ¡ng tiá»‡n vÃ  quáº£n lÃ½ dá»¯ liá»‡u theo thá»i gian thá»±c. Há»‡ thá»‘ng sá»­ dá»¥ng cÃ¡c thiáº¿t bá»‹ IoT nhÆ° **ESP32 Camera** vÃ  **ESP32 cáº£m biáº¿n** Ä‘á»ƒ thu tháº­p hÃ¬nh áº£nh xe ra/vÃ o, tráº¡ng thÃ¡i vá»‹ trÃ­ Ä‘á»— vÃ  dá»¯ liá»‡u tá»« bÃ£i xe.
+Dự án nhằm xây dựng hệ thống **Parking IoT thông minh** giúp tự động hóa quá trình giám sát bãi đỗ xe, nhận diện phương tiện và quản lý dữ liệu theo thời gian thực. Hệ thống sử dụng các thiết bị IoT như **ESP32 Camera** và **ESP32 cảm biến** để thu thập hình ảnh xe ra/vào, trạng thái vị trí đỗ và dữ liệu từ bãi xe.
 
-Dá»¯ liá»‡u tá»« thiáº¿t bá»‹ Ä‘Æ°á»£c gá»­i lÃªn AWS thÃ´ng qua cÃ¡c dá»‹ch vá»¥ nhÆ° **AWS IoT Core**, **Amazon S3**, **Amazon API Gateway** vÃ  Ä‘Æ°á»£c xá»­ lÃ½ báº±ng **AWS Lambda**. HÃ¬nh áº£nh phÆ°Æ¡ng tiá»‡n Ä‘Æ°á»£c lÆ°u trá»¯ trong Amazon S3, sau Ä‘Ã³ kÃ­ch hoáº¡t Lambda Ä‘á»ƒ xá»­ lÃ½ áº£nh vÃ  gá»i **Amazon Rekognition** nháº±m nháº­n diá»‡n biá»ƒn sá»‘ xe. Káº¿t quáº£ nháº­n diá»‡n vÃ  dá»¯ liá»‡u cáº£m biáº¿n Ä‘Æ°á»£c lÆ°u vÃ o **Amazon DynamoDB** Ä‘á»ƒ phá»¥c vá»¥ viá»‡c tra cá»©u, quáº£n lÃ½ vÃ  hiá»ƒn thá»‹ trÃªn Web/App.
+Dữ liệu từ thiết bị được gửi lên AWS thông qua các dịch vụ như **AWS IoT Core**, **Amazon S3**, **Amazon API Gateway** và được xử lý bằng **AWS Lambda**. Hình ảnh phương tiện được lưu trữ trong Amazon S3, sau đó kích hoạt Lambda để xử lý ảnh và gọi **Amazon Rekognition** nhằm nhận diện biển số xe. Kết quả nhận diện và dữ liệu cảm biến được lưu vào **Amazon DynamoDB** để phục vụ việc tra cứu, quản lý và hiển thị trên Web/App.
 
-NgoÃ i ra, há»‡ thá»‘ng cÃ²n tÃ­ch há»£p **Amazon Bedrock** thÃ´ng qua lá»›p **Lambda AI Service** Ä‘á»ƒ há»— trá»£ phÃ¢n tÃ­ch dá»¯ liá»‡u, tráº£ lá»i cÃ¡c truy váº¥n thÃ´ng minh vÃ  cung cáº¥p tráº£i nghiá»‡m quáº£n lÃ½ bÃ£i Ä‘á»— xe hiá»‡n Ä‘áº¡i hÆ¡n. Vá»›i kiáº¿n trÃºc AWS Serverless, há»‡ thá»‘ng cÃ³ kháº£ nÄƒng má»Ÿ rá»™ng linh hoáº¡t, giáº£m chi phÃ­ váº­n hÃ nh vÃ  khÃ´ng cáº§n quáº£n lÃ½ mÃ¡y chá»§ truyá»n thá»‘ng.
-
----
-
-## 2. TuyÃªn bá»‘ váº¥n Ä‘á»
-
-### 2.1. ThÃ¡ch thá»©c hiá»‡n táº¡i
-
-CÃ¡c bÃ£i Ä‘á»— xe truyá»n thá»‘ng thÆ°á»ng gáº·p nhiá»u háº¡n cháº¿ trong quÃ¡ trÃ¬nh váº­n hÃ nh vÃ  quáº£n lÃ½. Viá»‡c kiá»ƒm soÃ¡t xe ra/vÃ o cÃ²n phá»¥ thuá»™c nhiá»u vÃ o con ngÆ°á»i, dá»… xáº£y ra sai sÃ³t khi ghi nháº­n biá»ƒn sá»‘, thá»i gian vÃ o bÃ£i hoáº·c tráº¡ng thÃ¡i chá»— Ä‘á»—. Khi sá»‘ lÆ°á»£ng phÆ°Æ¡ng tiá»‡n tÄƒng lÃªn, viá»‡c quáº£n lÃ½ thá»§ cÃ´ng sáº½ trá»Ÿ nÃªn khÃ³ khÄƒn, thiáº¿u tÃ­nh chÃ­nh xÃ¡c vÃ  máº¥t nhiá»u thá»i gian.
-
-Má»™t sá»‘ váº¥n Ä‘á» chÃ­nh cÃ³ thá»ƒ ká»ƒ Ä‘áº¿n nhÆ°:
-
-* KhÃ³ kiá»ƒm tra nhanh tÃ¬nh tráº¡ng cÃ²n trá»‘ng hoáº·c Ä‘Ã£ Ä‘áº§y cá»§a tá»«ng vá»‹ trÃ­ Ä‘á»— xe.
-* Viá»‡c ghi nháº­n xe ra/vÃ o cÃ²n thá»§ cÃ´ng, dá»… nháº§m láº«n biá»ƒn sá»‘ hoáº·c thá»i gian.
-* Dá»¯ liá»‡u hÃ¬nh áº£nh, biá»ƒn sá»‘ vÃ  tráº¡ng thÃ¡i bÃ£i xe chÆ°a Ä‘Æ°á»£c quáº£n lÃ½ táº­p trung.
-* NgÆ°á»i quáº£n lÃ½ khÃ³ theo dÃµi lá»‹ch sá»­ hoáº¡t Ä‘á»™ng cá»§a phÆ°Æ¡ng tiá»‡n.
-* KhÃ³ má»Ÿ rá»™ng há»‡ thá»‘ng khi sá»‘ lÆ°á»£ng camera, cáº£m biáº¿n hoáº·c vá»‹ trÃ­ Ä‘á»— tÄƒng lÃªn.
-* Viá»‡c xÃ¢y dá»±ng há»‡ thá»‘ng riÃªng cÃ³ thá»ƒ tá»‘n chi phÃ­ náº¿u pháº£i Ä‘áº§u tÆ° mÃ¡y chá»§ váº­t lÃ½.
-
-### 2.2. Giáº£i phÃ¡p Ä‘á» xuáº¥t
-
-Dá»± Ã¡n Ä‘á» xuáº¥t xÃ¢y dá»±ng há»‡ thá»‘ng **Parking IoT thÃ´ng minh trÃªn ná»n táº£ng AWS Serverless**. Há»‡ thá»‘ng sá»­ dá»¥ng ESP32 Camera Ä‘á»ƒ chá»¥p áº£nh xe ra/vÃ o, ESP32 cáº£m biáº¿n Ä‘á»ƒ ghi nháº­n tráº¡ng thÃ¡i chá»— Ä‘á»—, sau Ä‘Ã³ gá»­i dá»¯ liá»‡u lÃªn AWS Ä‘á»ƒ xá»­ lÃ½ vÃ  lÆ°u trá»¯ táº­p trung.
-
-Giáº£i phÃ¡p bao gá»“m cÃ¡c chá»©c nÄƒng chÃ­nh:
-
-* ESP32 Camera chá»¥p áº£nh phÆ°Æ¡ng tiá»‡n khi xe ra hoáº·c vÃ o bÃ£i.
-* ESP32 cáº£m biáº¿n phÃ¡t hiá»‡n tráº¡ng thÃ¡i tá»«ng vá»‹ trÃ­ Ä‘á»— xe.
-* áº¢nh xe Ä‘Æ°á»£c táº£i lÃªn Amazon S3 thÃ´ng qua Presigned URL.
-* AWS Lambda xá»­ lÃ½ sá»± kiá»‡n khi cÃ³ áº£nh má»›i Ä‘Æ°á»£c upload lÃªn S3.
-* Amazon Rekognition phÃ¢n tÃ­ch hÃ¬nh áº£nh vÃ  há»— trá»£ nháº­n diá»‡n biá»ƒn sá»‘ xe.
-* DynamoDB lÆ°u thÃ´ng tin xe, biá»ƒn sá»‘, thá»i gian, tráº¡ng thÃ¡i vÃ  dá»¯ liá»‡u cáº£m biáº¿n.
-* Web/App cho ngÆ°á»i dÃ¹ng truy cáº­p, Ä‘Äƒng nháº­p, xem tráº¡ng thÃ¡i bÃ£i xe vÃ  lá»‹ch sá»­ xe ra/vÃ o.
-* Amazon Cognito há»— trá»£ xÃ¡c thá»±c vÃ  phÃ¢n quyá»n ngÆ°á»i dÃ¹ng.
-* Amazon Bedrock há»— trá»£ lá»›p AI Ä‘á»ƒ phÃ¢n tÃ­ch dá»¯ liá»‡u vÃ  tráº£ lá»i cÃ¢u há»i thÃ´ng minh.
-* Amazon CloudWatch giÃ¡m sÃ¡t log, lá»—i vÃ  tráº¡ng thÃ¡i hoáº¡t Ä‘á»™ng cá»§a há»‡ thá»‘ng.
-
-### 2.3. Hiá»‡u quáº£ ká»³ vá»ng
-
-Há»‡ thá»‘ng giÃºp giáº£m thao tÃ¡c thá»§ cÃ´ng, tÄƒng Ä‘á»™ chÃ­nh xÃ¡c trong quáº£n lÃ½ bÃ£i xe, há»— trá»£ giÃ¡m sÃ¡t theo thá»i gian thá»±c vÃ  táº¡o ná»n táº£ng dá»¯ liá»‡u phá»¥c vá»¥ phÃ¢n tÃ­ch AI trong tÆ°Æ¡ng lai. Nhá» sá»­ dá»¥ng kiáº¿n trÃºc Serverless, há»‡ thá»‘ng cÃ³ thá»ƒ má»Ÿ rá»™ng linh hoáº¡t theo sá»‘ lÆ°á»£ng thiáº¿t bá»‹, sá»‘ lÆ°á»£ng xe vÃ  nhu cáº§u sá»­ dá»¥ng thá»±c táº¿.
+Ngoài ra, hệ thống còn tích hợp **Amazon Bedrock** thông qua lớp **Lambda AI Service** để hỗ trợ phân tích dữ liệu, trả lời các truy vấn thông minh và cung cấp trải nghiệm quản lý bãi đỗ xe hiện đại hơn. Với kiến trúc AWS Serverless, hệ thống có khả năng mở rộng linh hoạt, giảm chi phí vận hành và không cần quản lý máy chủ truyền thống.
 
 ---
 
-## 3. Kiáº¿n trÃºc giáº£i phÃ¡p
+## 2. Tuyên bố vấn đề
 
-Há»‡ thá»‘ng Ã¡p dá»¥ng kiáº¿n trÃºc **AWS Serverless** nháº±m giáº£m chi phÃ­ quáº£n lÃ½ háº¡ táº§ng, tÄƒng kháº£ nÄƒng má»Ÿ rá»™ng vÃ  dá»… dÃ ng tÃ­ch há»£p vá»›i cÃ¡c dá»‹ch vá»¥ AI, IoT vÃ  cÆ¡ sá»Ÿ dá»¯ liá»‡u trÃªn AWS.
+### 2.1. Thách thức hiện tại
 
-![SÆ¡ Ä‘á»“ kiáº¿n trÃºc Parking IoT](/images/2-proposal-architecture.png)
+Các bãi đỗ xe truyền thống thường gặp nhiều hạn chế trong quá trình vận hành và quản lý. Việc kiểm soát xe ra/vào còn phụ thuộc nhiều vào con người, dễ xảy ra sai sót khi ghi nhận biển số, thời gian vào bãi hoặc trạng thái chỗ đỗ. Khi số lượng phương tiện tăng lên, việc quản lý thủ công sẽ trở nên khó khăn, thiếu tính chính xác và mất nhiều thời gian.
 
-### 3.1. CÃ¡c dá»‹ch vá»¥ AWS chá»§ chá»‘t
+Một số vấn đề chính có thể kể đến như:
 
-#### Giao diá»‡n ngÆ°á»i dÃ¹ng
+* Khó kiểm tra nhanh tình trạng còn trống hoặc đã đầy của từng vị trí đỗ xe.
+* Việc ghi nhận xe ra/vào còn thủ công, dễ nhầm lẫn biển số hoặc thời gian.
+* Dữ liệu hình ảnh, biển số và trạng thái bãi xe chưa được quản lý tập trung.
+* Người quản lý khó theo dõi lịch sử hoạt động của phương tiện.
+* Khó mở rộng hệ thống khi số lượng camera, cảm biến hoặc vị trí đỗ tăng lên.
+* Việc xây dựng hệ thống riêng có thể tốn chi phí nếu phải đầu tư máy chủ vật lý.
 
-* **Amazon Route 53:** Quáº£n lÃ½ tÃªn miá»n cho há»‡ thá»‘ng.
-* **Amazon CloudFront:** PhÃ¢n phá»‘i ná»™i dung website vá»›i tá»‘c Ä‘á»™ cao.
-* **AWS WAF:** Báº£o vá»‡ website khá»i cÃ¡c truy cáº­p Ä‘á»™c háº¡i.
-* **Amazon S3 Static Website:** LÆ°u trá»¯ giao diá»‡n Web/App tÄ©nh.
+### 2.2. Giải pháp đề xuất
 
-#### XÃ¡c thá»±c vÃ  phÃ¢n quyá»n
+Dự án đề xuất xây dựng hệ thống **Parking IoT thông minh trên nền tảng AWS Serverless**. Hệ thống sử dụng ESP32 Camera để chụp ảnh xe ra/vào, ESP32 cảm biến để ghi nhận trạng thái chỗ đỗ, sau đó gửi dữ liệu lên AWS để xử lý và lưu trữ tập trung.
 
-* **Amazon Cognito:** Quáº£n lÃ½ Ä‘Äƒng nháº­p, xÃ¡c thá»±c ngÆ°á»i dÃ¹ng vÃ  phÃ¢n quyá»n truy cáº­p.
-* **IAM:** Quáº£n lÃ½ quyá»n truy cáº­p giá»¯a cÃ¡c dá»‹ch vá»¥ AWS.
+Giải pháp bao gồm các chức năng chính:
 
-#### API vÃ  xá»­ lÃ½ backend
+* ESP32 Camera chụp ảnh phương tiện khi xe ra hoặc vào bãi.
+* ESP32 cảm biến phát hiện trạng thái từng vị trí đỗ xe.
+* Ảnh xe được tải lên Amazon S3 thông qua Presigned URL.
+* AWS Lambda xử lý sự kiện khi có ảnh mới được upload lên S3.
+* Amazon Rekognition phân tích hình ảnh và hỗ trợ nhận diện biển số xe.
+* DynamoDB lưu thông tin xe, biển số, thời gian, trạng thái và dữ liệu cảm biến.
+* Web/App cho người dùng truy cập, đăng nhập, xem trạng thái bãi xe và lịch sử xe ra/vào.
+* Amazon Cognito hỗ trợ xác thực và phân quyền người dùng.
+* Amazon Bedrock hỗ trợ lớp AI để phân tích dữ liệu và trả lời câu hỏi thông minh.
+* Amazon CloudWatch giám sát log, lỗi và trạng thái hoạt động của hệ thống.
 
-* **Amazon API Gateway:** Nháº­n request tá»« Web/App hoáº·c thiáº¿t bá»‹.
-* **AWS Lambda API Backend:** Xá»­ lÃ½ nghiá»‡p vá»¥ chÃ­nh cá»§a há»‡ thá»‘ng.
-* **AWS Lambda xá»­ lÃ½ áº£nh:** Xá»­ lÃ½ áº£nh sau khi Ä‘Æ°á»£c táº£i lÃªn S3.
-* **AWS Lambda xá»­ lÃ½ dá»¯ liá»‡u cáº£m biáº¿n:** Xá»­ lÃ½ dá»¯ liá»‡u gá»­i tá»« ESP32 cáº£m biáº¿n.
-* **AWS Lambda AI Service:** Káº¿t ná»‘i vá»›i Amazon Bedrock Ä‘á»ƒ xá»­ lÃ½ cÃ¡c chá»©c nÄƒng AI.
+### 2.3. Hiệu quả kỳ vọng
 
-#### IoT vÃ  thiáº¿t bá»‹ biÃªn
-
-* **ESP32 Camera:** Chá»¥p áº£nh xe ra/vÃ o.
-* **ESP32 cáº£m biáº¿n:** Gá»­i tráº¡ng thÃ¡i chá»— Ä‘á»— xe.
-* **AWS IoT Core:** Nháº­n dá»¯ liá»‡u tá»« thiáº¿t bá»‹ IoT thÃ´ng qua giao thá»©c MQTT.
-
-#### LÆ°u trá»¯ vÃ  cÆ¡ sá»Ÿ dá»¯ liá»‡u
-
-* **Amazon S3:** LÆ°u trá»¯ hÃ¬nh áº£nh xe.
-* **Amazon DynamoDB:** LÆ°u dá»¯ liá»‡u biá»ƒn sá»‘, lá»‹ch sá»­ xe ra/vÃ o, tráº¡ng thÃ¡i chá»— Ä‘á»— vÃ  thÃ´ng tin ngÆ°á»i dÃ¹ng.
-
-#### Xá»­ lÃ½ áº£nh vÃ  AI
-
-* **Amazon Rekognition:** PhÃ¢n tÃ­ch hÃ¬nh áº£nh, há»— trá»£ nháº­n diá»‡n biá»ƒn sá»‘ xe.
-* **Amazon Bedrock:** Há»— trá»£ phÃ¢n tÃ­ch dá»¯ liá»‡u vÃ  tráº£ lá»i truy váº¥n thÃ´ng minh báº±ng AI.
-
-#### GiÃ¡m sÃ¡t há»‡ thá»‘ng
-
-* **Amazon CloudWatch:** Ghi log, theo dÃµi lá»—i, giÃ¡m sÃ¡t Lambda, API Gateway, IoT Core vÃ  cÃ¡c thÃ nh pháº§n liÃªn quan.
+Hệ thống giúp giảm thao tác thủ công, tăng độ chính xác trong quản lý bãi xe, hỗ trợ giám sát theo thời gian thực và tạo nền tảng dữ liệu phục vụ phân tích AI trong tương lai. Nhờ sử dụng kiến trúc Serverless, hệ thống có thể mở rộng linh hoạt theo số lượng thiết bị, số lượng xe và nhu cầu sử dụng thực tế.
 
 ---
 
-## 4. Luá»“ng hoáº¡t Ä‘á»™ng cá»§a há»‡ thá»‘ng
+## 3. Kiến trúc giải pháp
 
-### 4.1. Luá»“ng ngÆ°á»i dÃ¹ng truy cáº­p Web/App
+Hệ thống áp dụng kiến trúc **AWS Serverless** nhằm giảm chi phí quản lý hạ tầng, tăng khả năng mở rộng và dễ dàng tích hợp với các dịch vụ AI, IoT và cơ sở dữ liệu trên AWS.
 
-NgÆ°á»i dÃ¹ng truy cáº­p há»‡ thá»‘ng thÃ´ng qua trÃ¬nh duyá»‡t web hoáº·c thiáº¿t bá»‹ di Ä‘á»™ng. Website Ä‘Æ°á»£c lÆ°u trá»¯ trÃªn Amazon S3 Static Website vÃ  phÃ¢n phá»‘i thÃ´ng qua Amazon CloudFront. Route 53 Ä‘áº£m nhiá»‡m vai trÃ² quáº£n lÃ½ tÃªn miá»n, cÃ²n AWS WAF giÃºp báº£o vá»‡ há»‡ thá»‘ng khá»i cÃ¡c truy cáº­p khÃ´ng há»£p lá»‡.
+![Sơ đồ kiến trúc Parking IoT](/images/2-proposal-architecture.png)
 
-**Luá»“ng xá»­ lÃ½:**
+### 3.1. Các dịch vụ AWS chủ chốt
 
-NgÆ°á»i dÃ¹ng â†’ Route 53 â†’ CloudFront â†’ AWS WAF â†’ Amazon S3 Static Website â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
+#### Giao diện người dùng
 
-Trong Ä‘Ã³:
+* **Amazon Route 53:** Quản lý tên miền cho hệ thống.
+* **Amazon CloudFront:** Phân phối nội dung website với tốc độ cao.
+* **AWS WAF:** Bảo vệ website khỏi các truy cập độc hại.
+* **Amazon S3 Static Website:** Lưu trữ giao diện Web/App tĩnh.
 
-* NgÆ°á»i dÃ¹ng truy cáº­p vÃ o tÃªn miá»n cá»§a há»‡ thá»‘ng.
-* Route 53 Ä‘iá»u hÆ°á»›ng request Ä‘áº¿n CloudFront.
-* CloudFront phÃ¢n phá»‘i giao diá»‡n website tá»« Amazon S3.
-* AWS WAF kiá»ƒm tra vÃ  cháº·n cÃ¡c request Ä‘á»™c háº¡i.
-* Web/App gá»i API Gateway Ä‘á»ƒ láº¥y dá»¯ liá»‡u.
-* Lambda Backend xá»­ lÃ½ request vÃ  truy váº¥n DynamoDB.
-* DynamoDB tráº£ dá»¯ liá»‡u vá» cho Web/App Ä‘á»ƒ hiá»ƒn thá»‹.
+#### Xác thực và phân quyền
+
+* **Amazon Cognito:** Quản lý đăng nhập, xác thực người dùng và phân quyền truy cập.
+* **IAM:** Quản lý quyền truy cập giữa các dịch vụ AWS.
+
+#### API và xử lý backend
+
+* **Amazon API Gateway:** Nhận request từ Web/App hoặc thiết bị.
+* **AWS Lambda API Backend:** Xử lý nghiệp vụ chính của hệ thống.
+* **AWS Lambda xử lý ảnh:** Xử lý ảnh sau khi được tải lên S3.
+* **AWS Lambda xử lý dữ liệu cảm biến:** Xử lý dữ liệu gửi từ ESP32 cảm biến.
+* **AWS Lambda AI Service:** Kết nối với Amazon Bedrock để xử lý các chức năng AI.
+
+#### IoT và thiết bị biên
+
+* **ESP32 Camera:** Chụp ảnh xe ra/vào.
+* **ESP32 cảm biến:** Gửi trạng thái chỗ đỗ xe.
+* **AWS IoT Core:** Nhận dữ liệu từ thiết bị IoT thông qua giao thức MQTT.
+
+#### Lưu trữ và cơ sở dữ liệu
+
+* **Amazon S3:** Lưu trữ hình ảnh xe.
+* **Amazon DynamoDB:** Lưu dữ liệu biển số, lịch sử xe ra/vào, trạng thái chỗ đỗ và thông tin người dùng.
+
+#### Xử lý ảnh và AI
+
+* **Amazon Rekognition:** Phân tích hình ảnh, hỗ trợ nhận diện biển số xe.
+* **Amazon Bedrock:** Hỗ trợ phân tích dữ liệu và trả lời truy vấn thông minh bằng AI.
+
+#### Giám sát hệ thống
+
+* **Amazon CloudWatch:** Ghi log, theo dõi lỗi, giám sát Lambda, API Gateway, IoT Core và các thành phần liên quan.
 
 ---
 
-### 4.2. Luá»“ng xÃ¡c thá»±c ngÆ°á»i dÃ¹ng
+## 4. Luồng hoạt động của hệ thống
 
-Há»‡ thá»‘ng sá»­ dá»¥ng Amazon Cognito Ä‘á»ƒ xÃ¡c thá»±c ngÆ°á»i dÃ¹ng trÆ°á»›c khi cho phÃ©p truy cáº­p vÃ o cÃ¡c chá»©c nÄƒng quáº£n lÃ½. NgÆ°á»i dÃ¹ng cÃ³ thá»ƒ Ä‘Äƒng nháº­p báº±ng tÃ i khoáº£n Ä‘Ã£ Ä‘Æ°á»£c cáº¥p. Sau khi Ä‘Äƒng nháº­p thÃ nh cÃ´ng, Cognito cáº¥p token Ä‘á»ƒ Web/App gá»­i kÃ¨m trong cÃ¡c request Ä‘áº¿n API Gateway.
+### 4.1. Luồng người dùng truy cập Web/App
 
-**Luá»“ng xá»­ lÃ½:**
+Người dùng truy cập hệ thống thông qua trình duyệt web hoặc thiết bị di động. Website được lưu trữ trên Amazon S3 Static Website và phân phối thông qua Amazon CloudFront. Route 53 đảm nhiệm vai trò quản lý tên miền, còn AWS WAF giúp bảo vệ hệ thống khỏi các truy cập không hợp lệ.
 
-NgÆ°á»i dÃ¹ng â†’ Amazon Cognito â†’ API Gateway â†’ Lambda Backend â†’ DynamoDB
+**Luồng xử lý:**
 
-Trong Ä‘Ã³:
+Người dùng → Route 53 → CloudFront → AWS WAF → Amazon S3 Static Website → API Gateway → Lambda Backend → DynamoDB
 
-* NgÆ°á»i dÃ¹ng nháº­p tÃ i khoáº£n vÃ  máº­t kháº©u trÃªn Web/App.
-* Amazon Cognito xÃ¡c thá»±c thÃ´ng tin Ä‘Äƒng nháº­p.
-* Náº¿u Ä‘Äƒng nháº­p thÃ nh cÃ´ng, Cognito tráº£ vá» token.
-* Web/App gá»­i token trong request Ä‘áº¿n API Gateway.
-* API Gateway sá»­ dá»¥ng Cognito Authorizer Ä‘á»ƒ kiá»ƒm tra quyá»n truy cáº­p.
-* Lambda Backend xá»­ lÃ½ chá»©c nÄƒng tÆ°Æ¡ng á»©ng náº¿u ngÆ°á»i dÃ¹ng há»£p lá»‡.
+Trong đó:
+
+* Người dùng truy cập vào tên miền của hệ thống.
+* Route 53 điều hướng request đến CloudFront.
+* CloudFront phân phối giao diện website từ Amazon S3.
+* AWS WAF kiểm tra và chặn các request độc hại.
+* Web/App gọi API Gateway để lấy dữ liệu.
+* Lambda Backend xử lý request và truy vấn DynamoDB.
+* DynamoDB trả dữ liệu về cho Web/App để hiển thị.
 
 ---
 
-### 4.3. Luá»“ng ESP32 Camera gá»­i áº£nh xe
+### 4.2. Luồng xác thực người dùng
 
-Khi cÃ³ xe Ä‘i vÃ o hoáº·c Ä‘i ra bÃ£i Ä‘á»—, ESP32 Camera sáº½ chá»¥p áº£nh phÆ°Æ¡ng tiá»‡n. Thay vÃ¬ upload áº£nh trá»±c tiáº¿p qua Lambda, thiáº¿t bá»‹ sáº½ xin **Presigned URL** tá»« API Gateway. Sau Ä‘Ã³ ESP32 Camera dÃ¹ng URL nÃ y Ä‘á»ƒ upload áº£nh JPEG trá»±c tiáº¿p lÃªn Amazon S3.
+Hệ thống sử dụng Amazon Cognito để xác thực người dùng trước khi cho phép truy cập vào các chức năng quản lý. Người dùng có thể đăng nhập bằng tài khoản đã được cấp. Sau khi đăng nhập thành công, Cognito cấp token để Web/App gửi kèm trong các request đến API Gateway.
 
-CÃ¡ch lÃ m nÃ y giÃºp giáº£m táº£i cho Lambda, tÄƒng hiá»‡u quáº£ upload áº£nh vÃ  phÃ¹ há»£p vá»›i kiáº¿n trÃºc AWS.
+**Luồng xử lý:**
 
-**Luá»“ng xá»­ lÃ½:**
+Người dùng → Amazon Cognito → API Gateway → Lambda Backend → DynamoDB
 
-ESP32 Camera â†’ API Gateway â†’ Lambda Backend â†’ Presigned URL â†’ ESP32 Camera upload áº£nh lÃªn S3 â†’ S3 Trigger Lambda â†’ Amazon Rekognition â†’ DynamoDB
+Trong đó:
 
-CÃ¡c bÆ°á»›c chi tiáº¿t:
+* Người dùng nhập tài khoản và mật khẩu trên Web/App.
+* Amazon Cognito xác thực thông tin đăng nhập.
+* Nếu đăng nhập thành công, Cognito trả về token.
+* Web/App gửi token trong request đến API Gateway.
+* API Gateway sử dụng Cognito Authorizer để kiểm tra quyền truy cập.
+* Lambda Backend xử lý chức năng tương ứng nếu người dùng hợp lệ.
 
-1. ESP32 Camera phÃ¡t hiá»‡n xe hoáº·c Ä‘Æ°á»£c kÃ­ch hoáº¡t Ä‘á»ƒ chá»¥p áº£nh.
-2. ESP32 Camera gá»­i request Ä‘áº¿n API Gateway Ä‘á»ƒ xin Presigned URL.
-3. API Gateway chuyá»ƒn request Ä‘áº¿n Lambda Backend.
-4. Lambda Backend táº¡o Presigned URL cho phÃ©p upload áº£nh lÃªn Amazon S3.
-5. ESP32 Camera nháº­n Presigned URL.
-6. ESP32 Camera upload áº£nh JPEG trá»±c tiáº¿p lÃªn Amazon S3.
-7. Khi áº£nh má»›i Ä‘Æ°á»£c upload, S3 phÃ¡t sinh sá»± kiá»‡n ObjectCreated.
-8. S3 Trigger kÃ­ch hoáº¡t Lambda xá»­ lÃ½ áº£nh.
-9. Lambda gá»i Amazon Rekognition Ä‘á»ƒ phÃ¢n tÃ­ch hÃ¬nh áº£nh.
-10. Káº¿t quáº£ nháº­n diá»‡n biá»ƒn sá»‘ Ä‘Æ°á»£c lÆ°u vÃ o DynamoDB.
+---
 
-VÃ­ dá»¥ dá»¯ liá»‡u áº£nh Ä‘Æ°á»£c lÆ°u:
+### 4.3. Luồng ESP32 Camera gửi ảnh xe
+
+Khi có xe đi vào hoặc đi ra bãi đỗ, ESP32 Camera sẽ chụp ảnh phương tiện. Thay vì upload ảnh trực tiếp qua Lambda, thiết bị sẽ xin **Presigned URL** từ API Gateway. Sau đó ESP32 Camera dùng URL này để upload ảnh JPEG trực tiếp lên Amazon S3.
+
+Cách làm này giúp giảm tải cho Lambda, tăng hiệu quả upload ảnh và phù hợp với kiến trúc AWS.
+
+**Luồng xử lý:**
+
+ESP32 Camera → API Gateway → Lambda Backend → Presigned URL → ESP32 Camera upload ảnh lên S3 → S3 Trigger Lambda → Amazon Rekognition → DynamoDB
+
+Các bước chi tiết:
+
+1. ESP32 Camera phát hiện xe hoặc được kích hoạt để chụp ảnh.
+2. ESP32 Camera gửi request đến API Gateway để xin Presigned URL.
+3. API Gateway chuyển request đến Lambda Backend.
+4. Lambda Backend tạo Presigned URL cho phép upload ảnh lên Amazon S3.
+5. ESP32 Camera nhận Presigned URL.
+6. ESP32 Camera upload ảnh JPEG trực tiếp lên Amazon S3.
+7. Khi ảnh mới được upload, S3 phát sinh sự kiện ObjectCreated.
+8. S3 Trigger kích hoạt Lambda xử lý ảnh.
+9. Lambda gọi Amazon Rekognition để phân tích hình ảnh.
+10. Kết quả nhận diện biển số được lưu vào DynamoDB.
+
+Ví dụ dữ liệu ảnh được lưu:
 
 ```json
 {
@@ -185,24 +185,24 @@ VÃ­ dá»¥ dá»¯ liá»‡u áº£nh Ä‘Æ°á»£c lÆ°u:
 
 ---
 
-### 4.4. Luá»“ng ESP32 cáº£m biáº¿n gá»­i dá»¯ liá»‡u vá»‹ trÃ­ Ä‘á»—
+### 4.4. Luồng ESP32 cảm biến gửi dữ liệu vị trí đỗ
 
-ESP32 cáº£m biáº¿n Ä‘Æ°á»£c dÃ¹ng Ä‘á»ƒ phÃ¡t hiá»‡n tráº¡ng thÃ¡i cá»§a tá»«ng vá»‹ trÃ­ Ä‘á»— xe. Cáº£m biáº¿n cÃ³ thá»ƒ lÃ  cáº£m biáº¿n siÃªu Ã¢m, há»“ng ngoáº¡i hoáº·c cáº£m biáº¿n tá»«, tÃ¹y theo thiáº¿t káº¿ thá»±c táº¿. Dá»¯ liá»‡u cáº£m biáº¿n Ä‘Æ°á»£c gá»­i lÃªn AWS IoT Core báº±ng giao thá»©c MQTT.
+ESP32 cảm biến được dùng để phát hiện trạng thái của từng vị trí đỗ xe. Cảm biến có thể là cảm biến siêu âm, hồng ngoại hoặc cảm biến từ, tùy theo thiết kế thực tế. Dữ liệu cảm biến được gửi lên AWS IoT Core bằng giao thức MQTT.
 
-**Luá»“ng xá»­ lÃ½:**
+**Luồng xử lý:**
 
-ESP32 cáº£m biáº¿n â†’ AWS IoT Core â†’ Lambda xá»­ lÃ½ dá»¯ liá»‡u cáº£m biáº¿n â†’ DynamoDB
+ESP32 cảm biến → AWS IoT Core → Lambda xử lý dữ liệu cảm biến → DynamoDB
 
-CÃ¡c bÆ°á»›c chi tiáº¿t:
+Các bước chi tiết:
 
-1. ESP32 cáº£m biáº¿n Ä‘á»c tráº¡ng thÃ¡i vá»‹ trÃ­ Ä‘á»—.
-2. Thiáº¿t bá»‹ gá»­i dá»¯ liá»‡u lÃªn AWS IoT Core báº±ng MQTT.
-3. AWS IoT Core nháº­n dá»¯ liá»‡u tá»« thiáº¿t bá»‹.
-4. IoT Rule chuyá»ƒn dá»¯ liá»‡u Ä‘áº¿n Lambda xá»­ lÃ½ dá»¯ liá»‡u cáº£m biáº¿n.
-5. Lambda kiá»ƒm tra, chuáº©n hÃ³a vÃ  lÆ°u dá»¯ liá»‡u vÃ o DynamoDB.
-6. Web/App truy váº¥n DynamoDB Ä‘á»ƒ hiá»ƒn thá»‹ tráº¡ng thÃ¡i bÃ£i xe theo thá»i gian thá»±c.
+1. ESP32 cảm biến đọc trạng thái vị trí đỗ.
+2. Thiết bị gửi dữ liệu lên AWS IoT Core bằng MQTT.
+3. AWS IoT Core nhận dữ liệu từ thiết bị.
+4. IoT Rule chuyển dữ liệu đến Lambda xử lý dữ liệu cảm biến.
+5. Lambda kiểm tra, chuẩn hóa và lưu dữ liệu vào DynamoDB.
+6. Web/App truy vấn DynamoDB để hiển thị trạng thái bãi xe theo thời gian thực.
 
-VÃ­ dá»¥ dá»¯ liá»‡u cáº£m biáº¿n:
+Ví dụ dữ liệu cảm biến:
 
 ```json
 {
@@ -212,220 +212,220 @@ VÃ­ dá»¥ dá»¯ liá»‡u cáº£m biáº¿n:
 }
 ```
 
-Trong Ä‘Ã³:
+Trong đó:
 
-* `slot_id`: MÃ£ vá»‹ trÃ­ Ä‘á»— xe.
-* `status`: Tráº¡ng thÃ¡i vá»‹ trÃ­ Ä‘á»—, vÃ­ dá»¥ `available` hoáº·c `occupied`.
-* `timestamp`: Thá»i gian ghi nháº­n dá»¯ liá»‡u.
-
----
-
-### 4.5. Luá»“ng xá»­ lÃ½ AI Service
-
-Há»‡ thá»‘ng tÃ­ch há»£p lá»›p AI Ä‘á»ƒ há»— trá»£ ngÆ°á»i dÃ¹ng vÃ  quáº£n trá»‹ viÃªn truy váº¥n dá»¯ liá»‡u bÃ£i Ä‘á»— xe báº±ng ngÃ´n ngá»¯ tá»± nhiÃªn. Web/App gá»­i cÃ¢u há»i Ä‘áº¿n API Gateway, sau Ä‘Ã³ Lambda AI Service xá»­ lÃ½ yÃªu cáº§u, láº¥y dá»¯ liá»‡u tá»« DynamoDB náº¿u cáº§n vÃ  gá»i Amazon Bedrock Ä‘á»ƒ táº¡o pháº£n há»“i.
-
-**Luá»“ng xá»­ lÃ½:**
-
-Web/App â†’ API Gateway â†’ Lambda AI Service â†’ Amazon Bedrock â†’ DynamoDB â†’ Web/App
-
-CÃ¡c chá»©c nÄƒng AI cÃ³ thá»ƒ há»— trá»£:
-
-* Há»i sá»‘ lÆ°á»£ng chá»— trá»‘ng hiá»‡n táº¡i.
-* TÃ³m táº¯t sá»‘ lÆ°á»£ng xe Ä‘ang cÃ³ trong bÃ£i.
-* PhÃ¢n tÃ­ch khung giá» bÃ£i xe Ä‘Ã´ng nháº¥t.
-* Gá»£i Ã½ khu vá»±c cÃ²n chá»— trá»‘ng.
-* Há»— trá»£ quáº£n trá»‹ viÃªn tra cá»©u lá»‹ch sá»­ xe ra/vÃ o.
-* TÃ³m táº¯t tÃ¬nh tráº¡ng hoáº¡t Ä‘á»™ng cá»§a bÃ£i xe trong ngÃ y.
-
-VÃ­ dá»¥ cÃ¢u há»i:
-
-> Hiá»‡n táº¡i cÃ²n bao nhiÃªu chá»— trá»‘ng trong bÃ£i xe?
-
-VÃ­ dá»¥ pháº£n há»“i:
-
-> Hiá»‡n táº¡i bÃ£i xe cÃ²n 12 chá»— trá»‘ng, trong Ä‘Ã³ khu A cÃ²n 5 chá»— vÃ  khu B cÃ²n 7 chá»—.
+* `slot_id`: Mã vị trí đỗ xe.
+* `status`: Trạng thái vị trí đỗ, ví dụ `available` hoặc `occupied`.
+* `timestamp`: Thời gian ghi nhận dữ liệu.
 
 ---
 
-### 4.6. Luá»“ng giÃ¡m sÃ¡t há»‡ thá»‘ng
+### 4.5. Luồng xử lý AI Service
 
-Amazon CloudWatch Ä‘Æ°á»£c sá»­ dá»¥ng Ä‘á»ƒ ghi log vÃ  giÃ¡m sÃ¡t hoáº¡t Ä‘á»™ng cá»§a cÃ¡c dá»‹ch vá»¥ trong há»‡ thá»‘ng. CloudWatch cÃ³ thá»ƒ nháº­n log tá»« Lambda, API Gateway, IoT Core vÃ  cÃ¡c thÃ nh pháº§n xá»­ lÃ½ dá»¯ liá»‡u.
+Hệ thống tích hợp lớp AI để hỗ trợ người dùng và quản trị viên truy vấn dữ liệu bãi đỗ xe bằng ngôn ngữ tự nhiên. Web/App gửi câu hỏi đến API Gateway, sau đó Lambda AI Service xử lý yêu cầu, lấy dữ liệu từ DynamoDB nếu cần và gọi Amazon Bedrock để tạo phản hồi.
 
-**Luá»“ng giÃ¡m sÃ¡t:**
+**Luồng xử lý:**
 
-API Gateway / Lambda / IoT Core / Rekognition / DynamoDB â†’ CloudWatch
+Web/App → API Gateway → Lambda AI Service → Amazon Bedrock → DynamoDB → Web/App
 
-CloudWatch giÃºp:
+Các chức năng AI có thể hỗ trợ:
 
-* Theo dÃµi lá»—i khi Lambda xá»­ lÃ½ tháº¥t báº¡i.
-* Kiá»ƒm tra request Ä‘áº¿n API Gateway.
-* Theo dÃµi dá»¯ liá»‡u tá»« thiáº¿t bá»‹ IoT.
-* Ghi nháº­n log xá»­ lÃ½ áº£nh vÃ  dá»¯ liá»‡u cáº£m biáº¿n.
-* Há»— trá»£ phÃ¡t hiá»‡n sá»± cá»‘ trong quÃ¡ trÃ¬nh váº­n hÃ nh.
+* Hỏi số lượng chỗ trống hiện tại.
+* Tóm tắt số lượng xe đang có trong bãi.
+* Phân tích khung giờ bãi xe đông nhất.
+* Gợi ý khu vực còn chỗ trống.
+* Hỗ trợ quản trị viên tra cứu lịch sử xe ra/vào.
+* Tóm tắt tình trạng hoạt động của bãi xe trong ngày.
 
----
+Ví dụ câu hỏi:
 
-## 5. Triá»ƒn khai ká»¹ thuáº­t
+> Hiện tại còn bao nhiêu chỗ trống trong bãi xe?
 
-### 5.1. Giai Ä‘oáº¡n 1: PhÃ¢n tÃ­ch vÃ  thiáº¿t káº¿ há»‡ thá»‘ng
+Ví dụ phản hồi:
 
-Trong giai Ä‘oáº¡n Ä‘áº§u, nhÃ³m thá»±c hiá»‡n kháº£o sÃ¡t yÃªu cáº§u há»‡ thá»‘ng vÃ  xÃ¡c Ä‘á»‹nh pháº¡m vi triá»ƒn khai. CÃ¡c cÃ´ng viá»‡c chÃ­nh bao gá»“m:
-
-* XÃ¡c Ä‘á»‹nh sá»‘ lÆ°á»£ng cá»•ng ra/vÃ o cáº§n láº¯p ESP32 Camera.
-* XÃ¡c Ä‘á»‹nh sá»‘ lÆ°á»£ng vá»‹ trÃ­ Ä‘á»— cáº§n theo dÃµi báº±ng cáº£m biáº¿n.
-* Thiáº¿t káº¿ sÆ¡ Ä‘á»“ kiáº¿n trÃºc há»‡ thá»‘ng.
-* Thiáº¿t káº¿ luá»“ng dá»¯ liá»‡u giá»¯a thiáº¿t bá»‹ IoT vÃ  AWS.
-* Thiáº¿t káº¿ cáº¥u trÃºc báº£ng DynamoDB.
-* XÃ¡c Ä‘á»‹nh quyá»n truy cáº­p cho ngÆ°á»i dÃ¹ng, quáº£n lÃ½ vÃ  quáº£n trá»‹ viÃªn.
-
-### 5.2. Giai Ä‘oáº¡n 2: Triá»ƒn khai thiáº¿t bá»‹ IoT
-
-Giai Ä‘oáº¡n nÃ y táº­p trung vÃ o viá»‡c cáº¥u hÃ¬nh vÃ  kiá»ƒm thá»­ thiáº¿t bá»‹ ESP32.
-
-CÃ¡c cÃ´ng viá»‡c chÃ­nh:
-
-* Cáº¥u hÃ¬nh ESP32 Camera Ä‘á»ƒ chá»¥p áº£nh phÆ°Æ¡ng tiá»‡n.
-* Cáº¥u hÃ¬nh ESP32 cáº£m biáº¿n Ä‘á»ƒ Ä‘á»c tráº¡ng thÃ¡i vá»‹ trÃ­ Ä‘á»—.
-* Káº¿t ná»‘i ESP32 cáº£m biáº¿n vá»›i AWS IoT Core báº±ng MQTT.
-* Kiá»ƒm thá»­ gá»­i dá»¯ liá»‡u cáº£m biáº¿n lÃªn AWS IoT Core.
-* Kiá»ƒm thá»­ ESP32 Camera xin Presigned URL vÃ  upload áº£nh lÃªn Amazon S3.
-* Kiá»ƒm tra cháº¥t lÆ°á»£ng hÃ¬nh áº£nh biá»ƒn sá»‘ trong cÃ¡c Ä‘iá»u kiá»‡n Ã¡nh sÃ¡ng khÃ¡c nhau.
-
-### 5.3. Giai Ä‘oáº¡n 3: XÃ¢y dá»±ng backend trÃªn AWS
-
-Backend cá»§a há»‡ thá»‘ng Ä‘Æ°á»£c xÃ¢y dá»±ng báº±ng cÃ¡c dá»‹ch vá»¥ serverless cá»§a AWS.
-
-CÃ¡c cÃ´ng viá»‡c chÃ­nh:
-
-* Táº¡o Amazon API Gateway Ä‘á»ƒ nháº­n request tá»« Web/App vÃ  thiáº¿t bá»‹.
-* Táº¡o Lambda Backend xá»­ lÃ½ nghiá»‡p vá»¥.
-* Táº¡o chá»©c nÄƒng cáº¥p Presigned URL cho ESP32 Camera.
-* Táº¡o Amazon S3 Bucket Ä‘á»ƒ lÆ°u áº£nh xe.
-* Cáº¥u hÃ¬nh S3 Event ObjectCreated Ä‘á»ƒ trigger Lambda xá»­ lÃ½ áº£nh.
-* TÃ­ch há»£p Amazon Rekognition Ä‘á»ƒ phÃ¢n tÃ­ch hÃ¬nh áº£nh.
-* Táº¡o báº£ng DynamoDB Ä‘á»ƒ lÆ°u dá»¯ liá»‡u bÃ£i xe.
-* Táº¡o Lambda xá»­ lÃ½ dá»¯ liá»‡u cáº£m biáº¿n tá»« AWS IoT Core.
-* Cáº¥u hÃ¬nh IAM Role cho cÃ¡c dá»‹ch vá»¥ cÃ³ quyá»n truy cáº­p phÃ¹ há»£p.
-
-### 5.4. Giai Ä‘oáº¡n 4: XÃ¢y dá»±ng giao diá»‡n Web/App
-
-Giao diá»‡n Web/App giÃºp ngÆ°á»i dÃ¹ng vÃ  quáº£n trá»‹ viÃªn theo dÃµi tráº¡ng thÃ¡i bÃ£i Ä‘á»— xe.
-
-CÃ¡c chá»©c nÄƒng chÃ­nh:
-
-* ÄÄƒng nháº­p vÃ  xÃ¡c thá»±c ngÆ°á»i dÃ¹ng.
-* Hiá»ƒn thá»‹ sÆ¡ Ä‘á»“ bÃ£i Ä‘á»— xe.
-* Hiá»ƒn thá»‹ tráº¡ng thÃ¡i tá»«ng vá»‹ trÃ­ Ä‘á»—.
-* Hiá»ƒn thá»‹ danh sÃ¡ch xe ra/vÃ o.
-* Hiá»ƒn thá»‹ biá»ƒn sá»‘ xe, hÃ¬nh áº£nh vÃ  thá»i gian ghi nháº­n.
-* TÃ¬m kiáº¿m lá»‹ch sá»­ xe theo biá»ƒn sá»‘.
-* Xem thá»‘ng kÃª sá»‘ lÆ°á»£ng xe trong bÃ£i.
-* Quáº£n lÃ½ ngÆ°á»i dÃ¹ng theo vai trÃ².
-
-### 5.5. Giai Ä‘oáº¡n 5: TÃ­ch há»£p AI vÃ  giÃ¡m sÃ¡t
-
-Giai Ä‘oáº¡n cuá»‘i táº­p trung vÃ o viá»‡c tÃ­ch há»£p AI vÃ  hoÃ n thiá»‡n há»‡ thá»‘ng giÃ¡m sÃ¡t.
-
-CÃ¡c cÃ´ng viá»‡c chÃ­nh:
-
-* XÃ¢y dá»±ng Lambda AI Service.
-* TÃ­ch há»£p Amazon Bedrock Ä‘á»ƒ há»— trá»£ truy váº¥n thÃ´ng minh.
-* Káº¿t ná»‘i AI Service vá»›i DynamoDB.
-* Táº¡o dashboard hoáº·c chá»©c nÄƒng thá»‘ng kÃª dá»¯ liá»‡u bÃ£i xe.
-* Cáº¥u hÃ¬nh CloudWatch Ä‘á»ƒ theo dÃµi log.
-* Thiáº¿t láº­p cáº£nh bÃ¡o lá»—i há»‡ thá»‘ng.
-* Thiáº¿t láº­p cáº£nh bÃ¡o chi phÃ­ báº±ng AWS Budgets.
-* Kiá»ƒm thá»­ toÃ n bá»™ há»‡ thá»‘ng trÆ°á»›c khi váº­n hÃ nh.
+> Hiện tại bãi xe còn 12 chỗ trống, trong đó khu A còn 5 chỗ và khu B còn 7 chỗ.
 
 ---
 
-## 6. Æ¯á»›c tÃ­nh ngÃ¢n sÃ¡ch
+### 4.6. Luồng giám sát hệ thống
 
-Chi phÃ­ triá»ƒn khai há»‡ thá»‘ng Parking IoT phá»¥ thuá»™c vÃ o sá»‘ lÆ°á»£ng thiáº¿t bá»‹, sá»‘ lÆ°á»£ng áº£nh xá»­ lÃ½, sá»‘ request API, dung lÆ°á»£ng lÆ°u trá»¯ áº£nh vÃ  má»©c Ä‘á»™ sá»­ dá»¥ng AI.
+Amazon CloudWatch được sử dụng để ghi log và giám sát hoạt động của các dịch vụ trong hệ thống. CloudWatch có thể nhận log từ Lambda, API Gateway, IoT Core và các thành phần xử lý dữ liệu.
 
-### 6.1. Chi phÃ­ pháº§n cá»©ng
+**Luồng giám sát:**
 
-| Háº¡ng má»¥c | Sá»‘ lÆ°á»£ng | Má»¥c Ä‘Ã­ch sá»­ dá»¥ng |
+API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch
+
+CloudWatch giúp:
+
+* Theo dõi lỗi khi Lambda xử lý thất bại.
+* Kiểm tra request đến API Gateway.
+* Theo dõi dữ liệu từ thiết bị IoT.
+* Ghi nhận log xử lý ảnh và dữ liệu cảm biến.
+* Hỗ trợ phát hiện sự cố trong quá trình vận hành.
+
+---
+
+## 5. Triển khai kỹ thuật
+
+### 5.1. Giai đoạn 1: Phân tích và thiết kế hệ thống
+
+Trong giai đoạn đầu, nhóm thực hiện khảo sát yêu cầu hệ thống và xác định phạm vi triển khai. Các công việc chính bao gồm:
+
+* Xác định số lượng cổng ra/vào cần lắp ESP32 Camera.
+* Xác định số lượng vị trí đỗ cần theo dõi bằng cảm biến.
+* Thiết kế sơ đồ kiến trúc hệ thống.
+* Thiết kế luồng dữ liệu giữa thiết bị IoT và AWS.
+* Thiết kế cấu trúc bảng DynamoDB.
+* Xác định quyền truy cập cho người dùng, quản lý và quản trị viên.
+
+### 5.2. Giai đoạn 2: Triển khai thiết bị IoT
+
+Giai đoạn này tập trung vào việc cấu hình và kiểm thử thiết bị ESP32.
+
+Các công việc chính:
+
+* Cấu hình ESP32 Camera để chụp ảnh phương tiện.
+* Cấu hình ESP32 cảm biến để đọc trạng thái vị trí đỗ.
+* Kết nối ESP32 cảm biến với AWS IoT Core bằng MQTT.
+* Kiểm thử gửi dữ liệu cảm biến lên AWS IoT Core.
+* Kiểm thử ESP32 Camera xin Presigned URL và upload ảnh lên Amazon S3.
+* Kiểm tra chất lượng hình ảnh biển số trong các điều kiện ánh sáng khác nhau.
+
+### 5.3. Giai đoạn 3: Xây dựng backend trên AWS
+
+Backend của hệ thống được xây dựng bằng các dịch vụ serverless của AWS.
+
+Các công việc chính:
+
+* Tạo Amazon API Gateway để nhận request từ Web/App và thiết bị.
+* Tạo Lambda Backend xử lý nghiệp vụ.
+* Tạo chức năng cấp Presigned URL cho ESP32 Camera.
+* Tạo Amazon S3 Bucket để lưu ảnh xe.
+* Cấu hình S3 Event ObjectCreated để trigger Lambda xử lý ảnh.
+* Tích hợp Amazon Rekognition để phân tích hình ảnh.
+* Tạo bảng DynamoDB để lưu dữ liệu bãi xe.
+* Tạo Lambda xử lý dữ liệu cảm biến từ AWS IoT Core.
+* Cấu hình IAM Role cho các dịch vụ có quyền truy cập phù hợp.
+
+### 5.4. Giai đoạn 4: Xây dựng giao diện Web/App
+
+Giao diện Web/App giúp người dùng và quản trị viên theo dõi trạng thái bãi đỗ xe.
+
+Các chức năng chính:
+
+* Đăng nhập và xác thực người dùng.
+* Hiển thị sơ đồ bãi đỗ xe.
+* Hiển thị trạng thái từng vị trí đỗ.
+* Hiển thị danh sách xe ra/vào.
+* Hiển thị biển số xe, hình ảnh và thời gian ghi nhận.
+* Tìm kiếm lịch sử xe theo biển số.
+* Xem thống kê số lượng xe trong bãi.
+* Quản lý người dùng theo vai trò.
+
+### 5.5. Giai đoạn 5: Tích hợp AI và giám sát
+
+Giai đoạn cuối tập trung vào việc tích hợp AI và hoàn thiện hệ thống giám sát.
+
+Các công việc chính:
+
+* Xây dựng Lambda AI Service.
+* Tích hợp Amazon Bedrock để hỗ trợ truy vấn thông minh.
+* Kết nối AI Service với DynamoDB.
+* Tạo dashboard hoặc chức năng thống kê dữ liệu bãi xe.
+* Cấu hình CloudWatch để theo dõi log.
+* Thiết lập cảnh báo lỗi hệ thống.
+* Thiết lập cảnh báo chi phí bằng AWS Budgets.
+* Kiểm thử toàn bộ hệ thống trước khi vận hành.
+
+---
+
+## 6. Ước tính ngân sách
+
+Chi phí triển khai hệ thống Parking IoT phụ thuộc vào số lượng thiết bị, số lượng ảnh xử lý, số request API, dung lượng lưu trữ ảnh và mức độ sử dụng AI.
+
+### 6.1. Chi phí phần cứng
+
+| Hạng mục | Số lượng | Mục đích sử dụng |
 | :--- | :---: | :--- |
-| ESP32 Camera | Theo sá»‘ cá»•ng ra/vÃ o | Chá»¥p áº£nh xe vÃ  biá»ƒn sá»‘ |
-| ESP32 cáº£m biáº¿n | Theo sá»‘ vá»‹ trÃ­ Ä‘á»— | Gá»­i tráº¡ng thÃ¡i chá»— Ä‘á»— |
-| Cáº£m biáº¿n siÃªu Ã¢m / há»“ng ngoáº¡i | Theo sá»‘ vá»‹ trÃ­ Ä‘á»— | PhÃ¡t hiá»‡n xe táº¡i vá»‹ trÃ­ Ä‘á»— |
-| Nguá»“n Ä‘iá»‡n | Theo thiáº¿t bá»‹ | Cáº¥p nguá»“n cho ESP32 |
-| DÃ¢y ná»‘i, há»™p báº£o vá»‡ | Theo nhu cáº§u | Báº£o vá»‡ thiáº¿t bá»‹ khi láº¯p Ä‘áº·t |
-| Router / WiFi | 1 hoáº·c nhiá»u | Káº¿t ná»‘i thiáº¿t bá»‹ vá»›i Internet |
+| ESP32 Camera | Theo số cổng ra/vào | Chụp ảnh xe và biển số |
+| ESP32 cảm biến | Theo số vị trí đỗ | Gửi trạng thái chỗ đỗ |
+| Cảm biến siêu âm / hồng ngoại | Theo số vị trí đỗ | Phát hiện xe tại vị trí đỗ |
+| Nguồn điện | Theo thiết bị | Cấp nguồn cho ESP32 |
+| Dây nối, hộp bảo vệ | Theo nhu cầu | Bảo vệ thiết bị khi lắp đặt |
+| Router / WiFi | 1 hoặc nhiều | Kết nối thiết bị với Internet |
 
-### 6.2. Chi phÃ­ dá»‹ch vá»¥ AWS
+### 6.2. Chi phí dịch vụ AWS
 
-CÃ¡c dá»‹ch vá»¥ AWS cÃ³ thá»ƒ phÃ¡t sinh chi phÃ­ bao gá»“m:
+Các dịch vụ AWS có thể phát sinh chi phí bao gồm:
 
-| Dá»‹ch vá»¥ AWS | Má»¥c Ä‘Ã­ch sá»­ dá»¥ng |
+| Dịch vụ AWS | Mục đích sử dụng |
 | :--- | :--- |
-| AWS IoT Core | Nháº­n dá»¯ liá»‡u MQTT tá»« ESP32 cáº£m biáº¿n |
-| Amazon S3 | LÆ°u trá»¯ áº£nh xe |
-| AWS Lambda | Xá»­ lÃ½ backend, xá»­ lÃ½ áº£nh vÃ  dá»¯ liá»‡u cáº£m biáº¿n |
-| Amazon API Gateway | Nháº­n request tá»« Web/App vÃ  thiáº¿t bá»‹ |
-| Amazon Rekognition | PhÃ¢n tÃ­ch hÃ¬nh áº£nh, há»— trá»£ nháº­n diá»‡n biá»ƒn sá»‘ |
-| Amazon DynamoDB | LÆ°u dá»¯ liá»‡u xe, biá»ƒn sá»‘, tráº¡ng thÃ¡i chá»— Ä‘á»— |
-| Amazon CloudFront | PhÃ¢n phá»‘i giao diá»‡n website |
-| Amazon Cognito | XÃ¡c thá»±c vÃ  quáº£n lÃ½ ngÆ°á»i dÃ¹ng |
-| Amazon CloudWatch | Ghi log vÃ  giÃ¡m sÃ¡t há»‡ thá»‘ng |
-| Amazon Bedrock | Há»— trá»£ chá»©c nÄƒng AI nÃ¢ng cao |
-| AWS Budgets | Theo dÃµi vÃ  cáº£nh bÃ¡o chi phÃ­ |
+| AWS IoT Core | Nhận dữ liệu MQTT từ ESP32 cảm biến |
+| Amazon S3 | Lưu trữ ảnh xe |
+| AWS Lambda | Xử lý backend, xử lý ảnh và dữ liệu cảm biến |
+| Amazon API Gateway | Nhận request từ Web/App và thiết bị |
+| Amazon Rekognition | Phân tích hình ảnh, hỗ trợ nhận diện biển số |
+| Amazon DynamoDB | Lưu dữ liệu xe, biển số, trạng thái chỗ đỗ |
+| Amazon CloudFront | Phân phối giao diện website |
+| Amazon Cognito | Xác thực và quản lý người dùng |
+| Amazon CloudWatch | Ghi log và giám sát hệ thống |
+| Amazon Bedrock | Hỗ trợ chức năng AI nâng cao |
+| AWS Budgets | Theo dõi và cảnh báo chi phí |
 
-Äá»‘i vá»›i mÃ´ hÃ¬nh demo hoáº·c triá»ƒn khai quy mÃ´ nhá», chi phÃ­ cÃ³ thá»ƒ Ä‘Æ°á»£c kiá»ƒm soÃ¡t báº±ng cÃ¡ch giá»›i háº¡n sá»‘ lÆ°á»£ng áº£nh xá»­ lÃ½, giáº£m thá»i gian lÆ°u áº£nh trÃªn S3, tá»‘i Æ°u sá»‘ láº§n gá»i API Gateway vÃ  chá»‰ sá»­ dá»¥ng Amazon Bedrock khi cáº§n thiáº¿t.
+Đối với mô hình demo hoặc triển khai quy mô nhỏ, chi phí có thể được kiểm soát bằng cách giới hạn số lượng ảnh xử lý, giảm thời gian lưu ảnh trên S3, tối ưu số lần gọi API Gateway và chỉ sử dụng Amazon Bedrock khi cần thiết.
 
 ---
 
-## 7. ÄÃ¡nh giÃ¡ rá»§i ro vÃ  chiáº¿n lÆ°á»£c giáº£m thiá»ƒu
+## 7. Đánh giá rủi ro và chiến lược giảm thiểu
 
-| Rá»§i ro | Má»©c Ä‘á»™ | Chiáº¿n lÆ°á»£c giáº£m thiá»ƒu |
+| Rủi ro | Mức độ | Chiến lược giảm thiểu |
 | :--- | :---: | :--- |
-| ESP32 máº¥t káº¿t ná»‘i máº¡ng | Trung bÃ¬nh | LÆ°u táº¡m dá»¯ liá»‡u cá»¥c bá»™ vÃ  gá»­i láº¡i khi cÃ³ máº¡ng |
-| áº¢nh biá»ƒn sá»‘ bá»‹ má» | Cao | Äiá»u chá»‰nh gÃ³c camera, Ã¡nh sÃ¡ng vÃ  khoáº£ng cÃ¡ch chá»¥p |
-| Nháº­n diá»‡n biá»ƒn sá»‘ sai | Trung bÃ¬nh | Káº¿t há»£p kiá»ƒm tra thá»§ cÃ´ng vÃ  cáº£i thiá»‡n cháº¥t lÆ°á»£ng áº£nh |
-| Thiáº¿t bá»‹ bá»‹ há»ng do mÃ´i trÆ°á»ng | Trung bÃ¬nh | DÃ¹ng há»™p báº£o vá»‡, kiá»ƒm tra Ä‘á»‹nh ká»³ thiáº¿t bá»‹ |
-| API Gateway hoáº·c Lambda bá»‹ lá»—i | Trung bÃ¬nh | Theo dÃµi log báº±ng CloudWatch vÃ  xá»­ lÃ½ lá»—i |
-| VÆ°á»£t chi phÃ­ AWS | Trung bÃ¬nh | Thiáº¿t láº­p AWS Budgets vÃ  cáº£nh bÃ¡o chi phÃ­ |
-| Dá»¯ liá»‡u bá»‹ truy cáº­p trÃ¡i phÃ©p | Cao | DÃ¹ng Cognito, IAM, WAF vÃ  phÃ¢n quyá»n cháº·t cháº½ |
-| Há»‡ thá»‘ng khÃ³ má»Ÿ rá»™ng | Tháº¥p | Thiáº¿t káº¿ serverless, dá»… thÃªm thiáº¿t bá»‹ vÃ  dá»‹ch vá»¥ |
+| ESP32 mất kết nối mạng | Trung bình | Lưu tạm dữ liệu cục bộ và gửi lại khi có mạng |
+| Ảnh biển số bị mờ | Cao | Điều chỉnh góc camera, ánh sáng và khoảng cách chụp |
+| Nhận diện biển số sai | Trung bình | Kết hợp kiểm tra thủ công và cải thiện chất lượng ảnh |
+| Thiết bị bị hỏng do môi trường | Trung bình | Dùng hộp bảo vệ, kiểm tra định kỳ thiết bị |
+| API Gateway hoặc Lambda bị lỗi | Trung bình | Theo dõi log bằng CloudWatch và xử lý lỗi |
+| Vượt chi phí AWS | Trung bình | Thiết lập AWS Budgets và cảnh báo chi phí |
+| Dữ liệu bị truy cập trái phép | Cao | Dùng Cognito, IAM, WAF và phân quyền chặt chẽ |
+| Hệ thống khó mở rộng | Thấp | Thiết kế serverless, dễ thêm thiết bị và dịch vụ |
 
 ---
 
-## 8. Káº¿t quáº£ ká»³ vá»ng
+## 8. Kết quả kỳ vọng
 
-### 8.1. Vá» ká»¹ thuáº­t
+### 8.1. Về kỹ thuật
 
-Sau khi hoÃ n thÃ nh, há»‡ thá»‘ng dá»± kiáº¿n Ä‘áº¡t Ä‘Æ°á»£c cÃ¡c káº¿t quáº£ sau:
+Sau khi hoàn thành, hệ thống dự kiến đạt được các kết quả sau:
 
-* XÃ¢y dá»±ng Ä‘Æ°á»£c há»‡ thá»‘ng Parking IoT hoáº¡t Ä‘á»™ng theo thá»i gian thá»±c.
-* ESP32 Camera cÃ³ thá»ƒ chá»¥p áº£nh xe ra/vÃ o vÃ  upload áº£nh lÃªn Amazon S3.
-* ESP32 cáº£m biáº¿n cÃ³ thá»ƒ gá»­i tráº¡ng thÃ¡i vá»‹ trÃ­ Ä‘á»— xe lÃªn AWS IoT Core.
-* AWS Lambda xá»­ lÃ½ dá»¯ liá»‡u tá»± Ä‘á»™ng, khÃ´ng cáº§n mÃ¡y chá»§ riÃªng.
-* Amazon Rekognition há»— trá»£ phÃ¢n tÃ­ch áº£nh vÃ  nháº­n diá»‡n biá»ƒn sá»‘.
-* DynamoDB lÆ°u trá»¯ dá»¯ liá»‡u táº­p trung, há»— trá»£ truy váº¥n nhanh.
-* Web/App hiá»ƒn thá»‹ tráº¡ng thÃ¡i bÃ£i xe, lá»‹ch sá»­ xe ra/vÃ o vÃ  thÃ´ng tin biá»ƒn sá»‘.
-* Amazon Bedrock há»— trá»£ chá»©c nÄƒng AI, giÃºp ngÆ°á»i dÃ¹ng truy váº¥n dá»¯ liá»‡u thÃ´ng minh.
-* CloudWatch há»— trá»£ giÃ¡m sÃ¡t lá»—i vÃ  theo dÃµi hoáº¡t Ä‘á»™ng há»‡ thá»‘ng.
+* Xây dựng được hệ thống Parking IoT hoạt động theo thời gian thực.
+* ESP32 Camera có thể chụp ảnh xe ra/vào và upload ảnh lên Amazon S3.
+* ESP32 cảm biến có thể gửi trạng thái vị trí đỗ xe lên AWS IoT Core.
+* AWS Lambda xử lý dữ liệu tự động, không cần máy chủ riêng.
+* Amazon Rekognition hỗ trợ phân tích ảnh và nhận diện biển số.
+* DynamoDB lưu trữ dữ liệu tập trung, hỗ trợ truy vấn nhanh.
+* Web/App hiển thị trạng thái bãi xe, lịch sử xe ra/vào và thông tin biển số.
+* Amazon Bedrock hỗ trợ chức năng AI, giúp người dùng truy vấn dữ liệu thông minh.
+* CloudWatch hỗ trợ giám sát lỗi và theo dõi hoạt động hệ thống.
 
-### 8.2. Vá» váº­n hÃ nh
+### 8.2. Về vận hành
 
-Há»‡ thá»‘ng giÃºp quÃ¡ trÃ¬nh quáº£n lÃ½ bÃ£i Ä‘á»— xe trá»Ÿ nÃªn tá»± Ä‘á»™ng vÃ  hiá»‡u quáº£ hÆ¡n. NgÆ°á»i quáº£n lÃ½ cÃ³ thá»ƒ theo dÃµi tráº¡ng thÃ¡i bÃ£i xe tá»« xa, kiá»ƒm tra lá»‹ch sá»­ xe ra/vÃ o vÃ  giáº£m phá»¥ thuá»™c vÃ o thao tÃ¡c thá»§ cÃ´ng.
+Hệ thống giúp quá trình quản lý bãi đỗ xe trở nên tự động và hiệu quả hơn. Người quản lý có thể theo dõi trạng thái bãi xe từ xa, kiểm tra lịch sử xe ra/vào và giảm phụ thuộc vào thao tác thủ công.
 
-CÃ¡c lá»£i Ã­ch váº­n hÃ nh gá»“m:
+Các lợi ích vận hành gồm:
 
-* Giáº£m thá»i gian kiá»ƒm tra xe ra/vÃ o.
-* TÄƒng Ä‘á»™ chÃ­nh xÃ¡c khi quáº£n lÃ½ biá»ƒn sá»‘ vÃ  tráº¡ng thÃ¡i chá»— Ä‘á»—.
-* Há»— trá»£ giÃ¡m sÃ¡t bÃ£i xe theo thá»i gian thá»±c.
-* Dá»… dÃ ng má»Ÿ rá»™ng thÃªm camera hoáº·c cáº£m biáº¿n.
-* Giáº£m nhu cáº§u váº­n hÃ nh mÃ¡y chá»§ truyá»n thá»‘ng.
-* TÄƒng tÃ­nh báº£o máº­t thÃ´ng qua xÃ¡c thá»±c vÃ  phÃ¢n quyá»n ngÆ°á»i dÃ¹ng.
+* Giảm thời gian kiểm tra xe ra/vào.
+* Tăng độ chính xác khi quản lý biển số và trạng thái chỗ đỗ.
+* Hỗ trợ giám sát bãi xe theo thời gian thực.
+* Dễ dàng mở rộng thêm camera hoặc cảm biến.
+* Giảm nhu cầu vận hành máy chủ truyền thống.
+* Tăng tính bảo mật thông qua xác thực và phân quyền người dùng.
 
 ---
 
-## 9. Káº¿t luáº­n
+## 9. Kết luận
 
-Dá»± Ã¡n **Parking IoT thÃ´ng minh sá»­ dá»¥ng AWS Serverless** lÃ  giáº£i phÃ¡p phÃ¹ há»£p Ä‘á»ƒ hiá»‡n Ä‘áº¡i hÃ³a viá»‡c quáº£n lÃ½ bÃ£i Ä‘á»— xe. Há»‡ thá»‘ng káº¿t há»£p cÃ¡c cÃ´ng nghá»‡ IoT, xá»­ lÃ½ áº£nh, lÆ°u trá»¯ dá»¯ liá»‡u, xÃ¡c thá»±c ngÆ°á»i dÃ¹ng vÃ  trÃ­ tuá»‡ nhÃ¢n táº¡o nháº±m táº¡o ra má»™t ná»n táº£ng quáº£n lÃ½ bÃ£i xe tá»± Ä‘á»™ng, linh hoáº¡t vÃ  cÃ³ kháº£ nÄƒng má»Ÿ rá»™ng.
+Dự án **Parking IoT thông minh sử dụng AWS Serverless** là giải pháp phù hợp để hiện đại hóa việc quản lý bãi đỗ xe. Hệ thống kết hợp các công nghệ IoT, xử lý ảnh, lưu trữ dữ liệu, xác thực người dùng và trí tuệ nhân tạo nhằm tạo ra một nền tảng quản lý bãi xe tự động, linh hoạt và có khả năng mở rộng.
 
-Vá»›i cÃ¡c dá»‹ch vá»¥ nhÆ° **AWS IoT Core**, **Amazon S3**, **AWS Lambda**, **Amazon API Gateway**, **Amazon Rekognition**, **Amazon DynamoDB**, **Amazon Cognito**, **Amazon CloudFront**, **AWS WAF**, **Amazon CloudWatch** vÃ  **Amazon Bedrock**, há»‡ thá»‘ng cÃ³ thá»ƒ Ä‘Ã¡p á»©ng tá»‘t cÃ¡c yÃªu cáº§u vá» giÃ¡m sÃ¡t thá»i gian thá»±c, nháº­n diá»‡n biá»ƒn sá»‘, quáº£n lÃ½ ngÆ°á»i dÃ¹ng vÃ  phÃ¢n tÃ­ch dá»¯ liá»‡u thÃ´ng minh.
+Với các dịch vụ như **AWS IoT Core**, **Amazon S3**, **AWS Lambda**, **Amazon API Gateway**, **Amazon Rekognition**, **Amazon DynamoDB**, **Amazon Cognito**, **Amazon CloudFront**, **AWS WAF**, **Amazon CloudWatch** và **Amazon Bedrock**, hệ thống có thể đáp ứng tốt các yêu cầu về giám sát thời gian thực, nhận diện biển số, quản lý người dùng và phân tích dữ liệu thông minh.
 
-Dá»± Ã¡n khÃ´ng chá»‰ giÃºp giáº£i quyáº¿t cÃ¡c háº¡n cháº¿ cá»§a mÃ´ hÃ¬nh quáº£n lÃ½ bÃ£i xe thá»§ cÃ´ng mÃ  cÃ²n táº¡o ná»n táº£ng Ä‘á»ƒ phÃ¡t triá»ƒn cÃ¡c chá»©c nÄƒng nÃ¢ng cao trong tÆ°Æ¡ng lai nhÆ° dá»± bÃ¡o máº­t Ä‘á»™ xe, tá»‘i Æ°u vá»‹ trÃ­ Ä‘á»—, cáº£nh bÃ¡o báº¥t thÆ°á»ng vÃ  há»— trá»£ quáº£n lÃ½ báº±ng AI.
+Dự án không chỉ giúp giải quyết các hạn chế của mô hình quản lý bãi xe thủ công mà còn tạo nền tảng để phát triển các chức năng nâng cao trong tương lai như dự báo mật độ xe, tối ưu vị trí đỗ, cảnh báo bất thường và hỗ trợ quản lý bằng AI.
