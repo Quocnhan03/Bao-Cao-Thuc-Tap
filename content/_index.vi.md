@@ -19,7 +19,8 @@ chapter: false
 * **Vị trí thực tập:** Cloud Engineer - First Cloud AI Journey
 * **Thời gian thực tập:** Từ ngày 17/04/2026 đến ngày 10/07/2026
 
-**Ảnh sinh viên**![alt text](image.png)
+**Ảnh sinh viên**
+![Ảnh sinh viên](/images/portrait.png)
 
 ### Nội dung
 

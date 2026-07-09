@@ -19,7 +19,8 @@ chapter: false
 * **Internship Position:** Cloud Engineer - First Cloud AI Journey
 * **Internship Period:** From April 17, 2026 to July 10, 2026
 
-**Student Portrait**![alt text](image.png)
+**Student Portrait**
+![Student Portrait](/images/portrait.png)
 
 
 ### Contents
