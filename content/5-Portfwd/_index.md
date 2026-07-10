@@ -1,12 +1,12 @@
 ---
-title : "Monitoring, Logs and Security"
+title : "Workshop"
 date :  "`r Sys.Date()`" 
 weight : 5
 chapter : false
 pre : " <b> 5. </b> "
 ---
 
-# 5. Monitoring, Logs and Security
+# 5. Workshop
 
 This section presents the process of monitoring the system, checking logs, and evaluating security mechanisms after the **Smart Parking IoT System** has been deployed. Unlike the previous architecture section, this chapter focuses on real operation, error tracking, log checking, system alerts, and security evaluation of AWS components.
 

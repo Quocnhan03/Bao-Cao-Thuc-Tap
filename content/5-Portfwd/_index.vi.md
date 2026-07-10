@@ -1,12 +1,12 @@
 ---
-title : "Giám sát, Logs và Bảo mật"
+title : "Workshop"
 date :  "`r Sys.Date()`" 
 weight : 5
 chapter : false
 pre : " <b> 5. </b> "
 ---
 
-# 5. Giám sát, Logs và Bảo mật
+# 5. Workshop
 
 Phần này trình bày quá trình giám sát hệ thống, kiểm tra logs và đánh giá các cơ chế bảo mật sau khi hệ thống **Parking IoT thông minh** được triển khai. Khác với phần kiến trúc trước đó, chương này tập trung vào quá trình vận hành thực tế, theo dõi lỗi, kiểm tra log, cảnh báo hệ thống và đánh giá mức độ an toàn của các thành phần AWS.
 
