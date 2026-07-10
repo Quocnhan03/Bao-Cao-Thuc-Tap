@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 public class Win32 {
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool SetProcessDPIAware();
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool SetForegroundWindow(IntPtr hWnd);
     [DllImport("user32.dll")]
     public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -20,6 +23,8 @@ public class Win32 {
 "@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
+
+[Win32]::SetProcessDPIAware() | Out-Null
 
 $file = $args[0]
 if (-not $file) { $file = "C:\Users\ASUS\Downloads\000000-Workshop\000058-SessionManager\static\images\WorklogT4\lab13-backup-dashboard.png" }

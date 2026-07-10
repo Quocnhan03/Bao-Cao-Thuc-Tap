@@ -6,8 +6,6 @@ chapter: false
 pre: "<b> 6. </b> "
 ---
 
-# TỰ ĐÁNH GIÁ (SELF-ASSESSMENT)
-
 Trong suốt kỳ thực tập tại Amazon Web Services Vietnam Co., Ltd. từ ngày 20/04/2026 đến 13/07/2026, tôi đã có cơ hội học hỏi, thực hành và áp dụng những kiến thức đã học tại trường vào môi trường làm việc thực tế.
 
 Tôi đã tham gia chương trình đào tạo AWS Cloud kéo dài 12 tuần và xây dựng dự án cuối khóa - "Hệ thống bãi đỗ xe thông minh IoT" (Smart Parking IoT System) tích hợp AWS Serverless — bao gồm thiết kế kiến trúc hệ thống, lập trình ESP32 Camera/Sensors, triển khai AWS IoT Core, Lambda, API Gateway, DynamoDB, Amazon Rekognition và Amazon Bedrock. Qua trải nghiệm này, tôi đã cải thiện đáng kể các kỹ năng về thiết kế kiến trúc Cloud, lập trình IoT/Backend, phân tích dữ liệu, viết báo cáo kỹ thuật và làm việc nhóm.

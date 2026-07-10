@@ -6,8 +6,6 @@ chapter: false
 pre: "<b> 6. </b> "
 ---
 
-# SELF-ASSESSMENT
-
 During my internship at Amazon Web Services Vietnam Co., Ltd. from 20/04/2026 to 13/07/2026, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.
 
 I participated in a 12-week AWS Cloud training program and built a capstone project — "Smart Parking IoT System" integrated with AWS Serverless — which included designing the system architecture, programming ESP32 Camera/Sensors, deploying AWS IoT Core, Lambda, API Gateway, DynamoDB, Amazon Rekognition, and Amazon Bedrock. Through this experience, I significantly improved my skills in Cloud architecture design, IoT/Backend development, data analysis, technical report writing, and teamwork.
