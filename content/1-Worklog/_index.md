@@ -47,6 +47,27 @@ pre : " <b> 1. </b> "
     * **Lab 27 (Tags & Resource Groups):** Tagged and filtered EC2 resources, managing them efficiently using Resource Groups.
     * **Lab 30 (IAM):** Designed JSON Policies for least privilege access and assigned them to a restricted IAM User.
 
+### Week 6: Systems Management, KMS & Cost Management
+* **Objective:** Master remote server management with SSM, encryption with KMS, and cost visualization with Cost Explorer.
+* **Tasks completed:**
+    * **Lab 31 (SSM):** Configured Session Manager to control servers directly from the browser.
+    * **Lab 33 (KMS):** Created a Symmetric Customer Managed Key (CMK) and applied it to encrypt an S3 bucket.
+    * **Lab 34 (Cost Explorer):** Used Cost Explorer to filter costs by service and created AWS Budgets.
+
+### Week 7: CloudFormation, Lightsail & IAM Roles
+* **Objective:** Deploy infrastructure as code, explore Lightsail architecture, and configure IAM roles.
+* **Tasks completed:**
+    * **Lab 37 (CloudFormation):** Successfully created a CloudFormation Stack.
+    * **Lab 45 (Lightsail):** Successfully launched an Amazon Lightsail WordPress instance.
+    * **Lab 48 (EC2 & IAM):** Configured an EC2 instance with an appropriate IAM Role.
+
+### Week 8: QuickSight, Macie & Secrets Manager
+* **Objective:** Implement data analytics services, S3 data security, and application credentials management.
+* **Tasks completed:**
+    * **Lab 73 (QuickSight):** Signed up for an Enterprise account and configured Dataset/Dashboard.
+    * **Lab 90 (Macie):** Enabled Amazon Macie to automatically discover sensitive data in S3.
+    * **Lab 96 (Secrets Manager):** Created and managed secrets for RDS/Fargate credentials retrieval.
+
 ---
 
 > **Note:** This worklog will be continuously updated to reflect the ongoing progress of the internship project.

@@ -47,6 +47,27 @@ pre : " <b> 1. </b> "
     * **Lab 27 (Tags & Resource Groups):** Gắn tag và lọc tài nguyên EC2, quản lý bằng Resource Groups.
     * **Lab 30 (IAM):** Thiết kế JSON Policy giới hạn đặc quyền (Least Privilege) và gán cho User/Group.
 
+### Tuần 6: Quản lý Hệ thống, Bảo mật mã hóa và Quản lý chi phí
+* **Nội dung:** Nắm vững cách quản lý máy chủ từ xa với SSM, mã hóa dữ liệu với KMS và trực quan hóa chi phí với Cost Explorer.
+* **Công việc đã làm:**
+    * **Lab 31 (SSM):** Cấu hình Session Manager để điều khiển máy chủ trực tiếp trên trình duyệt thay vì dùng SSH.
+    * **Lab 33 (KMS):** Khởi tạo khóa Customer Managed Key (CMK) và áp dụng mã hóa tự động cho S3 bucket.
+    * **Lab 34 (Cost Explorer):** Dùng Cost Explorer để xem chi phí và tạo AWS Budgets để thiết lập cảnh báo ngân sách.
+
+### Tuần 7: CloudFormation, Lightsail và IAM Roles
+* **Nội dung:** Triển khai hạ tầng dưới dạng mã (IaC), tìm hiểu Lightsail và cấu hình IAM Roles.
+* **Công việc đã làm:**
+    * **Lab 37 (CloudFormation):** Triển khai thành công CloudFormation Stack.
+    * **Lab 45 (Lightsail):** Khởi chạy thành công máy chủ Amazon Lightsail WordPress.
+    * **Lab 48 (EC2 & IAM):** Cấu hình máy ảo EC2 với IAM Role phù hợp.
+
+### Tuần 8: QuickSight, Macie và Secrets Manager
+* **Nội dung:** Triển khai dịch vụ phân tích dữ liệu, bảo mật dữ liệu S3 và quản lý thông tin xác thực ứng dụng.
+* **Công việc đã làm:**
+    * **Lab 73 (QuickSight):** Đăng ký tài khoản Enterprise và thiết lập Dataset/Dashboard.
+    * **Lab 90 (Macie):** Kích hoạt Amazon Macie để tự động phát hiện dữ liệu nhạy cảm trong S3.
+    * **Lab 96 (Secrets Manager):** Tạo và quản lý mật khẩu an toàn trên Secrets Manager.
+
 ---
 
 > **Ghi chú:** Nhật ký này sẽ được cập nhật liên tục theo tiến độ thực tập thực tế của dự án.
