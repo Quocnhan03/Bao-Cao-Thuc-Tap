@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API Gateway, Cognito &amp; Bedrock on AWS System Manager</title>
+    <link>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/5-api-cognito-bedrock/</link>
+    <description>Recent content in API Gateway, Cognito &amp; Bedrock on AWS System Manager</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/5-api-cognito-bedrock/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

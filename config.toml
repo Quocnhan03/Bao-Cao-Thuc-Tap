@@ -1,4 +1,4 @@
-baseURL = "https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/"
+baseURL = "http://localhost:1313/Bao-Cao-Thuc-Tap/"
 canonifyURLs = true
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"

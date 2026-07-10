@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/images/favicon.png" type="image/png">
+
+    <title>Giám sát với CloudWatch :: AWS System Manager</title>
+
+    
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/nucleus.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/fontawesome-all.min.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/hybrid.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/featherlight.min.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/perfect-scrollbar.min.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/auto-complete.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/atom-one-dark-reasonable.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/theme.css?1783692330" rel="stylesheet">
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/hugo-theme.css?1783692330" rel="stylesheet">
+    
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/css/theme-workshop.css?1783692330" rel="stylesheet">
+    
+    
+
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/jquery-3.3.1.min.js?1783692330"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/lunr.min.js?1783692330"></script>
+<script type="text/javascript" src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/auto-complete.js?1783692330"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/quocnhan03.github.io\/Bao-Cao-Thuc-Tap\/\/vi";
+    
+</script>
+<script type="text/javascript" src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/search.js?1783692330"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/" title="Nhật ký công việc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/">
+           <b> 1. </b> Nhật ký công việc
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t1/t1/" title="Tuần 1" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/">
+         <b> 1.1. </b> Tuần 1
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t2/t2/" title="Tuần 2" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/">
+         <b> 1.2. </b> Tuần 2
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/worklog-t3/" title="Tuần 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/">
+           <b> 1.3. </b> Tuần 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t4/t4/" title="Tuần 4" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/">
+         <b> 1.4. </b> Tuần 4
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t5/t5/" title="Tuần 5" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/">
+         <b> 1.5. </b> Tuần 5
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t6/t6/" title="Tuần 6" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/">
+         <b> 1.6. </b> Tuần 6
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t7/t7/" title="Tuần 7" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/">
+         <b> 1.7. </b> Tuần 7
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t8/t8/" title="Tuần 8" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/">
+         <b> 1.8. </b> Tuần 8
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/worklog-t9/" title="Tuần 9" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/">
+           <b> 1.9. </b> Tuần 9
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t10/t10/" title="Tuần 10" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t10/t10/">
+         <b> 1.10. </b> Tuần 10
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t11/t11/" title="Tuần 11" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t11/t11/">
+         <b> 1.11. </b> Tuần 11
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t12/t12/" title="Tuần 12" class="dd-item ">
+        <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t12/t12/">
+         <b> 1.12. </b> Tuần 12
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-proposal/" title="Đề Xuất Dự Án" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/2-proposal/">
+           <b> 2. </b> Đề Xuất Dự Án
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/" title="Kiến trúc hệ thống Parking IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/">
+           <b> 3. </b> Kiến trúc hệ thống Parking IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.1-infrastructure/" title="Hạ tầng cốt lõi AWS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> Hạ tầng cốt lõi AWS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.2-edge/" title="Thiết bị biên ESP32" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/">
+           <b> 3.2. </b> Thiết bị biên ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.3-data-pipeline/" title="Đường ống dữ liệu IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> Đường ống dữ liệu IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.4-ui-security/" title="Giao diện và bảo mật" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> Giao diện và bảo mật
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.5-monitoring/" title="Giám sát và quản trị" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Giám sát và quản trị
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.6-system-testing-and-optimization/" title="Kiểm thử và tối ưu hệ thống" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> Kiểm thử và tối ưu hệ thống
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-logging/" title="Quản lý Session Logs" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/4-logging/">
+           <b> 4. </b> Quản lý Session Logs
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/" title="Workshop" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/">
+           <b> 5. </b> Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/1-overview/" title="Tổng quan Workshop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/1-overview/">
+           <b> 5.1. </b> Tổng quan Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/2-prerequisites/" title="Điều kiện tiên quyết" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/2-prerequisites/">
+           <b> 5.2. </b> Điều kiện tiên quyết
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/3-iot-s3/" title="AWS IoT Core &amp; Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/">
+           <b> 5.3. </b> AWS IoT Core &amp; Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/3-iot-s3/1-iot-core/" title="Cấu hình AWS IoT Core" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/1-iot-core/">
+           <b> 5.3.1. </b> Cấu hình AWS IoT Core
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/3-iot-s3/2-s3/" title="Tạo S3 Bucket &amp; Presigned URL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/2-s3/">
+           <b> 5.3.2. </b> Tạo S3 Bucket &amp; Presigned URL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/4-lambda-rekognition/" title="Lambda &amp; Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/">
+           <b> 5.4. </b> Lambda &amp; Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/4-lambda-rekognition/1-lambda-image/" title="Xử lý ảnh bằng Lambda" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/1-lambda-image/">
+           <b> 5.4.1. </b> Xử lý ảnh bằng Lambda
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/4-lambda-rekognition/2-rekognition/" title="Tích hợp Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/2-rekognition/">
+           <b> 5.4.2. </b> Tích hợp Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/4-lambda-rekognition/3-dynamodb/" title="Thiết kế bảng DynamoDB" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/3-dynamodb/">
+           <b> 5.4.3. </b> Thiết kế bảng DynamoDB
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/4-lambda-rekognition/4-end-to-end/" title="Kiểm thử nhận diện End-to-End" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/4-end-to-end/">
+           <b> 5.4.4. </b> Kiểm thử nhận diện End-to-End
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5-api-cognito-bedrock/" title="API Gateway, Cognito &amp; Bedrock" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/5-api-cognito-bedrock/">
+           <b> 5.5. </b> API Gateway, Cognito &amp; Bedrock
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/6-esp32/" title="Cài đặt phần cứng ESP32" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/6-esp32/">
+           <b> 5.6. </b> Cài đặt phần cứng ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/7-dashboard/" title="Web Dashboard" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/">
+           <b> 5.7. </b> Web Dashboard
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/8-monitoring/" title="Giám sát với CloudWatch" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/">
+           <b> 5.8. </b> Giám sát với CloudWatch
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/9-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/">
+           <b> 5.9. </b> Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-self-assessment/" title="Tự Đánh Giá" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-self-assessment/">
+          <b> 6. </b> Tự Đánh Giá
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-sharing-and-feedback/" title="Chia Sẻ và Góp Ý" class="dd-item 
+        
+        
+        
+        ">
+      <a href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/">
+          <b> 7. </b> Chia Sẻ và Góp Ý
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/8-monitoring/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/'>    </a> > <a href='https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/'>Workshop</a> > Giám sát với CloudWatch
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#51-tổng-quan-giám-sát-hệ-thống">5.1. Tổng quan giám sát hệ thống</a></li>
+    <li><a href="#52-giám-sát-cloudwatch-logs">5.2. Giám sát CloudWatch Logs</a></li>
+    <li><a href="#53-kiểm-tra-lỗi-lambda-và-api-gateway">5.3. Kiểm tra lỗi Lambda và API Gateway</a>
+      <ul>
+        <li><a href="#531-kiểm-tra-lỗi-aws-lambda">5.3.1. Kiểm tra lỗi AWS Lambda</a></li>
+        <li><a href="#532-kiểm-tra-lỗi-api-gateway">5.3.2. Kiểm tra lỗi API Gateway</a></li>
+      </ul>
+    </li>
+    <li><a href="#54-kiểm-tra-bảo-mật-cognito-iam-và-waf">5.4. Kiểm tra bảo mật Cognito, IAM và WAF</a>
+      <ul>
+        <li><a href="#541-kiểm-tra-bảo-mật-amazon-cognito">5.4.1. Kiểm tra bảo mật Amazon Cognito</a></li>
+        <li><a href="#542-kiểm-tra-phân-quyền-iam">5.4.2. Kiểm tra phân quyền IAM</a></li>
+        <li><a href="#543-kiểm-tra-bảo-mật-aws-waf">5.4.3. Kiểm tra bảo mật AWS WAF</a></li>
+      </ul>
+    </li>
+    <li><a href="#55-cảnh-báo-hệ-thống-và-chi-phí">5.5. Cảnh báo hệ thống và chi phí</a>
+      <ul>
+        <li><a href="#551-cảnh-báo-lỗi-hệ-thống-bằng-cloudwatch-alarm">5.5.1. Cảnh báo lỗi hệ thống bằng CloudWatch Alarm</a></li>
+        <li><a href="#552-cảnh-báo-chi-phí-bằng-aws-budgets">5.5.2. Cảnh báo chi phí bằng AWS Budgets</a></li>
+      </ul>
+    </li>
+    <li><a href="#56-đánh-giá-kết-quả-giám-sát-và-bảo-mật">5.6. Đánh giá kết quả giám sát và bảo mật</a>
+      <ul>
+        <li><a href="#561-đánh-giá-kết-quả-giám-sát">5.6.1. Đánh giá kết quả giám sát</a></li>
+        <li><a href="#562-đánh-giá-kết-quả-bảo-mật">5.6.2. Đánh giá kết quả bảo mật</a></li>
+        <li><a href="#563-đánh-giá-tổng-hợp">5.6.3. Đánh giá tổng hợp</a></li>
+      </ul>
+    </li>
+    <li><a href="#57-kết-luận">5.7. Kết luận</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Giám sát với CloudWatch
+            </h1>
+          
+
+        
+
+
+
+	<p>Phần này trình bày quá trình giám sát hệ thống, kiểm tra logs và đánh giá các cơ chế bảo mật sau khi hệ thống <strong>Parking IoT thông minh</strong> được triển khai. Khác với phần kiến trúc trước đó, chương này tập trung vào quá trình vận hành thực tế, theo dõi lỗi, kiểm tra log, cảnh báo hệ thống và đánh giá mức độ an toàn của các thành phần AWS.</p>
+<p>Các dịch vụ chính được sử dụng gồm <strong>Amazon CloudWatch, AWS Lambda, API Gateway, Amazon Cognito, IAM, AWS WAF, AWS Budgets và CloudTrail</strong>. Việc kết hợp các dịch vụ này giúp người quản trị dễ dàng phát hiện lỗi, kiểm soát truy cập và hạn chế phát sinh chi phí ngoài dự kiến.</p>
+<hr>
+<h2 id="51-tổng-quan-giám-sát-hệ-thống">5.1. Tổng quan giám sát hệ thống</h2>
+<p>Giám sát hệ thống là quá trình theo dõi hoạt động của các thành phần trong hệ thống Parking IoT nhằm đảm bảo dữ liệu được truyền, xử lý và hiển thị đúng theo thiết kế.</p>
+<p>Trong hệ thống Parking IoT, các thành phần cần được giám sát gồm:</p>
+<ul>
+<li>Thiết bị ESP32 Camera.</li>
+<li>Thiết bị ESP32 cảm biến.</li>
+<li>AWS IoT Core.</li>
+<li>Amazon S3.</li>
+<li>AWS Lambda.</li>
+<li>Amazon API Gateway.</li>
+<li>Amazon DynamoDB.</li>
+<li>Amazon Rekognition.</li>
+<li>Amazon Cognito.</li>
+<li>AWS WAF.</li>
+<li>Amazon CloudWatch.</li>
+</ul>
+<p>Luồng giám sát tổng quát:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ESP32 / Web-App / API Gateway / Lambda / IoT Core / DynamoDB → CloudWatch Logs
+</span></span></code></pre></div><p>Mục tiêu của giám sát hệ thống:</p>
+<ul>
+<li>Phát hiện lỗi khi ESP32 gửi dữ liệu thất bại.</li>
+<li>Kiểm tra Lambda có xử lý dữ liệu đúng không.</li>
+<li>Kiểm tra API Gateway có trả response đúng không.</li>
+<li>Theo dõi lỗi 4xx và 5xx từ API.</li>
+<li>Kiểm tra dữ liệu có được ghi vào DynamoDB không.</li>
+<li>Theo dõi quá trình upload ảnh lên S3.</li>
+<li>Kiểm tra bảo mật người dùng và quyền truy cập.</li>
+<li>Theo dõi chi phí sử dụng AWS.</li>
+</ul>
+<p>Việc giám sát giúp hệ thống hoạt động ổn định hơn và hỗ trợ người quản trị xử lý lỗi nhanh chóng khi có sự cố.</p>
+<hr>
+<h2 id="52-giám-sát-cloudwatch-logs">5.2. Giám sát CloudWatch Logs</h2>
+<p>Amazon CloudWatch Logs là dịch vụ chính được sử dụng để ghi nhận log từ các dịch vụ AWS. Trong hệ thống Parking IoT, CloudWatch giúp theo dõi quá trình thực thi của Lambda, request từ API Gateway và lỗi phát sinh trong quá trình xử lý dữ liệu.</p>
+<p>Các nguồn log chính:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Thành phần</th>
+<th style="text-align:left">Nội dung log</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda Backend</td>
+<td style="text-align:left">Request từ Web/App, truy vấn DynamoDB, lỗi xử lý</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Presigned URL</td>
+<td style="text-align:left">Quá trình tạo URL upload ảnh cho ESP32 Camera</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Image Processing</td>
+<td style="text-align:left">Xử lý ảnh từ S3, gọi Rekognition</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Sensor Processing</td>
+<td style="text-align:left">Xử lý dữ liệu cảm biến từ AWS IoT Core</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Request, response, mã lỗi 4xx/5xx</td>
+</tr>
+<tr>
+<td style="text-align:left">AWS IoT Core</td>
+<td style="text-align:left">Dữ liệu MQTT từ ESP32 cảm biến</td>
+</tr>
+<tr>
+<td style="text-align:left">AWS WAF</td>
+<td style="text-align:left">Request bị chặn hoặc request bất thường</td>
+</tr>
+</tbody>
+</table>
+<p>Luồng ghi log:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>API Gateway / Lambda / IoT Core / WAF → Amazon CloudWatch Logs
+</span></span></code></pre></div><p>Ví dụ log xử lý thành công:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;request_id&#34;</span>: <span style="color:#e6db74">&#34;REQ001&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;function&#34;</span>: <span style="color:#e6db74">&#34;LambdaSensorProcessing&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;A01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;occupied&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;result&#34;</span>: <span style="color:#e6db74">&#34;Data saved to DynamoDB&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:30:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ví dụ log lỗi:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;request_id&#34;</span>: <span style="color:#e6db74">&#34;REQ002&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;function&#34;</span>: <span style="color:#e6db74">&#34;LambdaImageProcessing&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;failed&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;error_message&#34;</span>: <span style="color:#e6db74">&#34;Access denied when reading image from S3&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-04-27T10:35:00&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Các bước kiểm tra log trong CloudWatch:</p>
+<ol>
+<li>Truy cập Amazon CloudWatch.</li>
+<li>Chọn <strong>Log Groups</strong>.</li>
+<li>Chọn Log Group của Lambda hoặc API Gateway cần kiểm tra.</li>
+<li>Mở Log Stream gần nhất.</li>
+<li>Kiểm tra thông tin request, response hoặc lỗi.</li>
+<li>Xác định nguyên nhân lỗi và tiến hành xử lý.</li>
+</ol>
+<p>CloudWatch Logs giúp người quản trị truy vết lỗi theo từng bước xử lý, từ lúc request được gửi đến khi dữ liệu được ghi vào DynamoDB.</p>
+<hr>
+<h2 id="53-kiểm-tra-lỗi-lambda-và-api-gateway">5.3. Kiểm tra lỗi Lambda và API Gateway</h2>
+<p>AWS Lambda và Amazon API Gateway là hai thành phần quan trọng trong hệ thống. API Gateway tiếp nhận request từ Web/App hoặc ESP32 Camera, sau đó chuyển request đến Lambda để xử lý. Vì vậy, cần kiểm tra kỹ lỗi ở hai thành phần này.</p>
+<h3 id="531-kiểm-tra-lỗi-aws-lambda">5.3.1. Kiểm tra lỗi AWS Lambda</h3>
+<p>Các Lambda cần kiểm tra gồm:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Lambda Function</th>
+<th style="text-align:left">Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda API Backend</td>
+<td style="text-align:left">Xử lý request từ Web/App</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Presigned URL</td>
+<td style="text-align:left">Tạo Presigned URL cho ESP32 Camera</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Image Processing</td>
+<td style="text-align:left">Xử lý ảnh từ S3 và gọi Rekognition</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Sensor Processing</td>
+<td style="text-align:left">Xử lý dữ liệu cảm biến từ AWS IoT Core</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda AI Service</td>
+<td style="text-align:left">Xử lý truy vấn AI nếu có dùng Bedrock</td>
+</tr>
+</tbody>
+</table>
+<p>Các lỗi Lambda thường gặp:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Lỗi</th>
+<th style="text-align:left">Nguyên nhân</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Timeout</td>
+<td style="text-align:left">Lambda xử lý quá lâu</td>
+</tr>
+<tr>
+<td style="text-align:left">Access Denied</td>
+<td style="text-align:left">Thiếu quyền IAM</td>
+</tr>
+<tr>
+<td style="text-align:left">Invalid Payload</td>
+<td style="text-align:left">Dữ liệu gửi vào sai định dạng</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB Error</td>
+<td style="text-align:left">Lỗi ghi hoặc đọc dữ liệu</td>
+</tr>
+<tr>
+<td style="text-align:left">S3 Access Error</td>
+<td style="text-align:left">Lambda không đọc được ảnh từ S3</td>
+</tr>
+<tr>
+<td style="text-align:left">Rekognition Error</td>
+<td style="text-align:left">Lỗi khi gọi dịch vụ nhận diện ảnh</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ kiểm tra lỗi Lambda:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>CloudWatch → Log Groups → /aws/lambda/LambdaImageProcessing → Log Stream → Kiểm tra ERROR
+</span></span></code></pre></div><p>Ví dụ log lỗi Lambda:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;ERROR&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;function&#34;</span>: <span style="color:#e6db74">&#34;LambdaSensorProcessing&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Invalid sensor payload&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;payload&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;unknown&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Cách xử lý:</p>
+<ul>
+<li>Kiểm tra dữ liệu đầu vào.</li>
+<li>Kiểm tra quyền IAM Role của Lambda.</li>
+<li>Kiểm tra timeout và memory của Lambda.</li>
+<li>Kiểm tra kết nối đến DynamoDB, S3 hoặc Rekognition.</li>
+<li>Ghi log chi tiết để dễ truy vết lỗi.</li>
+</ul>
+<h3 id="532-kiểm-tra-lỗi-api-gateway">5.3.2. Kiểm tra lỗi API Gateway</h3>
+<p>API Gateway là nơi tiếp nhận request từ Web/App và ESP32 Camera. Các lỗi API Gateway thường thể hiện qua mã trạng thái HTTP.</p>
+<p>Một số mã lỗi phổ biến:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Mã lỗi</th>
+<th style="text-align:left">Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">400</td>
+<td style="text-align:left">Request sai định dạng</td>
+</tr>
+<tr>
+<td style="text-align:left">401</td>
+<td style="text-align:left">Chưa xác thực</td>
+</tr>
+<tr>
+<td style="text-align:left">403</td>
+<td style="text-align:left">Không có quyền truy cập</td>
+</tr>
+<tr>
+<td style="text-align:left">404</td>
+<td style="text-align:left">Sai endpoint</td>
+</tr>
+<tr>
+<td style="text-align:left">500</td>
+<td style="text-align:left">Lỗi từ Lambda Backend</td>
+</tr>
+<tr>
+<td style="text-align:left">504</td>
+<td style="text-align:left">Request timeout</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ lỗi API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;request_id&#34;</span>: <span style="color:#e6db74">&#34;REQ003&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;endpoint&#34;</span>: <span style="color:#e6db74">&#34;/parking/slots&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status_code&#34;</span>: <span style="color:#ae81ff">500</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;error_message&#34;</span>: <span style="color:#e6db74">&#34;Internal server error&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Luồng kiểm tra lỗi API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App → API Gateway → Lambda Backend → CloudWatch Logs
+</span></span></code></pre></div><p>Các bước kiểm tra:</p>
+<ol>
+<li>Kiểm tra endpoint có đúng không.</li>
+<li>Kiểm tra method là GET, POST, PUT hay DELETE.</li>
+<li>Kiểm tra request có token Cognito không.</li>
+<li>Kiểm tra API Gateway có gọi đúng Lambda không.</li>
+<li>Kiểm tra log của Lambda trong CloudWatch.</li>
+<li>Kiểm tra response trả về cho Web/App.</li>
+</ol>
+<p>Việc kiểm tra Lambda và API Gateway giúp đảm bảo Web/App có thể lấy dữ liệu chính xác và ESP32 Camera có thể xin Presigned URL thành công.</p>
+<hr>
+<h2 id="54-kiểm-tra-bảo-mật-cognito-iam-và-waf">5.4. Kiểm tra bảo mật Cognito, IAM và WAF</h2>
+<p>Bảo mật là phần quan trọng trong hệ thống Parking IoT vì hệ thống có dữ liệu người dùng, hình ảnh xe, biển số xe và dữ liệu trạng thái bãi đỗ. Các dịch vụ chính được sử dụng để bảo vệ hệ thống gồm <strong>Amazon Cognito, IAM và AWS WAF</strong>.</p>
+<hr>
+<h3 id="541-kiểm-tra-bảo-mật-amazon-cognito">5.4.1. Kiểm tra bảo mật Amazon Cognito</h3>
+<p>Amazon Cognito được sử dụng để xác thực người dùng trước khi truy cập vào các API quan trọng.</p>
+<p>Luồng xác thực:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Web/App → Amazon Cognito → Token → API Gateway → Lambda Backend
+</span></span></code></pre></div><p>Các nội dung cần kiểm tra:</p>
+<ul>
+<li>Người dùng có đăng nhập thành công không.</li>
+<li>Token có được tạo sau khi đăng nhập không.</li>
+<li>API Gateway có kiểm tra token bằng Cognito Authorizer không.</li>
+<li>Token hết hạn có bị từ chối không.</li>
+<li>Người dùng không đăng nhập có bị chặn khi gọi API không.</li>
+</ul>
+<p>Ví dụ kiểm thử không có token:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User gọi API /vehicle/logs nhưng không có Cognito Token → API Gateway từ chối request
+</span></span></code></pre></div><p>Kết quả mong đợi:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Request không hợp lệ bị từ chối.
+</span></span><span style="display:flex;"><span>Chỉ người dùng đăng nhập hợp lệ mới được gọi API bảo vệ.
+</span></span></code></pre></div><hr>
+<h3 id="542-kiểm-tra-phân-quyền-iam">5.4.2. Kiểm tra phân quyền IAM</h3>
+<p>IAM được dùng để kiểm soát quyền truy cập giữa các dịch vụ AWS. Mỗi Lambda hoặc dịch vụ chỉ nên được cấp quyền đúng với nhiệm vụ của nó.</p>
+<p>Ví dụ phân quyền IAM:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Thành phần</th>
+<th style="text-align:left">Quyền cần có</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda Backend</td>
+<td style="text-align:left">Đọc/ghi DynamoDB</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Presigned URL</td>
+<td style="text-align:left">Tạo Presigned URL upload S3</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Image Processing</td>
+<td style="text-align:left">Đọc ảnh S3, gọi Rekognition, ghi DynamoDB</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Sensor Processing</td>
+<td style="text-align:left">Ghi dữ liệu cảm biến vào DynamoDB</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Gọi Lambda</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Rule</td>
+<td style="text-align:left">Kích hoạt Lambda</td>
+</tr>
+</tbody>
+</table>
+<p>Nguyên tắc kiểm tra IAM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Không cấp quyền AdministratorAccess cho Lambda.
+</span></span><span style="display:flex;"><span>Không lưu Access Key và Secret Key trực tiếp trong ESP32.
+</span></span><span style="display:flex;"><span>Mỗi Lambda chỉ có quyền đúng với nhiệm vụ cần thực hiện.
+</span></span></code></pre></div><p>Ví dụ lỗi do thiếu quyền IAM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;AccessDeniedException&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Lambda is not authorized to access DynamoDB table&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Cách xử lý:</p>
+<ul>
+<li>Kiểm tra IAM Role gắn với Lambda.</li>
+<li>Kiểm tra Policy có quyền đọc/ghi đúng tài nguyên không.</li>
+<li>Không dùng quyền quá rộng.</li>
+<li>Áp dụng nguyên tắc Least Privilege.</li>
+</ul>
+<hr>
+<h3 id="543-kiểm-tra-bảo-mật-aws-waf">5.4.3. Kiểm tra bảo mật AWS WAF</h3>
+<p>AWS WAF được sử dụng để bảo vệ lớp website và API khỏi các request bất thường. WAF thường được gắn với CloudFront để lọc request trước khi request đi vào hệ thống.</p>
+<p>Luồng bảo vệ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → CloudFront + AWS WAF → S3 Static Website / API Gateway
+</span></span></code></pre></div><p>Các nội dung cần kiểm tra:</p>
+<ul>
+<li>WAF có được gắn với CloudFront không.</li>
+<li>Rule chặn IP bất thường có hoạt động không.</li>
+<li>Rule giới hạn request có hoạt động không.</li>
+<li>Request bị chặn có được ghi log không.</li>
+<li>Có phát hiện request bất thường hay không.</li>
+</ul>
+<p>Ví dụ rule bảo mật:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Chặn request từ IP đáng ngờ.
+</span></span><span style="display:flex;"><span>Giới hạn số lượng request quá nhiều trong thời gian ngắn.
+</span></span><span style="display:flex;"><span>Chặn request có mẫu tấn công phổ biến.
+</span></span></code></pre></div><p>Kết quả mong đợi:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Các request không hợp lệ hoặc bất thường bị WAF chặn trước khi vào hệ thống.
+</span></span></code></pre></div><hr>
+<h2 id="55-cảnh-báo-hệ-thống-và-chi-phí">5.5. Cảnh báo hệ thống và chi phí</h2>
+<p>Ngoài việc kiểm tra log thủ công, hệ thống cần có cơ chế cảnh báo tự động để người quản trị phát hiện lỗi kịp thời. Các cảnh báo có thể được cấu hình bằng <strong>CloudWatch Alarm, Amazon SNS và AWS Budgets</strong>.</p>
+<hr>
+<h3 id="551-cảnh-báo-lỗi-hệ-thống-bằng-cloudwatch-alarm">5.5.1. Cảnh báo lỗi hệ thống bằng CloudWatch Alarm</h3>
+<p>CloudWatch Alarm được sử dụng để theo dõi các chỉ số bất thường và gửi cảnh báo khi vượt ngưỡng.</p>
+<p>Một số cảnh báo nên cấu hình:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Dịch vụ</th>
+<th style="text-align:left">Điều kiện cảnh báo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lambda</td>
+<td style="text-align:left">Errors &gt; 0 trong 5 phút</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway</td>
+<td style="text-align:left">Tỷ lệ lỗi 5xx tăng cao</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB</td>
+<td style="text-align:left">Lỗi ghi dữ liệu</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Core</td>
+<td style="text-align:left">Không nhận dữ liệu từ thiết bị trong thời gian dài</td>
+</tr>
+<tr>
+<td style="text-align:left">CloudFront/WAF</td>
+<td style="text-align:left">Nhiều request bị chặn bất thường</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ cảnh báo Lambda:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Nếu Lambda Image Processing có Errors &gt; 0 trong 5 phút → gửi cảnh báo email cho quản trị viên.
+</span></span></code></pre></div><p>Luồng cảnh báo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>CloudWatch Alarm → Amazon SNS → Email Administrator
+</span></span></code></pre></div><p>Ví dụ nội dung cảnh báo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Alarm: LambdaImageProcessingError
+</span></span><span style="display:flex;"><span>Status: ALARM
+</span></span><span style="display:flex;"><span>Reason: Lambda Image Processing has 3 errors in the last 5 minutes.
+</span></span></code></pre></div><hr>
+<h3 id="552-cảnh-báo-chi-phí-bằng-aws-budgets">5.5.2. Cảnh báo chi phí bằng AWS Budgets</h3>
+<p>AWS Budgets được sử dụng để theo dõi chi phí và gửi cảnh báo khi chi phí vượt ngưỡng đã cấu hình.</p>
+<p>Các dịch vụ cần theo dõi chi phí:</p>
+<ul>
+<li>Amazon S3.</li>
+<li>AWS Lambda.</li>
+<li>API Gateway.</li>
+<li>DynamoDB.</li>
+<li>CloudWatch Logs.</li>
+<li>Rekognition.</li>
+<li>Bedrock.</li>
+<li>CloudFront.</li>
+<li>AWS WAF.</li>
+</ul>
+<p>Ví dụ cấu hình ngân sách:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Monthly Budget: 10 USD
+</span></span><span style="display:flex;"><span>Alert 1: 50% budget
+</span></span><span style="display:flex;"><span>Alert 2: 80% budget
+</span></span><span style="display:flex;"><span>Alert 3: 100% budget
+</span></span></code></pre></div><p>Luồng cảnh báo chi phí:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>AWS Budgets → Email Administrator
+</span></span></code></pre></div><p>Lợi ích:</p>
+<ul>
+<li>Tránh phát sinh chi phí ngoài dự kiến.</li>
+<li>Phát hiện dịch vụ sử dụng quá nhiều.</li>
+<li>Phù hợp với môi trường học tập, demo và thử nghiệm.</li>
+<li>Hỗ trợ quản lý ngân sách AWS hiệu quả hơn.</li>
+</ul>
+<hr>
+<h2 id="56-đánh-giá-kết-quả-giám-sát-và-bảo-mật">5.6. Đánh giá kết quả giám sát và bảo mật</h2>
+<p>Sau khi cấu hình giám sát, logs và bảo mật, cần đánh giá kết quả để xác định hệ thống có hoạt động ổn định và an toàn hay không.</p>
+<h3 id="561-đánh-giá-kết-quả-giám-sát">5.6.1. Đánh giá kết quả giám sát</h3>
+<p>Các tiêu chí đánh giá:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tiêu chí</th>
+<th style="text-align:left">Kết quả mong đợi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CloudWatch Logs</td>
+<td style="text-align:left">Ghi nhận đầy đủ log Lambda và API Gateway</td>
+</tr>
+<tr>
+<td style="text-align:left">Lambda Monitoring</td>
+<td style="text-align:left">Theo dõi được số lần gọi, lỗi và thời gian xử lý</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway Logs</td>
+<td style="text-align:left">Ghi nhận request, response và mã lỗi</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Logs</td>
+<td style="text-align:left">Theo dõi được dữ liệu từ ESP32 cảm biến</td>
+</tr>
+<tr>
+<td style="text-align:left">S3 Processing Logs</td>
+<td style="text-align:left">Theo dõi được quá trình upload và xử lý ảnh</td>
+</tr>
+<tr>
+<td style="text-align:left">DynamoDB Logs</td>
+<td style="text-align:left">Phát hiện được lỗi ghi hoặc truy vấn dữ liệu</td>
+</tr>
+</tbody>
+</table>
+<p>Kết quả mong đợi:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Người quản trị có thể kiểm tra toàn bộ luồng xử lý dữ liệu thông qua CloudWatch Logs.
+</span></span><span style="display:flex;"><span>Các lỗi phát sinh được ghi nhận rõ ràng và có thể truy vết theo từng thành phần.
+</span></span></code></pre></div><hr>
+<h3 id="562-đánh-giá-kết-quả-bảo-mật">5.6.2. Đánh giá kết quả bảo mật</h3>
+<p>Các tiêu chí đánh giá bảo mật:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Thành phần</th>
+<th style="text-align:left">Kết quả mong đợi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Cognito</td>
+<td style="text-align:left">Chỉ người dùng hợp lệ mới đăng nhập được</td>
+</tr>
+<tr>
+<td style="text-align:left">API Gateway Authorizer</td>
+<td style="text-align:left">Chặn request không có token</td>
+</tr>
+<tr>
+<td style="text-align:left">IAM</td>
+<td style="text-align:left">Mỗi dịch vụ chỉ có quyền cần thiết</td>
+</tr>
+<tr>
+<td style="text-align:left">WAF</td>
+<td style="text-align:left">Chặn request bất thường</td>
+</tr>
+<tr>
+<td style="text-align:left">Presigned URL</td>
+<td style="text-align:left">Chỉ upload ảnh trong thời gian cho phép</td>
+</tr>
+<tr>
+<td style="text-align:left">IoT Policy</td>
+<td style="text-align:left">ESP32 chỉ publish vào topic được cấp quyền</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ kết quả kiểm thử bảo mật:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Người dùng không có token không thể gọi API /vehicle/logs.
+</span></span><span style="display:flex;"><span>User thường không thể truy cập API quản trị.
+</span></span><span style="display:flex;"><span>ESP32 Sensor chỉ được gửi dữ liệu vào topic của chính nó.
+</span></span><span style="display:flex;"><span>Presigned URL hết hạn sẽ không còn upload được ảnh.
+</span></span></code></pre></div><hr>
+<h3 id="563-đánh-giá-tổng-hợp">5.6.3. Đánh giá tổng hợp</h3>
+<p>Bảng đánh giá tổng hợp:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Hạng mục</th>
+<th style="text-align:left">Kết quả đánh giá</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Giám sát Lambda</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Giám sát API Gateway</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Giám sát dữ liệu ESP32</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Ghi log CloudWatch</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Xác thực Cognito</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Phân quyền IAM</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Bảo vệ bằng WAF</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+<tr>
+<td style="text-align:left">Cảnh báo chi phí</td>
+<td style="text-align:left">Đạt</td>
+</tr>
+</tbody>
+</table>
+<p>Nhìn chung, hệ thống đã có đầy đủ các lớp giám sát và bảo mật cơ bản. CloudWatch giúp theo dõi hoạt động và lỗi hệ thống, Cognito hỗ trợ xác thực người dùng, IAM kiểm soát quyền giữa các dịch vụ, WAF bảo vệ website khỏi request bất thường và AWS Budgets hỗ trợ kiểm soát chi phí.</p>
+<hr>
+<h2 id="57-kết-luận">5.7. Kết luận</h2>
+<p>Phần giám sát, logs và bảo mật giúp hệ thống Parking IoT vận hành ổn định, an toàn và dễ quản trị hơn. Amazon CloudWatch đóng vai trò trung tâm trong việc ghi log, theo dõi lỗi và hỗ trợ truy vết sự cố. API Gateway và Lambda được giám sát để đảm bảo request từ Web/App và ESP32 được xử lý chính xác.</p>
+<p>Bên cạnh đó, Amazon Cognito giúp xác thực người dùng, IAM đảm bảo mỗi dịch vụ chỉ có quyền cần thiết, AWS WAF bảo vệ lớp truy cập bên ngoài và AWS Budgets giúp kiểm soát chi phí. Với các cơ chế này, hệ thống Parking IoT có thể giảm rủi ro bảo mật, phát hiện lỗi nhanh hơn và phù hợp với quá trình vận hành thực tế trên AWS.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/" title="Web Dashboard"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/" title="Dọn dẹp tài nguyên" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/clipboard.min.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.min.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.jquery.min.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/jquery.sticky.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/featherlight.min.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/highlight.pack.js?1783692330"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/modernizr.custom-3.6.0.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/learn.js?1783692330"></script>
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/js/hugo-learn.js?1783692330"></script>
+
+    <link href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/mermaid/mermaid.css?1783692330" rel="stylesheet" />
+    <script src="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/mermaid/mermaid.js?1783692330"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

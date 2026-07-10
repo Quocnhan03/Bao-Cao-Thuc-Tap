@@ -41,6 +41,18 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/"
                 />
   </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/1-iot-core/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/1-iot-core/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/1-iot-core/"
+                />
+  </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/</loc>
     <xhtml:link
                 rel="alternate"
@@ -51,6 +63,30 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/1-overview/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/1-overview/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/1-overview/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/1-lambda-image/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/1-lambda-image/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/1-lambda-image/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/2-proposal/</loc>
@@ -79,6 +115,30 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/"
                 />
   </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/2-prerequisites/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/2-prerequisites/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/2-prerequisites/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/2-s3/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/2-s3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/2-s3/"
+                />
+  </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/</loc>
     <xhtml:link
                 rel="alternate"
@@ -89,6 +149,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/2-rekognition/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/2-rekognition/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/2-rekognition/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/</loc>
@@ -102,6 +174,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/</loc>
@@ -126,6 +210,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/3-dynamodb/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/3-dynamodb/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/3-dynamodb/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/</loc>
@@ -153,6 +249,30 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/"
                 />
   </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/4-end-to-end/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/4-end-to-end/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/4-end-to-end/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/"
+                />
+  </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/4-logging/</loc>
     <xhtml:link
                 rel="alternate"
@@ -178,6 +298,18 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/"
                 />
   </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/5-api-cognito-bedrock/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/5-api-cognito-bedrock/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/5-api-cognito-bedrock/"
+                />
+  </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/</loc>
     <xhtml:link
                 rel="alternate"
@@ -190,16 +322,29 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-portfwd/</loc>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-portfwd/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-portfwd/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-self-assessment/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/6-self-assessment/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-self-assessment/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/</loc>
@@ -215,16 +360,16 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-cleanup/</loc>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/6-esp32/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/6-cleanup/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/6-esp32/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-cleanup/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/6-esp32/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/</loc>
@@ -237,6 +382,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/7-sharing-and-feedback/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/</loc>
@@ -252,8 +410,20 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/"
                 />
   </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/7-dashboard/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/"
+                />
+  </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/</loc>
-    <lastmod>2026-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -265,17 +435,41 @@
                 href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/t9/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t9/t9/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/8-monitoring/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/t9/"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t9/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/"
+                />
+  </url><url>
+    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/9-cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/"
                 />
   </url><url>
     <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t10/t10/</loc>

@@ -1,432 +1,220 @@
 ---
-title: "Project Proposal"
-date: 2026-04-27
+title: "Proposal"
+date: 2026-04-26
 weight: 2
-pre : " <b> 2. </b> "
+chapter: false
+pre: " <b> 2. </b> "
 ---
 
-# PROJECT PROPOSAL: Smart Parking IoT System
+# Smart Parking IoT Platform with AWS Serverless
 
-**AWS Serverless Solution for Parking Monitoring, License Plate Recognition, and AI Assistance**
+> **AWS Serverless Solution for Parking Monitoring, License Plate Recognition, and AI Assistance**
+
+---
 
 ## 1. Executive Summary
 
-This project proposes the development of a **Smart Parking IoT System** that automates parking lot monitoring, vehicle identification, and real-time data management. The system uses IoT devices such as **ESP32 Camera** and **ESP32 sensors** to collect vehicle images, parking slot status, and operational data from the parking area.
+The project aims to build a **Smart Parking IoT** system that automates the parking monitoring process, vehicle recognition, and real-time data management. The system utilizes IoT devices such as **ESP32 Camera** and **ESP32 Sensors** to capture images of vehicles entering/exiting, monitor parking slot availability, and collect data from the parking lot.
 
-The collected data is sent to AWS services such as **AWS IoT Core**, **Amazon S3**, **Amazon API Gateway**, and processed using **AWS Lambda**. Vehicle images are stored in Amazon S3 and automatically trigger Lambda functions for image processing. **Amazon Rekognition** is used to analyze vehicle images and support license plate recognition. The processed results and sensor data are stored in **Amazon DynamoDB** for management, searching, and dashboard visualization.
+Data from the devices is transmitted to AWS through services like **AWS IoT Core**, **Amazon S3**, and **Amazon API Gateway**, and processed using **AWS Lambda**. Vehicle images are stored in **Amazon S3**, which triggers Lambda to process the images and call **Amazon Rekognition** for license plate recognition. The recognition results and sensor data are stored in **Amazon DynamoDB** for querying, management, and display on the Web/App.
 
-In addition, the system integrates **Amazon Bedrock** through a **Lambda AI Service** to support intelligent data analysis and natural language queries. By using an AWS Serverless architecture, the system can scale flexibly, reduce operational costs, and avoid traditional server management.
+Additionally, the system integrates **Amazon Bedrock** via a **Lambda AI Service** layer to support data analysis, answer intelligent queries, and provide a modern parking management experience. With the AWS Serverless architecture, the system is highly scalable, reduces operational costs, and eliminates the need for traditional server management.
 
 ---
 
 ## 2. Problem Statement
 
-### 2.1 Current Challenges
+### 2.1. Current Challenges
 
-Traditional parking lots often face several limitations in daily operation and management. Vehicle entry and exit records are usually handled manually, which may lead to mistakes in license plate recording, parking time tracking, and parking slot monitoring. As the number of vehicles increases, manual management becomes more difficult, less accurate, and time-consuming.
+Traditional parking lots face many limitations in operations and management. Controlling vehicle entry and exit still heavily relies on human effort, leading to errors in recording license plates, entry times, or parking slot statuses. As the number of vehicles increases, manual management becomes difficult, inaccurate, and time-consuming.
 
-The main challenges include:
+Key issues include:
+- Difficulty in quickly checking the availability of individual parking slots.
+- Manual recording of vehicle entry/exit is prone to confusing license plates or times.
+- Data regarding images, license plates, and parking lot status is not centrally managed.
+- It is difficult for managers to track the historical activity of vehicles.
+- Scaling the system when the number of cameras, sensors, or parking slots increases is challenging.
+- Building a custom system can be expensive if physical servers need to be invested in.
 
-* Difficulty in checking real-time parking slot availability.
-* Manual recording of vehicle entry and exit information.
-* Lack of centralized storage for images, license plate data, and sensor data.
-* Difficulty in tracking vehicle history and parking activities.
-* Limited scalability when adding more cameras, sensors, or parking slots.
-* High cost if the system requires physical servers or dedicated infrastructure.
+### 2.2. Proposed Solution
 
-### 2.2 Proposed Solution
+The project proposes building a smart Parking IoT system on the AWS Serverless platform. The system uses ESP32 Cameras to capture images of entering/exiting vehicles, and ESP32 Sensors to record the status of parking slots, then sends the data to AWS for processing and centralized storage.
 
-The proposed solution is to build a **Smart Parking IoT System using AWS Serverless architecture**. The system uses ESP32 Camera to capture vehicle images and ESP32 sensors to detect parking slot status. The collected data is then sent to AWS for processing, storage, monitoring, and visualization.
+**The solution includes the following main functions:**
+- **ESP32 Camera** captures images of vehicles when they enter or leave the lot.
+- **ESP32 Sensors** detect the status of each parking slot.
+- Vehicle images are uploaded to **Amazon S3** via Presigned URLs.
+- **AWS Lambda** processes events when new images are uploaded to S3.
+- **Amazon Rekognition** analyzes images and assists in recognizing license plates.
+- **DynamoDB** stores vehicle information, license plates, timestamps, statuses, and sensor data.
+- **Web/App** allows users to log in, view parking lot status, and track vehicle entry/exit history.
+- **Amazon Cognito** supports user authentication and authorization.
+- **Amazon Bedrock** provides an AI layer to analyze data and answer intelligent questions.
+- **Amazon CloudWatch** monitors logs, errors, and the operational status of the system.
 
-The main features include:
+### 2.3. Expected Outcomes
 
-* ESP32 Camera captures vehicle images when cars enter or exit the parking area.
-* ESP32 sensors detect the status of each parking slot.
-* Vehicle images are uploaded to Amazon S3 using Presigned URLs.
-* AWS Lambda processes events when new images are uploaded to S3.
-* Amazon Rekognition analyzes vehicle images and supports license plate recognition.
-* DynamoDB stores vehicle information, license plate data, timestamps, parking slot status, and sensor data.
-* Web/App interface allows users to log in, view parking status, and check vehicle history.
-* Amazon Cognito provides user authentication and authorization.
-* Amazon Bedrock supports AI-based data analysis and intelligent user queries.
-* Amazon CloudWatch monitors logs, errors, and system performance.
+The system reduces manual operations, increases accuracy in parking management, supports real-time monitoring, and creates a data foundation for future AI analysis. By leveraging the Serverless architecture, the system can scale flexibly based on the number of devices, vehicles, and actual usage demand.
 
-### 2.3 Expected Benefits
+### 2.4. Project Scope
 
-The system helps reduce manual work, improve parking management accuracy, support real-time monitoring, and create a centralized data platform for future AI analysis. With serverless architecture, the system can scale based on the number of devices, vehicles, and user requests.
+Defining the scope ensures the project focuses on core functionalities and remains feasible during deployment:
+- **In Scope:** AI-based license plate recognition, tracking parking slot status using sensors, auto-logging entry/exit history, gate opening decisions, displaying a monitoring dashboard on a Web App, and supporting queries via Bedrock virtual assistant.
+- **Out of Scope:** Online parking fee payment modules are not integrated yet, and there is no native Mobile App developed (focusing entirely on the Web App platform).
+
+### 2.5. Specific Objectives (KPIs)
+
+The project sets measurable technical targets to evaluate its success:
+- **Latency:** The time from capturing an image to storing data, analyzing the license plate, and sending the open-gate command is under 2-3 seconds.
+- **Accuracy:** The license plate recognition accuracy (Confidence score) exceeds 95% under good lighting conditions.
+- **Reliability:** The AWS Serverless infrastructure ensures up to 99.9% uptime and scales automatically during traffic spikes.
 
 ---
 
 ## 3. Solution Architecture
 
-The system follows an **AWS Serverless Architecture** to reduce infrastructure management, improve scalability, and integrate easily with AWS IoT, AI, storage, and database services.
+The system applies the **AWS Serverless** architecture to reduce infrastructure management costs, increase scalability, and easily integrate with AI, IoT, and database services on AWS.
 
-![Smart Parking IoT Architecture](/images/2-proposal-architecture.png)
+*Overall Architecture Diagram (AWS Serverless Architecture):*
 
-### 3.1 Key AWS Services
+![Overall Architecture - Smart Parking IoT](/images/2-Proposal/2-proposal-architecture.png)
 
-#### User Interface
+### 3.1. Key AWS Services
 
-* **Amazon Route 53:** Manages the domain name of the system.
-* **Amazon CloudFront:** Delivers website content with low latency.
-* **AWS WAF:** Protects the web application from malicious requests.
-* **Amazon S3 Static Website:** Hosts the static Web/App interface.
-
-#### Authentication and Authorization
-
-* **Amazon Cognito:** Manages user login, authentication, and access control.
-* **IAM:** Controls permissions between AWS services.
-
-#### API and Backend Processing
-
-* **Amazon API Gateway:** Receives requests from Web/App and IoT devices.
-* **AWS Lambda API Backend:** Handles the main business logic of the system.
-* **AWS Lambda Image Processing:** Processes images after they are uploaded to S3.
-* **AWS Lambda Sensor Processing:** Processes sensor data from ESP32 devices.
-* **AWS Lambda AI Service:** Connects with Amazon Bedrock for AI-based functions.
-
-#### IoT and Edge Devices
-
-* **ESP32 Camera:** Captures images of vehicles.
-* **ESP32 Sensors:** Detect parking slot status.
-* **AWS IoT Core:** Receives IoT data from devices using the MQTT protocol.
-
-#### Storage and Database
-
-* **Amazon S3:** Stores vehicle images.
-* **Amazon DynamoDB:** Stores license plate data, vehicle history, parking slot status, and user-related data.
-
-#### Image Processing and AI
-
-* **Amazon Rekognition:** Analyzes vehicle images and supports license plate recognition.
-* **Amazon Bedrock:** Provides AI support for intelligent analysis and natural language queries.
-
-#### Monitoring
-
-* **Amazon CloudWatch:** Collects logs, monitors system errors, and tracks service performance.
+| Module | AWS Service | Function |
+| :--- | :--- | :--- |
+| **User Interface** | Amazon Route 53 <br> Amazon CloudFront <br> AWS WAF <br> Amazon S3 Static Website | Domain management. <br> Website content distribution. <br> Protect website from malicious access. <br> Host static Web/App interface. |
+| **Authentication & Authorization** | Amazon Cognito <br> IAM | Manage login, authentication. <br> Manage access permissions between services. |
+| **API & Backend** | Amazon API Gateway <br> AWS Lambda | Receive requests from Web/App/Devices. <br> Handle core business logic, image processing, sensor data, and AI. |
+| **IoT & Edge Devices** | AWS IoT Core <br> ESP32 Camera / Sensors | Receive MQTT data from IoT devices. <br> Collect images and parking slot statuses. |
+| **Storage & Database** | Amazon S3 <br> Amazon DynamoDB | Store vehicle images. <br> Store license plate data, history, and parking slot statuses. |
+| **Image Processing & AI** | Amazon Rekognition <br> Amazon Bedrock | Analyze images, recognize license plates. <br> Support data analysis, intelligent queries. |
+| **System Monitoring** | Amazon CloudWatch | Log recording, error tracking, monitoring related components. |
 
 ---
 
-## 4. System Workflow
+## 4. System Operational Flow
 
-### 4.1 Web/App Access Flow
+### 4.1. Web/App Access Flow
 
-Users access the system through a web browser or mobile device. The website is hosted on Amazon S3 Static Website and distributed through Amazon CloudFront. Route 53 manages the domain name, while AWS WAF helps protect the application from harmful requests.
+Users access the system through a web browser or mobile device. The website is hosted on Amazon S3 Static Website and distributed via Amazon CloudFront.
 
-**Workflow:**
-
+```text
 User → Route 53 → CloudFront → AWS WAF → Amazon S3 Static Website → API Gateway → Lambda Backend → DynamoDB
+```
 
-Explanation:
+### 4.2. User Authentication Flow
 
-* The user accesses the system through a domain name.
-* Route 53 routes the request to CloudFront.
-* CloudFront delivers the web interface from Amazon S3.
-* AWS WAF filters and blocks malicious requests.
-* The Web/App calls API Gateway to retrieve parking data.
-* Lambda Backend processes the request and queries DynamoDB.
-* DynamoDB returns data to the Web/App for display.
+The system uses Amazon Cognito to authenticate users. Cognito issues a token that the Web/App includes in requests to the API Gateway.
 
----
+```text
+User → Amazon Cognito → API Gateway (Cognito Authorizer) → Lambda Backend → DynamoDB
+```
 
-### 4.2 User Authentication Flow
+### 4.3. Gate Area Wiring Diagram (ESP32 Camera)
 
-The system uses Amazon Cognito to authenticate users before allowing access to parking management features. After successful login, Cognito returns an authentication token. The Web/App sends this token with requests to API Gateway.
+The gate area is equipped with an ESP32 microcontroller combined with a Camera module to recognize vehicles entering and exiting the parking lot.
 
-**Workflow:**
+![Gate Wiring Diagram](/images/2-Proposal/1.Smart%20Parking%20Gate%20Wiring%20-%20English.png)
 
-User → Amazon Cognito → API Gateway → Lambda Backend → DynamoDB
-
-Explanation:
-
-* The user enters username and password in the Web/App.
-* Amazon Cognito verifies the login information.
-* If authentication is successful, Cognito returns a token.
-* The Web/App sends the token to API Gateway.
-* API Gateway uses Cognito Authorizer to validate access.
-* Lambda Backend handles the request if the user is authorized.
-
----
-
-### 4.3 ESP32 Camera Image Upload Flow
-
-When a vehicle enters or exits the parking lot, the ESP32 Camera captures an image. Instead of sending the image directly through Lambda, the device requests a **Presigned URL** from API Gateway. Then, the ESP32 Camera uploads the image directly to Amazon S3.
-
-This approach reduces Lambda workload, improves upload efficiency, and follows AWS best practices.
-
-**Workflow:**
-
-ESP32 Camera → API Gateway → Lambda Backend → Presigned URL → Amazon S3 → S3 Trigger → Lambda Image Processing → Amazon Rekognition → DynamoDB
-
-Detailed steps:
-
-1. ESP32 Camera captures a vehicle image.
-2. ESP32 Camera sends a request to API Gateway to get a Presigned URL.
-3. API Gateway forwards the request to Lambda Backend.
-4. Lambda Backend generates a Presigned URL for uploading the image to Amazon S3.
-5. ESP32 Camera receives the Presigned URL.
-6. ESP32 Camera uploads the JPEG image directly to Amazon S3.
-7. Amazon S3 triggers an ObjectCreated event.
-8. The event invokes Lambda Image Processing.
-9. Lambda calls Amazon Rekognition to analyze the image.
-10. The recognition result is stored in DynamoDB.
-
-Example image data:
-
+**Example of historical vehicle entry/exit data stored:**
 ```json
 {
-  "image_id": "car_001.jpg",
-  "plate_number": "51A-12345",
-  "direction": "in",
-  "timestamp": "2026-04-27T10:30:00",
-  "s3_url": "s3://parking-image-bucket/car_001.jpg"
+  "plate_number": "29A17938",
+  "timestamp": 1782032316749,
+  "allow_open": true,
+  "bucket": "smart-parking-images-075647413376-ap-southeast-1-an",
+  "camera_id": "gate-in-01",
+  "confidence": 98.23,
+  "created_at": "2026-06-21T15:58:36.749547+07:00",
+  "device_id": "gate-in-01",
+  "direction": "IN",
+  "display_plate_number": "29A-179.38",
+  "event_id": "evt_29A17938_1782032316749_IN_21668d9a",
+  "image_key": "parking/in/photo-1782032314126-8770cde7.jpg",
+  "raw_plate_number": "29A-179.38",
+  "status": "ALLOWED",
+  "vehicle_type": "GUEST"
 }
 ```
 
----
+### 4.4. Parking Area Wiring Diagram (ESP32 Sensors)
 
-### 4.4 ESP32 Sensor Data Flow
+The parking slots are equipped with sensors (ultrasonic/infrared) connected to ESP32 microcontrollers to track availability status (empty/occupied).
 
-ESP32 sensors are used to detect the status of each parking slot. The sensors may be ultrasonic sensors, infrared sensors, or magnetic sensors depending on the real implementation. The sensor data is sent to AWS IoT Core using the MQTT protocol.
+![Parking Area Wiring Diagram](/images/2-Proposal/2.Parking%20Area%20Wiring%20-%20English.png)
 
-**Workflow:**
-
-ESP32 Sensor → AWS IoT Core → Lambda Sensor Processing → DynamoDB
-
-Detailed steps:
-
-1. ESP32 sensor reads the parking slot status.
-2. The device sends sensor data to AWS IoT Core using MQTT.
-3. AWS IoT Core receives the data from the device.
-4. IoT Rule forwards the data to Lambda Sensor Processing.
-5. Lambda validates and normalizes the data.
-6. The processed data is stored in DynamoDB.
-7. Web/App retrieves data from DynamoDB to display real-time parking status.
-
-Example sensor data:
-
+**Example of sensor data stored for each parking slot:**
 ```json
 {
-  "slot_id": "A01",
-  "status": "occupied",
-  "timestamp": "2026-04-27T10:30:00"
+  "slot_id": "A1",
+  "distance_cm": 2.8,
+  "is_occupied": 1,
+  "sensor_id": "esp-slot-01",
+  "threshold_cm": 3.5,
+  "updated_at": "2026-07-09T17:33:56.017039+07:00",
+  "zone": "Zone_A",
+  "zone_id": "A"
 }
 ```
 
-Field description:
+### 4.5. AI Service Processing Flow
 
-* `slot_id`: Parking slot ID.
-* `status`: Parking slot status, such as `available` or `occupied`.
-* `timestamp`: Time when the data is recorded.
+The system integrates an AI layer to help users and administrators query parking lot data using natural language.
 
----
-
-### 4.5 AI Service Flow
-
-The system integrates an AI layer to help users and administrators query parking data using natural language. The Web/App sends a question to API Gateway. Then, Lambda AI Service processes the request, retrieves data from DynamoDB if necessary, and calls Amazon Bedrock to generate a response.
-
-**Workflow:**
-
+```text
 Web/App → API Gateway → Lambda AI Service → Amazon Bedrock → DynamoDB → Web/App
+```
 
-Possible AI features include:
+### 4.6. System Monitoring Flow
 
-* Asking the number of available parking slots.
-* Summarizing the number of vehicles currently in the parking lot.
-* Analyzing peak parking hours.
-* Suggesting available parking areas.
-* Helping administrators search vehicle entry and exit history.
-* Summarizing daily parking lot activity.
+Amazon CloudWatch is used to record logs and monitor the activities of all services.
 
-Example question:
-
-> How many parking slots are currently available?
-
-Example response:
-
-> There are currently 12 available parking slots: 5 in Area A and 7 in Area B.
-
----
-
-### 4.6 Monitoring Flow
-
-Amazon CloudWatch is used to collect logs and monitor the operation of the system. It can receive logs from Lambda, API Gateway, AWS IoT Core, and other related components.
-
-**Monitoring Flow:**
-
+```text
 API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch
-
-CloudWatch helps to:
-
-* Track Lambda execution errors.
-* Monitor API Gateway requests.
-* Check IoT device data flow.
-* Record image processing logs.
-* Detect system issues during operation.
+```
 
 ---
 
-## 5. Technical Implementation Plan
+## 5. Technical Implementation
 
-### 5.1 Phase 1: System Analysis and Design
-
-In the first phase, the team analyzes system requirements and defines the implementation scope.
-
-Main tasks:
-
-* Identify the number of entry and exit gates that need ESP32 Cameras.
-* Identify the number of parking slots that need sensors.
-* Design the AWS architecture diagram.
-* Design the data flow between IoT devices and AWS.
-* Design DynamoDB table structure.
-* Define user roles such as User, Manager, and Admin.
-
-### 5.2 Phase 2: IoT Device Deployment
-
-This phase focuses on configuring and testing ESP32 devices.
-
-Main tasks:
-
-* Configure ESP32 Camera to capture vehicle images.
-* Configure ESP32 sensors to read parking slot status.
-* Connect ESP32 sensors to AWS IoT Core using MQTT.
-* Test sensor data transmission to AWS IoT Core.
-* Test ESP32 Camera requesting Presigned URL and uploading images to S3.
-* Check image quality under different lighting conditions.
-
-### 5.3 Phase 3: AWS Backend Development
-
-The backend is developed using AWS serverless services.
-
-Main tasks:
-
-* Create Amazon API Gateway to receive requests from Web/App and devices.
-* Create Lambda Backend for business logic.
-* Create the Presigned URL generation function.
-* Create Amazon S3 Bucket for vehicle image storage.
-* Configure S3 ObjectCreated event to trigger Lambda Image Processing.
-* Integrate Amazon Rekognition for image analysis.
-* Create DynamoDB tables for parking data.
-* Create Lambda Sensor Processing for data from AWS IoT Core.
-* Configure IAM roles with proper permissions.
-
-### 5.4 Phase 4: Web/App Development
-
-The Web/App interface allows users and administrators to monitor and manage the parking lot.
-
-Main features:
-
-* User login and authentication.
-* Parking lot map display.
-* Real-time parking slot status display.
-* Vehicle entry and exit history.
-* License plate, image, and timestamp display.
-* Search vehicle history by license plate.
-* Parking statistics dashboard.
-* User role management.
-
-### 5.5 Phase 5: AI Integration and Monitoring
-
-The final phase focuses on AI integration and monitoring setup.
-
-Main tasks:
-
-* Build Lambda AI Service.
-* Integrate Amazon Bedrock for intelligent queries.
-* Connect AI Service with DynamoDB.
-* Create dashboard or statistics functions.
-* Configure CloudWatch logs.
-* Set up error alerts.
-* Set up cost alerts using AWS Budgets.
-* Perform full system testing before deployment.
+| Phase | Content |
+| :--- | :--- |
+| **Phase 1: Analysis & Design** | Determine deployment scope, number of cameras/sensors, design architecture diagram, and database schema. |
+| **Phase 2: IoT Deployment** | Configure ESP32 Cameras for taking photos and ESP32 Sensors for MQTT connection with AWS IoT Core. |
+| **Phase 3: AWS Backend** | Create API Gateway, Lambda Functions, S3 Buckets, DynamoDB tables, and integrate Rekognition. |
+| **Phase 4: Web/App Development** | Develop the user interface, integrate Cognito authentication, and display parking lot status. |
+| **Phase 5: AI & Monitoring** | Configure Amazon Bedrock, set up CloudWatch logging, and Alarms. |
 
 ---
 
 ## 6. Budget Estimation
 
-The cost of the Smart Parking IoT System depends on the number of devices, image processing volume, API requests, storage size, and AI usage.
+### 6.1. Hardware Costs
+- **ESP32 Camera**: Based on the number of entry/exit gates.
+- **ESP32 Sensors & Ultrasonic Sensors**: Based on the number of parking slots.
+- **Accessories**: Power supply, wiring, protective housing, Router/WiFi.
 
-### 6.1 Hardware Cost
-
-| Item | Quantity | Purpose |
-| :--- | :---: | :--- |
-| ESP32 Camera | Based on entry/exit gates | Capture vehicle and license plate images |
-| ESP32 Sensor | Based on parking slots | Detect parking slot status |
-| Ultrasonic / Infrared Sensor | Based on parking slots | Detect vehicle presence |
-| Power Supply | Based on devices | Provide power to ESP32 devices |
-| Wires and Protective Case | As needed | Protect and connect devices |
-| Router / WiFi Device | 1 or more | Connect devices to the Internet |
-
-### 6.2 AWS Service Cost
-
-| AWS Service | Purpose |
-| :--- | :--- |
-| AWS IoT Core | Receive MQTT data from ESP32 sensors |
-| Amazon S3 | Store vehicle images |
-| AWS Lambda | Process backend logic, images, and sensor data |
-| Amazon API Gateway | Receive requests from Web/App and devices |
-| Amazon Rekognition | Analyze images and support license plate recognition |
-| Amazon DynamoDB | Store vehicle, license plate, and parking slot data |
-| Amazon CloudFront | Deliver the web interface |
-| Amazon Cognito | Authenticate and manage users |
-| Amazon CloudWatch | Store logs and monitor the system |
-| Amazon Bedrock | Support advanced AI features |
-| AWS Budgets | Monitor and alert AWS costs |
-
-For a demo or small-scale deployment, the cost can be controlled by limiting the number of processed images, reducing S3 image retention time, optimizing API requests, and using Amazon Bedrock only when needed.
+### 6.2. AWS Service Costs (Pay-as-you-go)
+- **Compute & Processing**: AWS Lambda, Amazon Rekognition, Amazon Bedrock.
+- **Storage**: Amazon S3 (Images), Amazon DynamoDB (Data).
+- **Networking & API**: AWS IoT Core, Amazon API Gateway, Amazon CloudFront.
+- **Management**: Amazon Cognito, Amazon CloudWatch, AWS Budgets.
 
 ---
 
-## 7. Risk Assessment and Mitigation Strategy
+## 7. Risk Assessment & Mitigation
 
-| Risk | Level | Mitigation Strategy |
-| :--- | :---: | :--- |
-| ESP32 loses network connection | Medium | Store data locally and resend when the connection is restored |
-| Blurry license plate images | High | Adjust camera angle, lighting, and shooting distance |
-| Incorrect license plate recognition | Medium | Combine manual verification and improve image quality |
-| Device damage due to environment | Medium | Use protective cases and perform regular maintenance |
-| API Gateway or Lambda errors | Medium | Monitor logs using CloudWatch |
-| AWS cost overrun | Medium | Set up AWS Budgets and cost alerts |
-| Unauthorized data access | High | Use Cognito, IAM, WAF, and strict access control |
-| Difficulty in scaling | Low | Use serverless design to easily add more devices and services |
+| Risk | Severity | Mitigation Plan |
+| :--- | :--- | :--- |
+| **Device loses network connection** | Medium | Temporarily store data locally and resend when the network is restored. |
+| **Blurry license plate images** | High | Adjust camera angle, lighting, and shooting distance. |
+| **Incorrect license plate recognition** | Medium | Combine with manual verification and improve image quality. |
+| **AWS Service Error (Lambda, API)** | Medium | Monitor CloudWatch Alarms for timely handling. |
+| **Exceeding AWS budget** | Medium | Set up AWS Budgets for automated alerts. |
 
 ---
 
-## 8. Expected Outcomes
+## 8. Conclusion
 
-### 8.1 Technical Outcomes
-
-After completion, the system is expected to achieve the following results:
-
-* Build a real-time Smart Parking IoT System.
-* ESP32 Camera can capture vehicle images and upload them to Amazon S3.
-* ESP32 sensors can send parking slot status to AWS IoT Core.
-* AWS Lambda processes data automatically without managing servers.
-* Amazon Rekognition supports vehicle image analysis and license plate recognition.
-* DynamoDB stores centralized data and supports fast queries.
-* Web/App displays parking slot status, vehicle history, and license plate information.
-* Amazon Bedrock supports AI features for intelligent data queries.
-* CloudWatch supports monitoring and error tracking.
-
-### 8.2 Operational Outcomes
-
-The system improves parking lot management by making the process more automated and efficient. Managers can remotely monitor parking status, check vehicle history, and reduce manual work.
-
-Operational benefits include:
-
-* Reduce time spent on manual vehicle checking.
-* Improve accuracy in license plate and parking slot management.
-* Support real-time parking monitoring.
-* Easily expand the system by adding more cameras or sensors.
-* Reduce the need for traditional server operation.
-* Improve security through authentication and authorization.
-
----
-
-## 9. Conclusion
-
-The **Smart Parking IoT System using AWS Serverless** is a suitable solution for modernizing parking lot management. The system combines IoT, image processing, data storage, user authentication, and artificial intelligence to create an automated, flexible, and scalable parking management platform.
-
-With AWS services such as **AWS IoT Core**, **Amazon S3**, **AWS Lambda**, **Amazon API Gateway**, **Amazon Rekognition**, **Amazon DynamoDB**, **Amazon Cognito**, **Amazon CloudFront**, **AWS WAF**, **Amazon CloudWatch**, and **Amazon Bedrock**, the system can meet the requirements for real-time monitoring, license plate recognition, user management, and intelligent data analysis.
-
-This project not only solves the limitations of traditional parking management but also creates a foundation for future advanced features such as parking density prediction, parking slot optimization, abnormal activity alerts, and AI-assisted management.
+The **Smart Parking IoT** project using AWS Serverless is an appropriate solution for modernizing parking lot management. The combination of **IoT, Serverless, and AI (Rekognition, Bedrock)** creates an automated, highly accurate, and infinitely scalable management platform without the need to maintain physical servers.
