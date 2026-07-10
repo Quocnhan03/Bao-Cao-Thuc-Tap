@@ -1,10 +1,10 @@
 ---
-title : "Workshop"
-date :  "`r Sys.Date()`" 
-weight : 5
-chapter : false
-pre : " <b> 5. </b> "
+title: "Giám sát với CloudWatch"
+weight: 8
+chapter: false
+pre: " <b> 5.8. </b> "
 ---
+
 
 # 5. Workshop
 
