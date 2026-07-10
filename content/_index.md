@@ -27,7 +27,8 @@ chapter: false
 
 1. [Worklog](/1-worklog/)
 2. [Project Proposal](/2-proposal/)
-3. [Parking IoT System Architecture](/3-checklist/)
-4. [Session Logs Management](/4-logging/)
-5. [Monitoring, Logs and Security](/5-portfwd/)
-6. [Resource Cleanup](/6-cleanup/)
+3. [Checklist](/3-checklist/)
+4. [Logging](/4-logging/)
+5. [Workshop](/5-workshop/)
+6. [Self-Assessment](/6-self-assessment/)
+7. [Sharing and Feedback](/7-sharing-and-feedback/)

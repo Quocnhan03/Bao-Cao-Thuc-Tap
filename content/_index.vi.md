@@ -26,7 +26,8 @@ chapter: false
 
 1. [Nhật ký công việc](/1-worklog/)
 2. [Đề xuất dự án](/2-proposal/)
-3. [Kiến trúc hệ thống Parking IoT](/3-checklist/)
-4. [Quản lý Session Logs](/4-logging/)
-5. [Giám sát, Logs và Bảo mật](/5-portfwd/)
-6. [Dọn dẹp tài nguyên](/6-cleanup/)
+3. [Danh sách kiểm tra](/3-checklist/)
+4. [Quản lý nhật ký](/4-logging/)
+5. [Workshop](/5-workshop/)
+6. [Tự đánh giá](/6-self-assessment/)
+7. [Chia sẻ và phản hồi](/7-sharing-and-feedback/)
