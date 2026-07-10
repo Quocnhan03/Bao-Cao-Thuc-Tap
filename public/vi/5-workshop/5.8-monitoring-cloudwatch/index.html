@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="http://localhost:1313/Bao-Cao-Thuc-Tap/images/favicon.png" type="image/png">
+
+    <title>Giám sát hệ thống với CloudWatch :: AWS System Manager</title>
+
+    
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/nucleus.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/fontawesome-all.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/hybrid.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/featherlight.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/perfect-scrollbar.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/auto-complete.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/atom-one-dark-reasonable.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/theme.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/hugo-theme.css?1783696697" rel="stylesheet">
+    
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/theme-workshop.css?1783696697" rel="stylesheet">
+    
+    
+
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/jquery-3.3.1.min.js?1783696697"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="http://localhost:1313/Bao-Cao-Thuc-Tap/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/lunr.min.js?1783696697"></script>
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/auto-complete.js?1783696697"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/Bao-Cao-Thuc-Tap\/\/vi";
+    
+</script>
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/search.js?1783696697"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/" title="Nhật ký công việc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/">
+           <b> 1. </b> Nhật ký công việc
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t1/t1/" title="Tuần 1" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/">
+         <b> 1.1. </b> Tuần 1
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t2/t2/" title="Tuần 2" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/">
+         <b> 1.2. </b> Tuần 2
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/worklog-t3/" title="Tuần 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/">
+           <b> 1.3. </b> Tuần 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t4/t4/" title="Tuần 4" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/">
+         <b> 1.4. </b> Tuần 4
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t5/t5/" title="Tuần 5" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/">
+         <b> 1.5. </b> Tuần 5
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t6/t6/" title="Tuần 6" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/">
+         <b> 1.6. </b> Tuần 6
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t7/t7/" title="Tuần 7" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/">
+         <b> 1.7. </b> Tuần 7
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t8/t8/" title="Tuần 8" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/">
+         <b> 1.8. </b> Tuần 8
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-proposal/" title="Bản đề xuất" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/2-proposal/">
+           <b> 2. </b> Bản đề xuất
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/" title="Kiến trúc hệ thống Parking IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/">
+           <b> 3. </b> Kiến trúc hệ thống Parking IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.1-infrastructure/" title="Hạ tầng cốt lõi AWS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> Hạ tầng cốt lõi AWS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.2-edge/" title="Thiết bị biên ESP32" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/">
+           <b> 3.2. </b> Thiết bị biên ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.3-data-pipeline/" title="Đường ống dữ liệu IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> Đường ống dữ liệu IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.4-ui-security/" title="Giao diện và bảo mật" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> Giao diện và bảo mật
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.5-monitoring/" title="Giám sát và quản trị" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Giám sát và quản trị
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.6-system-testing-and-optimization/" title="Kiểm thử và tối ưu hệ thống" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> Kiểm thử và tối ưu hệ thống
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/" title="Workshop" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/">
+           <b> 4. </b> Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.1-workshop-overview/" title="Tổng quan về Workshop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.1-workshop-overview/">
+           <b> 4.1. </b> Tổng quan về Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.2-prerequisite/" title="Chuẩn bị môi trường" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.2-prerequisite/">
+           <b> 4.2. </b> Chuẩn bị môi trường
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/" title="AWS IoT Core &amp; Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/">
+           <b> 4.3. </b> AWS IoT Core &amp; Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/" title="Cấu hình AWS IoT Core" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/">
+           <b> 4.3.1. </b> Cấu hình AWS IoT Core
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/" title="Tạo S3 Bucket &amp; Presigned URL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/">
+           <b> 4.3.2. </b> Tạo S3 Bucket &amp; Presigned URL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/" title="Lambda &amp; Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/">
+           <b> 4.4. </b> Lambda &amp; Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/" title="Lambda xử lý ảnh và kích hoạt sự kiện" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/">
+           <b> 4.4.1. </b> Lambda xử lý ảnh và kích hoạt sự kiện
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/" title="Tích hợp Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/">
+           <b> 4.4.2. </b> Tích hợp Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/" title="Thiết kế cơ sở dữ liệu DynamoDB" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/">
+           <b> 4.4.3. </b> Thiết kế cơ sở dữ liệu DynamoDB
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/" title="Kiểm thử luồng nhận diện xe (End-to-End Test)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/">
+           <b> 4.4.4. </b> Kiểm thử luồng nhận diện xe (End-to-End Test)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.5-api-cognito-bedrock/" title="API Gateway, Cognito &amp; Bedrock" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.5-api-cognito-bedrock/">
+           <b> 4.5. </b> API Gateway, Cognito &amp; Bedrock
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.6-hardware-esp32/" title="Lập trình và Cấu hình Phần cứng ESP32" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/">
+           <b> 4.6. </b> Lập trình và Cấu hình Phần cứng ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.7-web-dashboard/" title="Web Dashboard quản trị hệ thống" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/">
+           <b> 4.7. </b> Web Dashboard quản trị hệ thống
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.8-monitoring-cloudwatch/" title="Giám sát hệ thống với CloudWatch" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/">
+           <b> 4.8. </b> Giám sát hệ thống với CloudWatch
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.9-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.9-cleanup/">
+           <b> 4.9. </b> Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-logging/" title="Quản lý Session Logs" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/4-logging/">
+           <b> 4. </b> Quản lý Session Logs
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-self-assessment/" title="Tự Đánh Giá" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/6-self-assessment/">
+          <b> 6. </b> Tự Đánh Giá
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-sharing-and-feedback/" title="Chia Sẻ và Góp Ý" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/">
+          <b> 7. </b> Chia Sẻ và Góp Ý
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.8-monitoring-cloudwatch/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='http://localhost:1313/Bao-Cao-Thuc-Tap/vi/'>    </a> > <a href='http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/'>Workshop</a> > Giám sát hệ thống với CloudWatch
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-phân-hệ-log-groups-của-các-hàm-aws-lambda">1. Phân hệ Log Groups của các hàm AWS Lambda</a></li>
+        <li><a href="#2-chi-tiết-nhật-ký-thực-thi-của-từng-phân-hệ-lõi">2. Chi tiết nhật ký thực thi của từng phân hệ lõi</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Giám sát hệ thống với CloudWatch
+            </h1>
+          
+
+        
+
+
+
+	<p>Để duy trì tính ổn định, giám sát hiệu năng vận hành thời gian thực và kịp thời phát hiện các lỗi phát sinh trong kiến trúc Serverless, hệ thống sử dụng dịch vụ giám sát tập trung <strong>Amazon CloudWatch</strong>. Toàn bộ hoạt động ghi nhật ký (Logging) của các thành phần backend và IoT đều được tập hợp về đây để phục vụ công tác giám sát và chẩn đoán.</p>
+<hr>
+<h3 id="1-phân-hệ-log-groups-của-các-hàm-aws-lambda">1. Phân hệ Log Groups của các hàm AWS Lambda</h3>
+<p>Mỗi khi một hàm AWS Lambda được kích hoạt để xử lý sự kiện (nhận dạng biển số, cập nhật vị trí đỗ từ cảm biến, xác thực API), một <strong>Log Group</strong> (Nhóm nhật ký) tương ứng sẽ tự động được tạo ra trên Amazon CloudWatch Logs.</p>
+<p>Hiện tại, hệ thống giám sát ghi nhận <strong>13 Log Groups</strong> dành cho các hàm dịch vụ lõi:</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-logs.png" alt="Danh sách Log Groups">
+<em>Minh chứng 5.8.1: Giao diện quản lý các nhóm nhật ký (Log Groups) của các hàm Lambda trên CloudWatch</em></p>
+<hr>
+<h3 id="2-chi-tiết-nhật-ký-thực-thi-của-từng-phân-hệ-lõi">2. Chi tiết nhật ký thực thi của từng phân hệ lõi</h3>
+<p>Để đánh giá chi tiết quá trình vận hành, dưới đây là minh chứng cấu hình thực tế và nội dung Nhật ký Sự kiện (Log Events) / Luồng nhật ký (Log Streams) trích xuất từ các Log Groups của toàn bộ 13 hàm Lambda trong hệ thống:</p>
+<h4 id="21-phân-hệ-nhận-diện-biển-số-xe-smart-parking-detect-plate">2.1. Phân hệ Nhận diện Biển số xe (<code>smart-parking-detect-plate</code>)</h4>
+<p>Hàm này nhận sự kiện kích hoạt từ S3 khi có ảnh mới, gọi Amazon Rekognition để OCR biển số, điều khiển cổng Barie và lưu thông tin vào DynamoDB.</p>
+<ul>
+<li><strong>Log Stream được chọn</strong>: <code>2026/07/09/[$LATEST]a01b705ba4f5495eac53ccc0f4ff250b</code></li>
+</ul>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-events.png" alt="Nhật ký sự kiện detect-plate">
+<em>Minh chứng 5.8.2: Nhật ký xử lý nhận diện biển số xe của AWS Lambda</em></p>
+<p><strong>Phân tích nhật ký sự kiện</strong>:</p>
+<ul>
+<li><code>EVENT</code>: Ghi nhận dữ liệu kích hoạt hướng sự kiện (Event-driven) từ S3 Bucket (<code>ObjectCreated:Put</code>) khi ảnh xe được tải lên thư mục cổng vào.</li>
+<li><code>REKOGNITION</code>: Kết quả trả về từ Amazon Rekognition nhận dạng chính xác biển số <strong><code>29K-258.17</code></strong> với độ tin cậy đạt <strong><code>97.28%</code></strong>.</li>
+<li><code>GATE_COMMAND_CREATED</code>: Sinh lệnh điều khiển mở cổng <code>OPEN</code> gửi tới cổng kiểm soát xe vào (<code>gate-in-01</code>).</li>
+<li><code>SAVED_ITEM</code>: Lưu trữ bản ghi thành công vào DynamoDB và bật cờ cho phép mở cổng (<code>&quot;allow_open&quot;: true</code>).</li>
+<li><code>REPORT</code>: Phiên thực thi hoàn tất trong thời gian <strong><code>905.45 ms</code></strong> (Dưới 1 giây) và chỉ tiêu thụ tối đa <strong><code>97 MB</code></strong> bộ nhớ RAM trên tổng số <code>128 MB</code> được cấu hình.</li>
+</ul>
+<hr>
+<h4 id="22-phân-hệ-cập-nhật-ô-đỗ-cảm-biến-smart-parking-slot-update">2.2. Phân hệ Cập nhật Ô đỗ cảm biến (<code>smart-parking-slot-update</code>)</h4>
+<p>Hàm Lambda này nhận dữ liệu khoảng cách từ cảm biến siêu âm HC-SR04 được gửi lên bởi ESP32-S3, sau đó phân tích và ghi nhận trạng thái ô đỗ vào DynamoDB.</p>
+<ul>
+<li><strong>Log Stream được chọn</strong>: <code>2026/07/09/[$LATEST]430dc2dcf3dd45b48c7bd615aa5b7429</code></li>
+</ul>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-events-slot-update.png" alt="Nhật ký sự kiện slot-update">
+<em>Minh chứng 5.8.3: Nhật ký xử lý cập nhật trạng thái ô đỗ từ cảm biến siêu âm</em></p>
+<p><strong>Phân tích nhật ký sự kiện</strong>:</p>
+<ul>
+<li><code>Received event: {&quot;device_id&quot;: &quot;esp-slot-01&quot;, &quot;slot_id&quot;: &quot;A1&quot;, &quot;occupied&quot;: true, &quot;distance&quot;: 2.8}</code>: Cho thấy Lambda nhận thành công payload JSON từ ESP32-S3 gửi về thiết bị kiểm soát slot A1 với khoảng cách đo được là <code>2.8 cm</code> (nhỏ hơn ngưỡng 15cm nên xác định trạng thái đỗ <code>occupied: true</code>).</li>
+<li><code>REPORT</code>: Thời gian thực hiện lưu DynamoDB và phản hồi của Lambda cực kỳ nhanh, chỉ tốn <strong><code>290.02 ms</code></strong> với bộ nhớ RAM tiêu thụ tối đa <strong><code>94 MB</code></strong>.</li>
+</ul>
+<hr>
+<h4 id="23-phân-hệ-api-lấy-trạng-thái-bãi-xe-get_parking_status">2.3. Phân hệ API lấy trạng thái bãi xe (<code>Get_Parking_Status</code>)</h4>
+<p>Hàm REST API phục vụ Web Dashboard lấy danh sách trạng thái ô đỗ đỗ xe hiện thời để cập nhật bản đồ bãi đỗ thời gian thực.</p>
+<ul>
+<li><strong>Log Stream được chọn</strong>: <code>2026/07/10/[$LATEST]e81c07f1a4d7411fb09f22dc6689564e</code></li>
+</ul>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-events-parking-status.png" alt="Nhật ký sự kiện Get_Parking_Status">
+<em>Minh chứng 5.8.4: Nhật ký thực thi API lấy trạng thái bãi đỗ xe hiện tại</em></p>
+<p><strong>Phân tích nhật ký sự kiện</strong>:</p>
+<ul>
+<li>Log ghi nhận hàng loạt phiên kết nối từ Web Dashboard Client thông qua API Gateway.</li>
+<li>Thời gian xử lý trung bình của API cực thấp, dao động từ <strong><code>25.74 ms</code></strong> đến <strong><code>58.71 ms</code></strong>, đảm bảo giao diện người dùng phản hồi mượt mà gần như ngay lập tức.</li>
+<li>Dung lượng bộ nhớ RAM tiêu thụ ổn định ở mức <strong><code>97 MB</code></strong>.</li>
+</ul>
+<hr>
+<h4 id="24-phân-hệ-trợ-lý-ảo-ai-đỗ-xe-smart-parking-ai-assistant">2.4. Phân hệ Trợ lý ảo AI đỗ xe (<code>smart-parking-ai-assistant</code>)</h4>
+<p>Hàm Lambda chịu trách nhiệm xử lý logic chatbot hỗ trợ đỗ xe, liên kết RAG dữ liệu từ DynamoDB và chuyển tiếp câu hỏi tới Amazon Bedrock để suy luận trả lời.</p>
+<ul>
+<li><strong>Log Stream được chọn</strong>: <code>2026/07/09/[$LATEST]ea468fd7a69f4a7082765ba878c8d777</code></li>
+</ul>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-events-ai-assistant.png" alt="Nhật ký sự kiện ai-assistant">
+<em>Minh chứng 5.8.5: Nhật ký thực thi xử lý chatbot AI tích hợp Amazon Bedrock</em></p>
+<p><strong>Phân tích nhật ký sự kiện</strong>:</p>
+<ul>
+<li><code>INIT_START Runtime Version: nodejs:24...</code>: Chạy trên môi trường Node.js v24.</li>
+<li><code>REPORT</code>: Thời gian xử lý phiên suy luận đạt <strong><code>2403.76 ms</code></strong> (~2.4 giây). Thời gian này lâu hơn các API thông thường do Lambda phải chờ kết quả suy luận từ mô hình AI Bedrock (Claude/LLaMA) và truy xuất dữ liệu ngữ cảnh RAG từ DynamoDB.</li>
+<li>Dung lượng bộ nhớ RAM tiêu thụ thực tế đạt <strong><code>111 MB</code></strong> trên tổng số <code>128 MB</code> cấp phát.</li>
+</ul>
+<hr>
+<h4 id="25-phân-hệ-websocket-chat-hỗ-trợ-realtime-onmessage">2.5. Phân hệ WebSocket Chat hỗ trợ realtime (<code>OnMessage</code>)</h4>
+<p>Hàm quản lý việc định tuyến và đồng bộ tin nhắn realtime giữa khách hàng và quản trị viên thông qua kết nối kết trì WebSockets của API Gateway.</p>
+<ul>
+<li><strong>Log Stream được chọn</strong>: <code>2026/06/28/[$LATEST]e00925c02c844c6795dc6a7ee6a1e0f6</code></li>
+</ul>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-events-websocket.png" alt="Nhật ký sự kiện OnMessage">
+<em>Minh chứng 5.8.6: Nhật ký định tuyến tin nhắn chat qua kết nối WebSockets</em></p>
+<p><strong>Phân tích nhật ký sự kiện</strong>:</p>
+<ul>
+<li><code>INFO Event: { &quot;requestContext&quot;: { &quot;routeKey&quot;: &quot;sendMessage&quot;, &quot;messageId&quot;: &quot;gSW-...&quot; } }</code>: Ghi nhận sự kiện khi có tin nhắn chat mới gửi lên thông qua route <code>sendMessage</code>. Tin nhắn sẽ được đồng bộ ngay lập tức tới client còn lại qua kết nối WebSocket Client.</li>
+<li>Thời gian định tuyến tin nhắn chỉ mất trung bình khoảng <strong><code>62.52 ms</code></strong> đến <strong><code>90.59 ms</code></strong>, giúp cuộc hội thoại realtime diễn ra mượt mà và không bị trễ.</li>
+</ul>
+<hr>
+<h4 id="26-phân-hệ-api-lấy-lịch-sử-xe-gửi-get_vehicle_history">2.6. Phân hệ API lấy lịch sử xe gửi (<code>Get_Vehicle_History</code>)</h4>
+<p>Nhóm nhật ký ghi lại các yêu cầu gọi từ ứng dụng Web Dashboard Client để lấy danh sách lịch sử xe vào ra bãi của người dùng hoặc admin.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-vehicle-history.png" alt="Nhật ký Get_Vehicle_History">
+<em>Minh chứng 5.8.7: Luồng nhật ký thực thi của API Get_Vehicle_History</em></p>
+<hr>
+<h4 id="27-phân-hệ-websocket-onconnect-onconnect">2.7. Phân hệ WebSocket OnConnect (<code>OnConnect</code>)</h4>
+<p>Xử lý các sự kiện thiết lập kết nối WebSocket ban đầu từ giao diện web chat hỗ trợ.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-onconnect.png" alt="Nhật ký OnConnect">
+<em>Minh chứng 5.8.8: Luồng nhật ký thực thi kết nối WebSockets của OnConnect</em></p>
+<hr>
+<h4 id="28-phân-hệ-websocket-ondisconnect-ondisconnect">2.8. Phân hệ WebSocket OnDisconnect (<code>OnDisconnect</code>)</h4>
+<p>Xử lý các sự kiện ngắt kết nối WebSocket khi người dùng tắt trình duyệt hoặc mất kết nối.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-ondisconnect.png" alt="Nhật ký OnDisconnect">
+<em>Minh chứng 5.8.9: Luồng nhật ký thực thi ngắt kết nối WebSockets của OnDisconnect</em></p>
+<hr>
+<h4 id="29-phân-hệ-api-quản-lý-tài-khoản-account-api">2.9. Phân hệ API Quản lý Tài khoản (<code>account-api</code>)</h4>
+<p>Nhật ký thực thi của API quản lý thông tin người dùng, đổi mật khẩu và đăng ký biển số.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-account-api.png" alt="Nhật ký account-api">
+<em>Minh chứng 5.8.10: Luồng nhật ký thực thi của phân hệ quản trị tài khoản account-api</em></p>
+<hr>
+<h4 id="210-phân-hệ-gửi-lệnh-cổng-chắn-smart-parking-gate-command">2.10. Phân hệ gửi lệnh cổng chắn (<code>smart-parking-gate-command</code>)</h4>
+<p>Xử lý việc gửi các sự kiện điều khiển đóng/mở cổng Barie trực tiếp đến ESP32-CAM tại trạm vật lý.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-gate-command.png" alt="Nhật ký smart-parking-gate-command">
+<em>Minh chứng 5.8.11: Luồng nhật ký thực thi gửi lệnh điều khiển tới cổng chắn</em></p>
+<hr>
+<h4 id="211-phân-hệ-tự-động-tạo-người-dùng-smart-parking-save-user-to-db">2.11. Phân hệ Tự động Tạo người dùng (<code>smart-parking-save-user-to-db</code>)</h4>
+<p>Tự động kích hoạt khi có tài khoản mới đăng ký thành công trên Cognito để sao lưu thông tin tài khoản người dùng tương ứng vào DynamoDB.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-save-user.png" alt="Nhật ký smart-parking-save-user-to-db">
+<em>Minh chứng 5.8.12: Luồng nhật ký lưu trữ thông tin tài khoản mới đăng ký</em></p>
+<hr>
+<h4 id="212-phân-hệ-quản-lý-upload-ảnh-lên-s3-smart-parking-upload-lambda">2.12. Phân hệ Quản lý upload ảnh lên S3 (<code>smart-parking-upload-lambda</code>)</h4>
+<p>Xử lý tiến trình tạo mã chữ ký Presigned URL và tải ảnh chụp từ ESP32-CAM lên S3 Bucket lưu trữ.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-upload-lambda.png" alt="Nhật ký smart-parking-upload-lambda">
+<em>Minh chứng 5.8.13: Luồng nhật ký tiến trình Lambda upload ảnh lên S3</em></p>
+<hr>
+<h4 id="213-phân-hệ-bắt-sự-kiện-phương-tiện-smart-parking-vehicle-event">2.13. Phân hệ Bắt sự kiện phương tiện (<code>smart-parking-vehicle-event</code>)</h4>
+<p>Theo dõi, xử lý và định tuyến các luồng sự kiện trạng thái xe ra vào trong bãi đỗ.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/5-Workshop/5.8-Monitoring-CloudWatch/aws-cloudwatch-log-streams-vehicle-event.png" alt="Nhật ký smart-parking-vehicle-event">
+<em>Minh chứng 5.8.14: Luồng nhật ký tiến trình Lambda smart-parking-vehicle-event</em></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/" title="Web Dashboard quản trị hệ thống"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.9-cleanup/" title="Dọn dẹp tài nguyên" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/clipboard.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.jquery.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/jquery.sticky.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/featherlight.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/highlight.pack.js?1783696697"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/modernizr.custom-3.6.0.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/learn.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/hugo-learn.js?1783696697"></script>
+
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/mermaid/mermaid.css?1783696697" rel="stylesheet" />
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/mermaid/mermaid.js?1783696697"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

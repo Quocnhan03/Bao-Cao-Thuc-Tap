@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiết kế cơ sở dữ liệu DynamoDB on AWS System Manager</title>
+    <link>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/</link>
+    <description>Recent content in Thiết kế cơ sở dữ liệu DynamoDB on AWS System Manager</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

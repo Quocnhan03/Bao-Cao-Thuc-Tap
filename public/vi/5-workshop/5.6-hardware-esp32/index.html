@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="http://localhost:1313/Bao-Cao-Thuc-Tap/images/favicon.png" type="image/png">
+
+    <title>Lập trình và Cấu hình Phần cứng ESP32 :: AWS System Manager</title>
+
+    
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/nucleus.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/fontawesome-all.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/hybrid.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/featherlight.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/perfect-scrollbar.min.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/auto-complete.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/atom-one-dark-reasonable.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/theme.css?1783696697" rel="stylesheet">
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/hugo-theme.css?1783696697" rel="stylesheet">
+    
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/css/theme-workshop.css?1783696697" rel="stylesheet">
+    
+    
+
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/jquery-3.3.1.min.js?1783696697"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="http://localhost:1313/Bao-Cao-Thuc-Tap/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/lunr.min.js?1783696697"></script>
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/auto-complete.js?1783696697"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/Bao-Cao-Thuc-Tap\/\/vi";
+    
+</script>
+<script type="text/javascript" src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/search.js?1783696697"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/" title="Nhật ký công việc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/">
+           <b> 1. </b> Nhật ký công việc
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t1/t1/" title="Tuần 1" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/">
+         <b> 1.1. </b> Tuần 1
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t2/t2/" title="Tuần 2" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/">
+         <b> 1.2. </b> Tuần 2
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-worklog/worklog-t3/" title="Tuần 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/">
+           <b> 1.3. </b> Tuần 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t4/t4/" title="Tuần 4" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/">
+         <b> 1.4. </b> Tuần 4
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t5/t5/" title="Tuần 5" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/">
+         <b> 1.5. </b> Tuần 5
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t6/t6/" title="Tuần 6" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/">
+         <b> 1.6. </b> Tuần 6
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t7/t7/" title="Tuần 7" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/">
+         <b> 1.7. </b> Tuần 7
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vi/1-worklog/worklog-t8/t8/" title="Tuần 8" class="dd-item ">
+        <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/">
+         <b> 1.8. </b> Tuần 8
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-proposal/" title="Bản đề xuất" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/2-proposal/">
+           <b> 2. </b> Bản đề xuất
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/" title="Kiến trúc hệ thống Parking IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/">
+           <b> 3. </b> Kiến trúc hệ thống Parking IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.1-infrastructure/" title="Hạ tầng cốt lõi AWS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/">
+           <b> 3.1 </b> Hạ tầng cốt lõi AWS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.2-edge/" title="Thiết bị biên ESP32" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/">
+           <b> 3.2. </b> Thiết bị biên ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.3-data-pipeline/" title="Đường ống dữ liệu IoT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/">
+           <b> 3.3. </b> Đường ống dữ liệu IoT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.4-ui-security/" title="Giao diện và bảo mật" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/">
+           <b> 3.4. </b> Giao diện và bảo mật
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.5-monitoring/" title="Giám sát và quản trị" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/">
+           <b> 3.5. </b> Giám sát và quản trị
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-checklist/3.6-system-testing-and-optimization/" title="Kiểm thử và tối ưu hệ thống" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/">
+           <b> 3.6. </b> Kiểm thử và tối ưu hệ thống
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/" title="Workshop" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/">
+           <b> 4. </b> Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.1-workshop-overview/" title="Tổng quan về Workshop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.1-workshop-overview/">
+           <b> 4.1. </b> Tổng quan về Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.2-prerequisite/" title="Chuẩn bị môi trường" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.2-prerequisite/">
+           <b> 4.2. </b> Chuẩn bị môi trường
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/" title="AWS IoT Core &amp; Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/">
+           <b> 4.3. </b> AWS IoT Core &amp; Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/" title="Cấu hình AWS IoT Core" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/">
+           <b> 4.3.1. </b> Cấu hình AWS IoT Core
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/" title="Tạo S3 Bucket &amp; Presigned URL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/">
+           <b> 4.3.2. </b> Tạo S3 Bucket &amp; Presigned URL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/" title="Lambda &amp; Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/">
+           <b> 4.4. </b> Lambda &amp; Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/" title="Lambda xử lý ảnh và kích hoạt sự kiện" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/">
+           <b> 4.4.1. </b> Lambda xử lý ảnh và kích hoạt sự kiện
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/" title="Tích hợp Amazon Rekognition" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/">
+           <b> 4.4.2. </b> Tích hợp Amazon Rekognition
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/" title="Thiết kế cơ sở dữ liệu DynamoDB" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/">
+           <b> 4.4.3. </b> Thiết kế cơ sở dữ liệu DynamoDB
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/" title="Kiểm thử luồng nhận diện xe (End-to-End Test)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/">
+           <b> 4.4.4. </b> Kiểm thử luồng nhận diện xe (End-to-End Test)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.5-api-cognito-bedrock/" title="API Gateway, Cognito &amp; Bedrock" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.5-api-cognito-bedrock/">
+           <b> 4.5. </b> API Gateway, Cognito &amp; Bedrock
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.6-hardware-esp32/" title="Lập trình và Cấu hình Phần cứng ESP32" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/">
+           <b> 4.6. </b> Lập trình và Cấu hình Phần cứng ESP32
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.7-web-dashboard/" title="Web Dashboard quản trị hệ thống" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/">
+           <b> 4.7. </b> Web Dashboard quản trị hệ thống
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.8-monitoring-cloudwatch/" title="Giám sát hệ thống với CloudWatch" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/">
+           <b> 4.8. </b> Giám sát hệ thống với CloudWatch
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-workshop/5.9-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.9-cleanup/">
+           <b> 4.9. </b> Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-logging/" title="Quản lý Session Logs" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/4-logging/">
+           <b> 4. </b> Quản lý Session Logs
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-self-assessment/" title="Tự Đánh Giá" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/6-self-assessment/">
+          <b> 6. </b> Tự Đánh Giá
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-sharing-and-feedback/" title="Chia Sẻ và Góp Ý" class="dd-item 
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/">
+          <b> 7. </b> Chia Sẻ và Góp Ý
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.6-hardware-esp32/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i><font color=orange id="date"></font></i>
+
+    <script>
+     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+     const today = new Date().toLocaleDateString('vi-VN', options);
+    document.getElementById("date").innerText = today;
+    </script>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.facebook.com/groups/660548818043427"  style="color:orange">First Cloud Journey </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='http://localhost:1313/Bao-Cao-Thuc-Tap/vi/'>    </a> > <a href='http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/'>Workshop</a> > Lập trình và Cấu hình Phần cứng ESP32
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-trạm-kiểm-soát-cổng-ravào-esp32-cam--gate-control">1. Trạm kiểm soát cổng ra/vào (ESP32-CAM &amp; Gate Control)</a></li>
+        <li><a href="#2-hệ-thống-giám-sát-vị-trí-đỗ-esp32-s3--ultrasonic-sensors">2. Hệ thống giám sát vị trí đỗ (ESP32-S3 &amp; Ultrasonic Sensors)</a></li>
+        <li><a href="#3-nguyên-lý-chống-nhiễu-phần-cứng-và-phần-mềm">3. Nguyên lý chống nhiễu phần cứng và phần mềm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Lập trình và Cấu hình Phần cứng ESP32
+            </h1>
+          
+
+        
+
+
+
+	<p>Chương này trình bày chi tiết về sơ đồ kết nối và mã nguồn lập trình điều khiển các thiết bị phần cứng biên (Edge Devices). Hệ thống phân tách thành hai khu vực xử lý độc lập sử dụng vi điều khiển ESP32 chạy trên nền tảng <strong>ESP-IDF</strong> kết hợp thư viện FreeRTOS để tối ưu hiệu năng thời gian thực.</p>
+<hr>
+<h3 id="1-trạm-kiểm-soát-cổng-ravào-esp32-cam--gate-control">1. Trạm kiểm soát cổng ra/vào (ESP32-CAM &amp; Gate Control)</h3>
+<h4 id="11-sơ-đồ-đấu-nối-dây-phần-cứng">1.1. Sơ đồ đấu nối dây phần cứng</h4>
+<p>Thiết bị kiểm soát cổng sử dụng board mạch <strong>ESP32-CAM</strong> tích hợp camera OV2640, liên kết với cảm biến tiệm cận hồng ngoại E18-D80NK để phát hiện xe dừng trước cổng chắn, và điều khiển động cơ Servo SG90 để đóng/mở barie.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/2-Proposal/1.s%C6%A1%20%C4%91%E1%BB%93%20%C4%91%E1%BA%A5u%20d%C3%A2y%20c%E1%BB%95ng.png" alt="Sơ đồ đấu dây cổng">
+<em>Minh chứng 5.6.1: Sơ đồ kết nối chân linh kiện tại trạm kiểm soát cổng vào/ra</em></p>
+<h5 id="phân-tích-chi-tiết-sơ-đồ-kết-nối-cổng-vàora">Phân tích chi tiết sơ đồ kết nối cổng vào/ra:</h5>
+<ol>
+<li><strong>Nguồn điện hệ thống</strong>: Hệ thống sử dụng một bộ nguồn trung tâm <strong>5V DC (4A - 5A)</strong> để cấp dòng điện đủ lớn cho động cơ Servo SG90 hoạt động ổn định và cấp nguồn cho vi điều khiển ESP32-CAM (nối vào chân <code>5V</code>). Toàn bộ hệ thống được nối chung cực âm (<strong>GND</strong>).</li>
+<li><strong>Cảm biến tiệm cận hồng ngoại E18-D80NK</strong>:
+<ul>
+<li>Dây màu Nâu nối trực tiếp với nguồn điện dương <code>+5V</code>.</li>
+<li>Dây màu Xanh nối với cực âm chung <code>GND</code>.</li>
+<li>Dây tín hiệu màu Đen xuất ra mức điện áp <code>5V</code> (High khi không có vật và Low khi phát hiện vật cản). Tín hiệu này không được nối trực tiếp vào ESP32-CAM vì điện áp vận hành của GPIO trên chip ESP32 tối đa chỉ là <code>3.3V</code>.</li>
+</ul>
+</li>
+<li><strong>Mạch chuyển đổi mức logic (Level Shifter 5V -&gt; 3.3V)</strong>:
+<ul>
+<li><strong>Phía điện áp cao (HV Side)</strong>: Chân <code>HV</code> nối với nguồn <code>5V</code>, chân <code>GND</code> nối cực âm. Chân tín hiệu <code>HV1</code> nhận tín hiệu đầu vào <code>5V</code> từ dây Đen của cảm biến E18-D80NK.</li>
+<li><strong>Phía điện áp thấp (LV Side)</strong>: Chân <code>LV</code> nối với ngõ ra <code>3V3</code> lấy từ board ESP32-CAM để làm điện áp tham chiếu. Chân tín hiệu tương ứng <code>LV1</code> xuất ra mức điện áp hạ áp an toàn <code>3.3V</code> và nối vào chân <strong>GPIO 13</strong> (<code>IO13</code>) của ESP32-CAM.</li>
+</ul>
+</li>
+<li><strong>Động cơ Servo SG90</strong>:
+<ul>
+<li>Dây nguồn màu Đỏ kết nối trực tiếp với nguồn dương <code>+5V</code> của hệ thống để có đủ lực kéo cơ học.</li>
+<li>Dây màu Nâu nối với cực âm chung <code>GND</code>.</li>
+<li>Dây điều khiển màu Cam nhận tín hiệu xung PWM tần số <code>50Hz</code> phát ra từ chân <strong>GPIO 14</strong> (<code>IO14</code>) của ESP32-CAM.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="12-mã-nguồn-cốt-lõi-điều-khiển-cổng-vàora-mainc">1.2. Mã nguồn cốt lõi điều khiển cổng vào/ra (<code>main.c</code>)</h4>
+<p>Board ESP32-CAM thực hiện nhiệm vụ: đo cảm biến tiệm cận ổn định trong 1.5 giây, chụp ảnh xe, gửi yêu cầu HTTP GET lấy Presigned URL từ AWS Lambda, sau đó tải dữ liệu nhị phân ảnh JPEG lên Amazon S3 bằng phương thức HTTP PUT. Cuối cùng, thực hiện thăm dò ý kiến (Polling) nhận tín hiệu <code>allowOpen</code> từ cơ sở dữ liệu để điều khiển Servo nâng hạ barie.</p>
+<h5 id="đoạn-code-yêu-cầu-lấy-s3-presigned-url-và-tải-ảnh-xe">Đoạn code yêu cầu lấy S3 Presigned URL và tải ảnh xe:</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Hàm gọi Lambda lấy S3 Presigned URL và tên file ảnh ngẫu nhiên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">presigned_result_t</span> <span style="color:#a6e22e">get_presigned_data</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">presigned_result_t</span> result <span style="color:#f92672">=</span> {.upload_url <span style="color:#f92672">=</span> NULL, .file_name <span style="color:#f92672">=</span> NULL};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>response_buffer <span style="color:#f92672">=</span> <span style="color:#a6e22e">calloc</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12000</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">http_response_t</span> response <span style="color:#f92672">=</span> {.buffer <span style="color:#f92672">=</span> response_buffer, .length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, .max_len <span style="color:#f92672">=</span> <span style="color:#ae81ff">12000</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_config_t</span> config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        .url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://4q3ukqk4mzidpcqtdmbwyvjhha0kjtbg.lambda-url.ap-southeast-1.on.aws/&#34;</span>,
+</span></span><span style="display:flex;"><span>        .method <span style="color:#f92672">=</span> HTTP_METHOD_GET,
+</span></span><span style="display:flex;"><span>        .event_handler <span style="color:#f92672">=</span> http_event_handler,
+</span></span><span style="display:flex;"><span>        .user_data <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>response,
+</span></span><span style="display:flex;"><span>        .timeout_ms <span style="color:#f92672">=</span> <span style="color:#ae81ff">60000</span>,
+</span></span><span style="display:flex;"><span>        .crt_bundle_attach <span style="color:#f92672">=</span> esp_crt_bundle_attach,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_handle_t</span> client <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_init</span>(<span style="color:#f92672">&amp;</span>config);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_err_t</span> err <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_perform</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> status_code <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_get_status_code</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_cleanup</span>(client);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (err <span style="color:#f92672">==</span> ESP_OK <span style="color:#f92672">&amp;&amp;</span> status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
+</span></span><span style="display:flex;"><span>        cJSON <span style="color:#f92672">*</span>root <span style="color:#f92672">=</span> <span style="color:#a6e22e">cJSON_Parse</span>(response_buffer);
+</span></span><span style="display:flex;"><span>        cJSON <span style="color:#f92672">*</span>url_item <span style="color:#f92672">=</span> <span style="color:#a6e22e">cJSON_GetObjectItem</span>(root, <span style="color:#e6db74">&#34;uploadUrl&#34;</span>);
+</span></span><span style="display:flex;"><span>        cJSON <span style="color:#f92672">*</span>file_item <span style="color:#f92672">=</span> <span style="color:#a6e22e">cJSON_GetObjectItem</span>(root, <span style="color:#e6db74">&#34;fileName&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (url_item <span style="color:#f92672">&amp;&amp;</span> file_item) {
+</span></span><span style="display:flex;"><span>            result.upload_url <span style="color:#f92672">=</span> <span style="color:#a6e22e">strdup</span>(url_item<span style="color:#f92672">-&gt;</span>valuestring);
+</span></span><span style="display:flex;"><span>            result.file_name <span style="color:#f92672">=</span> <span style="color:#a6e22e">strdup</span>(file_item<span style="color:#f92672">-&gt;</span>valuestring);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cJSON_Delete</span>(root);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">free</span>(response_buffer);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hàm tải dữ liệu ảnh JPEG lên S3 thông qua Presigned URL bằng HTTP PUT
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">esp_err_t</span> <span style="color:#a6e22e">upload_image_to_s3</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>upload_url, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>image_data, <span style="color:#66d9ef">size_t</span> image_len)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_config_t</span> config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        .url <span style="color:#f92672">=</span> upload_url,
+</span></span><span style="display:flex;"><span>        .method <span style="color:#f92672">=</span> HTTP_METHOD_PUT,
+</span></span><span style="display:flex;"><span>        .timeout_ms <span style="color:#f92672">=</span> <span style="color:#ae81ff">60000</span>,
+</span></span><span style="display:flex;"><span>        .crt_bundle_attach <span style="color:#f92672">=</span> esp_crt_bundle_attach,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_handle_t</span> client <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_init</span>(<span style="color:#f92672">&amp;</span>config);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_set_header</span>(client, <span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;image/jpeg&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_err_t</span> err <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_open</span>(client, image_len);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> written <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_write</span>(client, (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) image_data, image_len);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_fetch_headers</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> status_code <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_get_status_code</span>(client);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_close</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_cleanup</span>(client);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span> <span style="color:#f92672">||</span> status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">204</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ESP_LOGI</span>(<span style="color:#e6db74">&#34;S3_UPLOAD&#34;</span>, <span style="color:#e6db74">&#34;Upload thành công ảnh lên S3 Bucket&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ESP_OK;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ESP_FAIL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="đoạn-code-điều-khiển-góc-quay-của-servo-sg90-đóngmở-cổng-chắn">Đoạn code điều khiển góc quay của Servo SG90 (Đóng/Mở cổng chắn):</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Điều khiển xung PWM của động cơ Servo bằng Driver LEDC ESP-IDF
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">servo_write_angle</span>(<span style="color:#66d9ef">int</span> angle)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (angle <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (angle <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">180</span>) angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">180</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Chuyển đổi góc quay 0-180 độ thành độ rộng xung (500us - 2500us)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">uint32_t</span> pulse_us <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span> <span style="color:#f92672">+</span> ((<span style="color:#ae81ff">2000</span>) <span style="color:#f92672">*</span> angle <span style="color:#f92672">/</span> <span style="color:#ae81ff">180</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> max_duty <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> duty <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint32_t</span>)((<span style="color:#66d9ef">uint64_t</span>)pulse_us <span style="color:#f92672">*</span> max_duty <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ledc_set_duty</span>(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_2, duty);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ledc_update_duty</span>(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_2);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hàm mở cổng từ từ và đóng lại sau 5 giây để đảm bảo an toàn cơ học
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">gate_open_close</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Mở từ từ cổng chắn lên 90 độ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; angle <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">90</span>; angle <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">servo_write_angle</span>(angle);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">vTaskDelay</span>(<span style="color:#a6e22e">pdMS_TO_TICKS</span>(<span style="color:#ae81ff">25</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vTaskDelay</span>(<span style="color:#a6e22e">pdMS_TO_TICKS</span>(<span style="color:#ae81ff">5000</span>)); <span style="color:#75715e">// Giữ cổng mở trong 5 giây
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Đóng cổng từ từ về 0 độ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>; angle <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; angle <span style="color:#f92672">-=</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">servo_write_angle</span>(angle);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">vTaskDelay</span>(<span style="color:#a6e22e">pdMS_TO_TICKS</span>(<span style="color:#ae81ff">25</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="2-hệ-thống-giám-sát-vị-trí-đỗ-esp32-s3--ultrasonic-sensors">2. Hệ thống giám sát vị trí đỗ (ESP32-S3 &amp; Ultrasonic Sensors)</h3>
+<h4 id="21-sơ-đồ-đấu-nối-dây-phần-cứng">2.1. Sơ đồ đấu nối dây phần cứng</h4>
+<p>Board điều khiển <strong>ESP32-S3 DevKitC</strong> giám sát cùng lúc 6 vị trí đỗ xe thông qua 6 cảm biến siêu âm HC-SR04 độc lập. Tín hiệu Echo (5V) từ cảm biến được định hướng qua IC đệm hạ áp CD74HC4050 về mức điện áp 3.3V để tránh làm hỏng các chân GPIO đầu vào của ESP32-S3.</p>
+<p><img src="http://localhost:1313/Bao-Cao-Thuc-Tap/images/2-Proposal/2.s%C6%A1%20%C4%91%E1%BB%93%20d%C3%A2y%20b%C3%A3i%20xe.png" alt="Sơ đồ đấu dây bãi xe">
+<em>Minh chứng 5.6.2: Sơ đồ đấu nối dây chân linh kiện và IC đệm CD74HC4050 cho 6 cảm biến vị trí đỗ xe</em></p>
+<h5 id="phân-tích-chi-tiết-sơ-đồ-kết-nối-bãi-đỗ-xe">Phân tích chi tiết sơ đồ kết nối bãi đỗ xe:</h5>
+<ol>
+<li><strong>Nguồn cấp điện</strong>: Toàn bộ 6 cảm biến siêu âm HC-SR04 và vi điều khiển ESP32-S3 hoạt động trên đường ray điện áp <strong>5V DC (1A - 2A)</strong>.</li>
+<li><strong>Nguyên lý kích hoạt cảm biến siêu âm (Trig)</strong>:
+<ul>
+<li>Các chân <strong>Trig</strong> của tất cả 6 cảm biến siêu âm (HC-SR04) được đấu song song vật lý nối về một đường dây chung kích phát.</li>
+<li>Đường dây Trig chung này kết nối vào chân <strong>GPIO 5</strong> của ESP32-S3. Thiết kế này giúp tiết kiệm tối đa tài nguyên chân trên vi điều khiển, thay vì phải dùng 6 chân độc lập, hệ thống chỉ cần dùng duy nhất 1 chân GPIO phát xung kích hoạt cùng lúc cho 6 cảm biến.</li>
+</ul>
+</li>
+<li><strong>Mạch bảo vệ và chuyển mức logic Echo qua IC CD74HC4050</strong>:
+<ul>
+<li>Các chân <strong>Echo</strong> của cảm biến siêu âm phản hồi mức điện áp <code>5V</code> tương ứng với khoảng thời gian sóng âm phản xạ. Vì ESP32-S3 chỉ nhận tín hiệu tối đa <code>3.3V</code> trên các chân GPIO, việc đấu nối trực tiếp sẽ gây nguy hại cho chip vi điều khiển.</li>
+<li>Hệ thống tích hợp IC đệm chuyển đổi mức logic <strong>CD74HC4050 (DIP-16)</strong> chứa 6 kênh đệm độc lập. Chân nguồn tham chiếu <code>VCC</code> (chân 1) của IC được nối với ngõ ra <code>3V3</code> của ESP32-S3. Chân 8 của IC nối cực âm <code>GND</code>.</li>
+<li>Cơ chế ánh xạ chuyển đổi tín hiệu Echo từ 5V về 3.3V được mô tả qua bảng sau:</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tên cảm biến / Vị trí</th>
+<th style="text-align:center">Chân Echo cảm biến (5V)</th>
+<th style="text-align:center">Chân Input IC CD74HC4050</th>
+<th style="text-align:center">Chân Output IC CD74HC4050 (3.3V)</th>
+<th style="text-align:center">Chân GPIO đích trên ESP32-S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A1 - HC-SR04</strong></td>
+<td style="text-align:center">Echo A1</td>
+<td style="text-align:center">Chân 3 (<code>1A</code>)</td>
+<td style="text-align:center">Chân 2 (<code>1Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 6</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>A2 - HC-SR04</strong></td>
+<td style="text-align:center">Echo A2</td>
+<td style="text-align:center">Chân 5 (<code>2A</code>)</td>
+<td style="text-align:center">Chân 4 (<code>2Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 7</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>A3 - HC-SR04</strong></td>
+<td style="text-align:center">Echo A3</td>
+<td style="text-align:center">Chân 7 (<code>3A</code>)</td>
+<td style="text-align:center">Chân 6 (<code>3Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 10</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B1 - HC-SR04</strong></td>
+<td style="text-align:center">Echo B1</td>
+<td style="text-align:center">Chân 9 (<code>4A</code>)</td>
+<td style="text-align:center">Chân 10 (<code>4Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 11</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B2 - HC-SR04</strong></td>
+<td style="text-align:center">Echo B2</td>
+<td style="text-align:center">Chân 11 (<code>5A</code>)</td>
+<td style="text-align:center">Chân 12 (<code>5Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 1</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B3 - HC-SR04</strong></td>
+<td style="text-align:center">Echo B3</td>
+<td style="text-align:center">Chân 14 (<code>6A</code>)</td>
+<td style="text-align:center">Chân 15 (<code>6Y</code>)</td>
+<td style="text-align:center"><strong>GPIO 2</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="22-mã-nguồn-cốt-lõi-đọc-cảm-biến-siêu-âm-mainc">2.2. Mã nguồn cốt lõi đọc cảm biến siêu âm (<code>main.c</code>)</h4>
+<p>Thiết bị thực hiện gửi xung kích hoạt 10 micro giây thông qua chân Trig, đo thời gian phản hồi mức cao trên chân Echo của từng cảm biến, lọc nhiễu đo đạc (lọc trung bình 3 lần đo), cập nhật bộ lọc Debounce 2 giây và gửi sự kiện cập nhật trạng thái ô đỗ về máy chủ API.</p>
+<h5 id="đoạn-code-đo-khoảng-cách-siêu-âm-hc-sr04">Đoạn code đo khoảng cách siêu âm HC-SR04:</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Đo thời gian xung phản hồi siêu âm để tính khoảng cách (cm)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">read_distance_cm</span>(<span style="color:#66d9ef">gpio_num_t</span> echo_pin)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. Phát xung kích hoạt Trig dài 10us
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gpio_set_level</span>(GPIO_NUM_5, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_rom_delay_us</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gpio_set_level</span>(GPIO_NUM_5, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_rom_delay_us</span>(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gpio_set_level</span>(GPIO_NUM_5, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. Chờ Echo bắt đầu lên mức cao (Timeout 30ms)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int64_t</span> start_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_timer_get_time</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> timeout <span style="color:#f92672">=</span> start_time <span style="color:#f92672">+</span> <span style="color:#ae81ff">30000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">gpio_get_level</span>(echo_pin) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">esp_timer_get_time</span>() <span style="color:#f92672">&gt;</span> timeout) <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0f</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> echo_start <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_timer_get_time</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. Đo thời gian chân Echo giữ mức cao
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    timeout <span style="color:#f92672">=</span> echo_start <span style="color:#f92672">+</span> <span style="color:#ae81ff">30000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">gpio_get_level</span>(echo_pin) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">esp_timer_get_time</span>() <span style="color:#f92672">&gt;</span> timeout) <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0f</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> echo_end <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_timer_get_time</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. Tính khoảng cách dựa trên vận tốc âm thanh: s = t * 343m/s / 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int64_t</span> duration <span style="color:#f92672">=</span> echo_end <span style="color:#f92672">-</span> echo_start;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">float</span>)duration <span style="color:#f92672">/</span> <span style="color:#ae81ff">58.2f</span>; <span style="color:#75715e">// Trả về khoảng cách xăng-ti-mét
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h5 id="đoạn-code-đóng-gói-dữ-liệu-json-và-cập-nhật-trạng-thái-qua-http-post">Đoạn code đóng gói dữ liệu JSON và cập nhật trạng thái qua HTTP POST:</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Hàm gửi trạng thái chỗ đỗ thay đổi về API Server cục bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">send_status_update</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>slot_id, <span style="color:#66d9ef">bool</span> occupied, <span style="color:#66d9ef">float</span> distance)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    cJSON <span style="color:#f92672">*</span>root <span style="color:#f92672">=</span> <span style="color:#a6e22e">cJSON_CreateObject</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cJSON_AddStringToObject</span>(root, <span style="color:#e6db74">&#34;device_id&#34;</span>, <span style="color:#e6db74">&#34;esp-slot-01&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cJSON_AddStringToObject</span>(root, <span style="color:#e6db74">&#34;slot_id&#34;</span>, slot_id);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cJSON_AddBoolToObject</span>(root, <span style="color:#e6db74">&#34;occupied&#34;</span>, occupied);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cJSON_AddNumberToObject</span>(root, <span style="color:#e6db74">&#34;distance&#34;</span>, distance <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> (<span style="color:#66d9ef">double</span>)distance : <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>json_body <span style="color:#f92672">=</span> <span style="color:#a6e22e">cJSON_PrintUnformatted</span>(root);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cJSON_Delete</span>(root);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>response_buffer <span style="color:#f92672">=</span> <span style="color:#a6e22e">calloc</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">256</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">http_response_t</span> response <span style="color:#f92672">=</span> {.buffer <span style="color:#f92672">=</span> response_buffer, .length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, .max_len <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_config_t</span> config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        .url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://172.20.10.3:8089/device/slot/update&#34;</span>,
+</span></span><span style="display:flex;"><span>        .method <span style="color:#f92672">=</span> HTTP_METHOD_POST,
+</span></span><span style="display:flex;"><span>        .event_handler <span style="color:#f92672">=</span> http_event_handler,
+</span></span><span style="display:flex;"><span>        .user_data <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>response,
+</span></span><span style="display:flex;"><span>        .timeout_ms <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_http_client_handle_t</span> client <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_init</span>(<span style="color:#f92672">&amp;</span>config);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_set_header</span>(client, <span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_set_header</span>(client, <span style="color:#e6db74">&#34;x-api-key&#34;</span>, <span style="color:#e6db74">&#34;smart_parking_slot_key_123&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_set_post_field</span>(client, json_body, <span style="color:#a6e22e">strlen</span>(json_body));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esp_err_t</span> err <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_perform</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> status_code <span style="color:#f92672">=</span> <span style="color:#a6e22e">esp_http_client_get_status_code</span>(client);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">esp_http_client_cleanup</span>(client);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">free</span>(json_body);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">free</span>(response_buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="3-nguyên-lý-chống-nhiễu-phần-cứng-và-phần-mềm">3. Nguyên lý chống nhiễu phần cứng và phần mềm</h3>
+<p>Để khắc phục các sai số do phản xạ sóng âm hoặc nhiễu điện từ trong môi trường công nghiệp/bãi đỗ:</p>
+<ol>
+<li><strong>Lọc nhiễu cảm biến (Software Filtering)</strong>: Cứ mỗi chu kỳ đo, thiết bị thực hiện đo 3 lần liên tiếp cách nhau 30 mili-giây. Giá trị khoảng cách cuối cùng được tính bằng trung bình cộng của các lần đo hợp lệ.</li>
+<li><strong>Thuật toán Debounce thay đổi trạng thái</strong>: Trạng thái cảm biến siêu âm phát hiện có xe (khoảng cách dưới ngưỡng <code>3.5cm</code>) hoặc trống phải duy trì ổn định liên tục tối thiểu trong <strong>2 giây</strong> thì thiết bị mới chính thức xác nhận và gửi API cập nhật, tránh trường hợp nhiễu sóng hoặc vật cản di chuyển ngang qua tạm thời.</li>
+<li><strong>Cơ chế Heartbeat định kỳ</strong>: Cứ sau 5 phút nếu không có thay đổi trạng thái, thiết bị vẫn tự động gửi bản tin cập nhật trạng thái hiện tại lên Cloud nhằm thông báo hệ thống cảm biến vẫn đang trực tuyến và hoạt động bình thường.</li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.5-api-cognito-bedrock/" title="API Gateway, Cognito &amp; Bedrock"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/" title="Web Dashboard quản trị hệ thống" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/clipboard.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/perfect-scrollbar.jquery.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/jquery.sticky.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/featherlight.min.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/highlight.pack.js?1783696697"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/modernizr.custom-3.6.0.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/learn.js?1783696697"></script>
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/js/hugo-learn.js?1783696697"></script>
+
+    <link href="http://localhost:1313/Bao-Cao-Thuc-Tap/mermaid/mermaid.css?1783696697" rel="stylesheet" />
+    <script src="http://localhost:1313/Bao-Cao-Thuc-Tap/mermaid/mermaid.js?1783696697"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

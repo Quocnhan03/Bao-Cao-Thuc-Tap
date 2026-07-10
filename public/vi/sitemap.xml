@@ -2,537 +2,501 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/</loc>
     <lastmod>2026-04-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/</loc>
     <lastmod>2026-04-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.1-iot-core-setup/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.1-lambda-image-processing/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.1-workshop-overview/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.1-workshop-overview/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.1-workshop-overview/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/</loc>
     <lastmod>2026-04-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t1/t1/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t1/t1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t1/t1/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/1-iot-core/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/1-iot-core/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.1-infrastructure/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/1-iot-core/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.1-infrastructure/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.1-infrastructure/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/1-overview/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/1-overview/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/1-overview/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/1-lambda-image/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/1-lambda-image/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/1-lambda-image/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/2-proposal/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/</loc>
     <lastmod>2026-04-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/2-proposal/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t2/t2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/2-proposal/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/2-proposal/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t2/t2/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/2-proposal/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t2/t2/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/2-proposal/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/2-prerequisites/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.2-prerequisite/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/2-prerequisites/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.2-prerequisite/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/2-prerequisites/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.2-prerequisite/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/2-s3/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/2-s3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/2-s3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.2-edge/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/2-rekognition/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/2-rekognition/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.2-edge/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/2-rekognition/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.2-edge/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/</loc>
     <lastmod>2026-05-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t3/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/3-iot-s3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.3-iot-core-s3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/3-iot-s3/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.3-iot-core-s3/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.3-data-pipeline/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.3-dynamodb-setup/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.3-data-pipeline/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.3-data-pipeline/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/3-dynamodb/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/3-dynamodb/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/3-dynamodb/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/</loc>
     <lastmod>2026-05-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t4/t4/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t4/t4/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t4/t4/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.4-ui-security/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/5.4.4-end-to-end-test/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/4-end-to-end/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/4-end-to-end/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.4-lambda-rekognition/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/4-end-to-end/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.4-lambda-rekognition/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/4-lambda-rekognition/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/4-lambda-rekognition/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/4-logging/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/4-logging/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.4-ui-security/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/4-logging/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.4-ui-security/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/4-logging/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/4-logging/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/4-logging/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/</loc>
     <lastmod>2026-05-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t5/t5/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t5/t5/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t5/t5/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/5-api-cognito-bedrock/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.5-api-cognito-bedrock/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/5-api-cognito-bedrock/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.5-api-cognito-bedrock/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/5-api-cognito-bedrock/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.5-api-cognito-bedrock/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.5-monitoring/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.5-monitoring/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.5-monitoring/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-self-assessment/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/6-self-assessment/</loc>
     <lastmod>2026-07-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/6-self-assessment/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/6-self-assessment/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/6-self-assessment/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/6-self-assessment/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t6/t6/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t6/t6/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t6/t6/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/6-esp32/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/6-esp32/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.6-hardware-esp32/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/6-esp32/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.6-hardware-esp32/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/3-checklist/3.6-system-testing-and-optimization/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/3-checklist/3.6-system-testing-and-optimization/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/3-checklist/3.6-system-testing-and-optimization/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/</loc>
     <lastmod>2026-07-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/7-sharing-and-feedback/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/7-sharing-and-feedback/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/7-sharing-and-feedback/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/</loc>
     <lastmod>2026-06-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t7/t7/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t7/t7/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t7/t7/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/7-dashboard/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.7-web-dashboard/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/7-dashboard/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.7-web-dashboard/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/</loc>
     <lastmod>2026-07-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t8/t8/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/1-worklog/worklog-t8/t8/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t8/t8/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/8-monitoring/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.8-monitoring-cloudwatch/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/8-monitoring/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.8-monitoring-cloudwatch/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.9-cleanup/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t9/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/5-workshop/5.9-cleanup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t9/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/5-workshop/5.9-cleanup/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/</loc>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/5-workshop/9-cleanup/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/5-workshop/9-cleanup/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/categories/"
                 />
   </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t10/t10/</loc>
-    <lastmod>2026-06-22T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/Bao-Cao-Thuc-Tap/vi/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t10/t10/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t10/t10/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t11/t11/</loc>
-    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t11/t11/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t11/t11/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t12/t12/</loc>
-    <lastmod>2026-07-06T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/1-worklog/worklog-t12/t12/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/1-worklog/worklog-t12/t12/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/categories/"
-                />
-  </url><url>
-    <loc>https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://quocnhan03.github.io/Bao-Cao-Thuc-Tap/vi/tags/"
+                href="http://localhost:1313/Bao-Cao-Thuc-Tap/vi/tags/"
                 />
   </url>
 </urlset>
