@@ -6,8 +6,6 @@ pre: " <b> 5.8. </b> "
 ---
 
 
-# 5. Workshop
-
 This section presents the process of monitoring the system, checking logs, and evaluating security mechanisms after the **Smart Parking IoT System** has been deployed. Unlike the previous architecture section, this chapter focuses on real operation, error tracking, log checking, system alerts, and security evaluation of AWS components.
 
 The main services used in this section include **Amazon CloudWatch, AWS Lambda, API Gateway, Amazon Cognito, IAM, AWS WAF, AWS Budgets, and CloudTrail**. Combining these services helps administrators detect errors, control access, and reduce unexpected AWS costs.

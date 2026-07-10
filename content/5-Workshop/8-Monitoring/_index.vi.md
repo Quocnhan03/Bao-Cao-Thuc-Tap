@@ -6,8 +6,6 @@ pre: " <b> 5.8. </b> "
 ---
 
 
-# 5. Workshop
-
 Phần này trình bày quá trình giám sát hệ thống, kiểm tra logs và đánh giá các cơ chế bảo mật sau khi hệ thống **Parking IoT thông minh** được triển khai. Khác với phần kiến trúc trước đó, chương này tập trung vào quá trình vận hành thực tế, theo dõi lỗi, kiểm tra log, cảnh báo hệ thống và đánh giá mức độ an toàn của các thành phần AWS.
 
 Các dịch vụ chính được sử dụng gồm **Amazon CloudWatch, AWS Lambda, API Gateway, Amazon Cognito, IAM, AWS WAF, AWS Budgets và CloudTrail**. Việc kết hợp các dịch vụ này giúp người quản trị dễ dàng phát hiện lỗi, kiểm soát truy cập và hạn chế phát sinh chi phí ngoài dự kiến.
