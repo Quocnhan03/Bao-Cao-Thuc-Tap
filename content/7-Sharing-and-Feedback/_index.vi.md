@@ -2,6 +2,7 @@
 title: "Chia Sẻ và Góp Ý"
 date: 2026-07-10
 weight: 7
+chapter: false
 pre: "<b> 7. </b> "
 ---
 
