@@ -20,6 +20,9 @@ Hệ thống được chia thành 3 phần chính:
 - **Giao diện người dùng (Frontend):** Dashboard thời gian thực cho người quản lý và giao diện hỗ trợ truy vấn thông qua chatbot AI (Amazon Bedrock).
 
 ---
+{{% notice info "Link Demo Frontend (FE)" %}}
+🎬 **Demo Frontend (FE):** Truy cập [Thư mục Demo FE trên Google Drive](https://drive.google.com/drive/folders/1bkY5a88R-GRt-Bm0hTVDSIM8-R6Kj5Rt?usp=sharing) để xem video và hình ảnh demo giao diện Web Dashboard.
+{{% /notice %}}
 
 #### Sơ đồ kiến trúc tổng thể
 

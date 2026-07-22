@@ -20,6 +20,9 @@ The system is divided into 3 main components:
 - **User Interface (Frontend):** A real-time dashboard for administrators and an interactive AI chatbot interface powered by Amazon Bedrock.
 
 ---
+{{% notice info "Link Demo Frontend (FE)" %}}
+🎬 **Demo Frontend (FE):** Access the [Demo FE Folder on Google Drive](https://drive.google.com/drive/folders/1bkY5a88R-GRt-Bm0hTVDSIM8-R6Kj5Rt?usp=sharing) to view demo videos and images of the Web Dashboard interface.
+{{% /notice %}}
 
 #### Overall Architecture Diagram
 
